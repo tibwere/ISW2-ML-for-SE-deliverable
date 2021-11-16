@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +21,7 @@ import okhttp3.Response;
 
 public class JiraAPI {
 	
-	private static final Logger LOGGER = Logger.getLogger("ISW2-deliverable-2");;
+	private static final Logger LOGGER = Logger.getLogger("ISW2-deliverable-2");
 	private String projectName;
 	
 	public JiraAPI(String projectName) {
@@ -61,9 +60,7 @@ public class JiraAPI {
 			versions.add(version);
 		});
 		
-		versions.sort((Version v1, Version v2) -> {
-			return v1.getDate().compareTo(v2.getDate());
-		});
+		versions.sort((v1, v2) -> v1.getDate().compareTo(v2.getDate()));
 		
 		LOGGER.log(Level.INFO, "Founded {0} versions", versions.size());
 		

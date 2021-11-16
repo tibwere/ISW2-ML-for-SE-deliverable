@@ -5,5 +5,5 @@ public class Parameters {
 		throw new IllegalStateException("This class should not be instantiated");
 	}
 	
-	public static String PROJECT_NAME = "BOOKKEEPER";
+	public static final String PROJECT_NAME = "BOOKKEEPER";
 }
