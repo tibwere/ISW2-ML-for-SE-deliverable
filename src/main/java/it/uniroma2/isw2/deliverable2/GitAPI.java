@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -21,6 +20,7 @@ public class GitAPI {
 	private static final String CLONE_CMD = "/usr/bin/git clone https://github.com/apache/%s.git";
 	private static final String GET_SHA_AND_DATE_CMD = "/usr/bin/git log --pretty=format:\"%H %ad\" --date=iso-strict --reverse";
 	private static final String CHECKOUT_CMD = "/usr/bin/git checkout %s";
+	private static final String LOCAL_REPO_DUMP_DIR = "DUMP_REPO/";
 
 	private File pwd;
 	private String projectName;
@@ -28,11 +28,28 @@ public class GitAPI {
 	public GitAPI(String projectName) {
 		this.projectName = projectName;
 	}
+	
+	public void syncRepository() throws IOException, InterruptedException {
+		
+		File reposDir = new File(LOCAL_REPO_DUMP_DIR);
+		if (reposDir.exists()) {
+			File projDir = new File(LOCAL_REPO_DUMP_DIR + projectName.toLowerCase());
+			if (!projDir.exists()) {
+				SimpleLogger.logInfo("Found working dir but {0} is not cached => CLONE", this.projectName);
+				cloneRepository();
+			} else {
+				SimpleLogger.logInfo("{0} is already cached => SKIP", this.projectName);
+				this.pwd = projDir;
+			}
+		} else {
+			SimpleLogger.logInfo("Working dir does not exists => CREATE & CLONE", this.projectName);
+			reposDir.mkdir();
+			cloneRepository();
+		}
+	}
 
-	public void cloneRepository() throws IOException, InterruptedException {
-		final String TMP_PREFIX = "ISW2-DELIVERABLE-2";
-		File parent = new File(Files.createTempDirectory(TMP_PREFIX).toAbsolutePath().toString());
-
+	public void cloneRepository() throws IOException, InterruptedException {		
+		File parent = new File(LOCAL_REPO_DUMP_DIR);
 		String command = String.format(CLONE_CMD, this.projectName.toLowerCase());
 		this.execAndSync(parent, command);
 		SimpleLogger.logInfo("Cloned {0} (URL: {1}, Output directory: {2}) ",
@@ -103,17 +120,5 @@ public class GitAPI {
 
 		SimpleLogger.logInfo("Found {0} java files", filenames.size());
 		return filenames;
-	}
-
-	public void removeLocalRepository() throws IOException {
-		
-		try (Stream<Path> stream = Files.walk(Paths.get(pwd.getParentFile().getAbsolutePath()))) {
-			stream.sorted(Comparator.reverseOrder())
-				.map(Path::toFile)
-				.forEach(File::delete);
-		}
-		
-		SimpleLogger.logInfo("Deleted working directory");
-
 	}
 }
