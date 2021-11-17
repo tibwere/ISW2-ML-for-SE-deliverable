@@ -16,11 +16,11 @@ import java.util.stream.Stream;
 
 public class GitAPI {
 
-	private static final String SHELL = "sh";
+	private static final String SHELL = "/bin/sh";
 	private static final String COMMAND_FLAG = "-c";
-	private static final String CLONE_CMD = "git clone https://github.com/apache/%s.git";
-	private static final String GET_SHA_AND_DATE_CMD = "git log --pretty=format:\"%H %ad\" --date=iso-strict --reverse";
-	private static final String CHECKOUT_CMD = "git checkout %s";
+	private static final String CLONE_CMD = "/usr/bin/git clone https://github.com/apache/%s.git";
+	private static final String GET_SHA_AND_DATE_CMD = "/usr/bin/git log --pretty=format:\"%H %ad\" --date=iso-strict --reverse";
+	private static final String CHECKOUT_CMD = "/usr/bin/git checkout %s";
 
 	private File pwd;
 	private String projectName;
