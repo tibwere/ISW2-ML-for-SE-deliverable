@@ -20,7 +20,7 @@ public class Analyser {
 	public void run() throws IOException, InterruptedException {
 		List<Version> versions = this.jiraAPI.getVersions();
 		this.gitAPI.syncRepository();
-		this.gitAPI.setupTargetRevision(versions.get(versions.size()-1).getDate());
+		this.gitAPI.setupTargetRevision(versions.get(versions.size()-1).getEndDate());
 		this.gitAPI.recuresivelyGetFileNames();
 	}
 	

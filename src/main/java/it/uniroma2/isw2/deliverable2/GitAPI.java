@@ -21,6 +21,7 @@ public class GitAPI {
 	private static final String GET_SHA_AND_DATE_CMD = "/usr/bin/git log --pretty=format:\"%H %ad\" --date=iso-strict --reverse";
 	private static final String CHECKOUT_CMD = "/usr/bin/git checkout %s";
 	private static final String LOCAL_REPO_DUMP_DIR = "DUMP_REPO/";
+	private static final String MASTER_BRANCH = "master";
 
 	private File pwd;
 	private String projectName;
@@ -38,8 +39,10 @@ public class GitAPI {
 				SimpleLogger.logInfo("Found working dir but {0} is not cached => CLONE", this.projectName);
 				cloneRepository();
 			} else {
-				SimpleLogger.logInfo("{0} is already cached => SKIP", this.projectName);
+				SimpleLogger.logInfo("{0} is already cached => CHECKOUT TO MASTER", this.projectName);
 				this.pwd = projDir;
+				String checkoutCommand = String.format(CHECKOUT_CMD, MASTER_BRANCH);
+				this.execAndSync(checkoutCommand);
 			}
 		} else {
 			SimpleLogger.logInfo("Working dir does not exists => CREATE & CLONE", this.projectName);
