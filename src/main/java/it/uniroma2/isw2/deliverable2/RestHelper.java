@@ -15,6 +15,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class RestHelper {
+	
+	private RestHelper() {
+		throw new IllegalStateException("This class should not be instantiated");
+	}
 
 	public static JsonObject getJSONObject(String url) throws IOException {
 		OkHttpClient client = new OkHttpClient();

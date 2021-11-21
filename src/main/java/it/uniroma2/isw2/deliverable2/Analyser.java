@@ -32,7 +32,7 @@ public class Analyser {
 		setupResultsFolder();
 	}
 	
-	private void setupResultsFolder() throws IOException {
+	private void setupResultsFolder() {
 		File resultFolder = new File(RESULTS_FOLDER);
 		if (!resultFolder.exists())
 			resultFolder.mkdir();
