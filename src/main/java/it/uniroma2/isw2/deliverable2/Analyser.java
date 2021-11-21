@@ -49,7 +49,6 @@ public class Analyser {
 	}
 
 	private void evalStatistics(List<DatasetEntry> entries) throws IOException {
-		System.out.println(entries.size());
 		Comparator<DatasetEntry> comparator = Comparator
 				.comparing(DatasetEntry::getVersion)
 				.thenComparing(DatasetEntry::getName);
