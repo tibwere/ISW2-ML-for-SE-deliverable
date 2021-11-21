@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -48,7 +49,7 @@ public class Analyser {
 		Files.writeString(dataset, DatasetEntry.CSV_HEADER);
 	}
 
-	private void evalStatistics(List<DatasetEntry> entries) throws IOException {
+	private void evalStatistics(List<DatasetEntry> entries, LocalDateTime date) throws IOException {
 		Comparator<DatasetEntry> comparator = Comparator
 				.comparing(DatasetEntry::getVersion)
 				.thenComparing(DatasetEntry::getName);
@@ -58,7 +59,7 @@ public class Analyser {
 		try (FileWriter writer = new FileWriter(dataset, true)) {
 			for (DatasetEntry e : entries) {
 				if (e.getSize() > 0)
-					writer.append(String.format("%s%n", e.toString()));
+					writer.append(String.format("%s%n", e.toCSV(date)));
 			}
 		}
 	}
@@ -67,8 +68,7 @@ public class Analyser {
 		Map<String, DatasetEntry> newEntries = new HashMap<>();
 		
 		for (DatasetEntry entry : files.values()) {
-			DatasetEntry newEntry = new DatasetEntry(version, entry.getName());
-			newEntry.setSize(entry.getSize());
+			DatasetEntry newEntry = new DatasetEntry(version, entry.getName(), entry.getBirth(), entry.getSize());
 			newEntries.put(entry.getName(), newEntry);
 		}
 		
@@ -80,6 +80,7 @@ public class Analyser {
 		Iterator<String> shas = git.getCommitsSHA().iterator();
 		Map<String, DatasetEntry> files = new HashMap<>();
 		Version currentVersion = null;
+		Commit previousCommit, currentCommit = null;
 
 		if (versions.hasNext())
 			currentVersion = versions.next();
@@ -88,10 +89,11 @@ public class Analyser {
 
 		while (shas.hasNext()) {
 			String currentSha = shas.next();
-			Commit currentCommit = git.getCommit(currentSha);
+			previousCommit = currentCommit;
+			currentCommit = git.getCommit(currentSha);
 
 			if (currentCommit.getDate().isAfter(currentVersion.getEndDate())) {
-				this.evalStatistics(new ArrayList<>(files.values()));
+				this.evalStatistics(new ArrayList<>(files.values()), previousCommit.getDate());
 				if (versions.hasNext()) {
 					currentVersion = versions.next();
 					files = resetFilesForNewVersion(files, currentVersion.getName());
@@ -107,11 +109,10 @@ public class Analyser {
 				if (files.containsKey(key))
 					entry = files.get(key);
 				else
-					entry = new DatasetEntry(currentVersion.getName(), d.getFilename());
+					entry = new DatasetEntry(currentVersion.getName(), d.getFilename(), currentCommit.getDate());
 
-				entry.incAddition(d.getAdditions());
-				entry.incDeletions(d.getDeletions());
-				entry.insertAuthor(currentCommit.getAuthor());
+				entry.updateChurn(d.getAdditions(), d.getDeletions());
+				entry.insertCommit(currentCommit);
 
 				files.put(key, entry);
 			}
