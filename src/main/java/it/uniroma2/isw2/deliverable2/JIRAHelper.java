@@ -7,44 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 import it.uniroma2.isw2.deliverable2.entities.Version;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
-public class JiraAPI {
+public class JIRAHelper {
 		
 	private String projectName;
 	
-	public JiraAPI(String projectName) {
+	public JIRAHelper(String projectName) {
 		this.projectName = projectName;
-	}
-	
-	public String getJSONResult() throws IOException {
-		
-		final String URL = "https://issues.apache.org/jira/rest/api/2/project/" + this.projectName;
-		
-		OkHttpClient client = new OkHttpClient();
-		Request req = new Request.Builder()
-				.url(URL)
-				.build();
-		
-		Response res = client.newCall(req).execute();
-		SimpleLogger.logInfo("Retrieved results from JIRA (URL: {0})",  URL);
-
-		return res.body().string();
 	}
 	
 	private List<Version> getAllVersionsByJSON() throws JsonSyntaxException, IOException {
 		List<Version> allVersions = new ArrayList<>();
-
-		JsonElement body = JsonParser.parseString(this.getJSONResult());
-		JsonArray jsonVersions = body.getAsJsonObject().get("versions").getAsJsonArray();
+		
+		final String URL = "https://issues.apache.org/jira/rest/api/2/project/" + this.projectName;
+		JsonArray jsonVersions = RestHelper.getJSONObject(URL).get("versions").getAsJsonArray();
 		jsonVersions.forEach(element -> {
 			JsonObject jsonVersion = element.getAsJsonObject();
 			LocalDateTime date = LocalDate.parse(jsonVersion.get("releaseDate").getAsString()).atStartOfDay();

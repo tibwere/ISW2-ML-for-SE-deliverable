@@ -2,4 +2,5 @@ target/
 .settings/
 .classpath
 .project
-DUMP_REPO/
+.cache/
+token.key
