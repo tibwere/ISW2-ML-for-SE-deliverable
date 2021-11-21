@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
@@ -25,8 +26,11 @@ public class JIRAHelper {
 		
 		final String URL = "https://issues.apache.org/jira/rest/api/2/project/" + this.projectName;
 		JsonArray jsonVersions = RestHelper.getJSONObject(URL).get("versions").getAsJsonArray();
-		jsonVersions.forEach(element -> {
-			JsonObject jsonVersion = element.getAsJsonObject();
+		for (JsonElement element : jsonVersions) {
+			JsonObject jsonVersion = element.getAsJsonObject(); 
+			if (jsonVersion.get("releaseDate") == null)
+				continue;
+			
 			LocalDateTime date = LocalDate.parse(jsonVersion.get("releaseDate").getAsString()).atStartOfDay();
 			String id = jsonVersion.get("id").getAsString();
 			String name = jsonVersion.get("name").getAsString();
@@ -36,7 +40,7 @@ public class JIRAHelper {
 			
 			Version version = new Version(id, name, date);
 			allVersions.add(version);
-		});
+		}
 		
 		allVersions.sort((v1, v2) -> v1.getStartDate().compareTo(v2.getStartDate()));
 		SimpleLogger.logInfo("Founded {0} versions", allVersions.size());

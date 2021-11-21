@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -74,50 +73,46 @@ public class Analyser {
 		
 		return newEntries;
 	}
+	
+	private boolean needSwitchVersion(Version version, Commit commit) {
+		return commit.getDate().isAfter(version.getEndDate());
+	}
+	
+	private void applyDiff(Version currentVersion, Commit currentCommit, Map<String, DatasetEntry> files) {
+		for (Diff d : currentCommit.getDiffs()) {
+			String key = d.getFilename();
+			DatasetEntry entry = (files.containsKey(key)) ? files.get(key) : new DatasetEntry(currentVersion.getName(), d.getFilename(), currentCommit.getDate());
+			
+			entry.updateChurn(d.getAdditions(), d.getDeletions());
+			entry.insertCommit(currentCommit);
 
-	public void createDataset() throws IOException {
-		Iterator<Version> versions = jira.getVersions().iterator();
-		Iterator<String> shas = git.getCommitsSHA().iterator();
-		Map<String, DatasetEntry> files = new HashMap<>();
-		Version currentVersion = null;
-		Commit previousCommit = null;
-		Commit currentCommit = null;
-
-		if (versions.hasNext())
-			currentVersion = versions.next();
-		else
-			return;
-
-		while (shas.hasNext()) {
-			String currentSha = shas.next();
-			previousCommit = currentCommit;
-			currentCommit = git.getCommit(currentSha);
-
-			if (currentCommit.getDate().isAfter(currentVersion.getEndDate())) {
-				this.evalStatistics(new ArrayList<>(files.values()), (previousCommit == null) ? null : previousCommit.getDate());
-				if (versions.hasNext()) {
-					currentVersion = versions.next();
-					files = resetFilesForNewVersion(files, currentVersion.getName());
-				} else {
-					return;
-				}
-			}
-				
-			for (Diff d : currentCommit.getDiffs()) {
-				DatasetEntry entry = null;
-				String key = d.getFilename();
-
-				if (files.containsKey(key))
-					entry = files.get(key);
-				else
-					entry = new DatasetEntry(currentVersion.getName(), d.getFilename(), currentCommit.getDate());
-
-				entry.updateChurn(d.getAdditions(), d.getDeletions());
-				entry.insertCommit(currentCommit);
-
-				files.put(key, entry);
-			}
+			files.put(key, entry);
 		}
+	}
+	
+	public void createDataset() throws IOException {
+		List<Version> versions = jira.getVersions();
+		int versionsIdx = 0;
+		
+		LocalDateTime targetDate = versions.get(versions.size()-1).getEndDate();
+		List<Commit> commits = git.getCommits(targetDate);
+		int commitsIdx = 0;
+		
+		Map<String, DatasetEntry> files = new HashMap<>();
+		
+		while (versionsIdx < versions.size() && commitsIdx < commits.size()) {			
+			if (needSwitchVersion(versions.get(versionsIdx), commits.get(commitsIdx))) {
+				LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
+				this.evalStatistics(new ArrayList<>(files.values()), date);
+				files = resetFilesForNewVersion(files, versions.get(++versionsIdx).getName());
+			}
+			
+			applyDiff(versions.get(versionsIdx), commits.get(commitsIdx++), files);
+		}
+		
+		// Dump pending commits
+		LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
+		this.evalStatistics(new ArrayList<>(files.values()), date);
 	}
 
 	public static void main(String[] args) throws IOException {

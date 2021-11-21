@@ -3,7 +3,9 @@ package it.uniroma2.isw2.deliverable2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.google.gson.JsonArray;
@@ -30,7 +32,7 @@ public class GitHelper {
 		}
 	}
 	
-	public List<String> getCommitsSHA() throws IOException {
+	private List<String> getCommitsSHA() throws IOException {
 		List<String> commits = new ArrayList<>();
 		
 		int index = 1;
@@ -54,7 +56,23 @@ public class GitHelper {
 		return commits;
 	}
 	
-	public Commit getCommit(String sha) throws IOException {
+	public List<Commit> getCommits(LocalDateTime targetDate) throws IOException {
+		List<Commit> commits = new ArrayList<>();
+		Iterator<String> shas = getCommitsSHA().iterator();
+		boolean targetDateReached = false;
+		
+		while(shas.hasNext() && !targetDateReached) {
+			Commit c = getCommit(shas.next());
+			if (c.getDate().isAfter(targetDate))
+				targetDateReached = true;
+			else
+				commits.add(c);
+		}
+				
+		return commits;
+	}
+	
+	private Commit getCommit(String sha) throws IOException {
 		String cache = String.format(CACHE_COMMIT_INFO, this.projectName, sha);
 		String remote = String.format(REMOTE_COMMIT_INFO, this.projectName, sha);
 		
