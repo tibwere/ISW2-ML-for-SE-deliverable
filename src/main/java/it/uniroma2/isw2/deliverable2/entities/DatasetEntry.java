@@ -31,6 +31,10 @@ public class DatasetEntry {
 	public int getSize() {
 		return size;
 	}
+	
+	public void setSize(int size) {
+		this.size = size;
+	}
 
 	public String getVersion() {
 		return version;
@@ -58,6 +62,7 @@ public class DatasetEntry {
 	public int numberOfAuthors() {
 		return authors.size();
 	}
+	
 	
 	@Override
 	public String toString() {

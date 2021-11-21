@@ -3,6 +3,9 @@ package it.uniroma2.isw2.deliverable2;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -32,25 +35,45 @@ public class Analyser {
 		setupResultsFolder();
 	}
 	
-	private void setupResultsFolder() {
-		File resultFolder = new File(RESULTS_FOLDER);
-		if (!resultFolder.exists())
-			resultFolder.mkdir();
+	private void setupResultsFolder() throws IOException {
+		Path resultFolder = Paths.get(RESULTS_FOLDER);
+		if (!Files.exists(resultFolder))
+			Files.createDirectory(resultFolder);
+		
+		Path dataset = Paths.get(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
+		if (Files.exists(dataset))
+			Files.delete(dataset);
+		
+		Files.createFile(dataset);
+		Files.writeString(dataset, DatasetEntry.CSV_HEADER);
 	}
 
 	private void evalStatistics(List<DatasetEntry> entries) throws IOException {
-		
+		System.out.println(entries.size());
 		Comparator<DatasetEntry> comparator = Comparator
 				.comparing(DatasetEntry::getVersion)
 				.thenComparing(DatasetEntry::getName);
 		
 		entries.sort(comparator);
 		File dataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
-		try (FileWriter writer = new FileWriter(dataset, false)) {
-			writer.append(DatasetEntry.CSV_HEADER);
-			for (DatasetEntry e : entries) 
-				writer.append(String.format("%s%n", e.toString()));
+		try (FileWriter writer = new FileWriter(dataset, true)) {
+			for (DatasetEntry e : entries) {
+				if (e.getSize() > 0)
+					writer.append(String.format("%s%n", e.toString()));
+			}
 		}
+	}
+	
+	private Map<String, DatasetEntry> resetFilesForNewVersion(Map<String, DatasetEntry> files, String version) {
+		Map<String, DatasetEntry> newEntries = new HashMap<>();
+		
+		for (DatasetEntry entry : files.values()) {
+			DatasetEntry newEntry = new DatasetEntry(version, entry.getName());
+			newEntry.setSize(entry.getSize());
+			newEntries.put(entry.getName(), newEntry);
+		}
+		
+		return newEntries;
 	}
 
 	public void createDataset() throws IOException {
@@ -70,21 +93,22 @@ public class Analyser {
 
 			if (currentCommit.getDate().isAfter(currentVersion.getEndDate())) {
 				this.evalStatistics(new ArrayList<>(files.values()));
-				if (versions.hasNext())
+				if (versions.hasNext()) {
 					currentVersion = versions.next();
-				else
+					files = resetFilesForNewVersion(files, currentVersion.getName());
+				} else {
 					return;
+				}
 			}
 				
 			for (Diff d : currentCommit.getDiffs()) {
 				DatasetEntry entry = null;
 				String key = d.getFilename();
 
-				if (files.containsKey(key)) {
+				if (files.containsKey(key))
 					entry = files.get(key);
-				} else {
-					entry = new DatasetEntry(currentVersion.getName(), key);
-				}
+				else
+					entry = new DatasetEntry(currentVersion.getName(), d.getFilename());
 
 				entry.incAddition(d.getAdditions());
 				entry.incDeletions(d.getDeletions());
