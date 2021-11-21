@@ -80,7 +80,8 @@ public class Analyser {
 		Iterator<String> shas = git.getCommitsSHA().iterator();
 		Map<String, DatasetEntry> files = new HashMap<>();
 		Version currentVersion = null;
-		Commit previousCommit, currentCommit = null;
+		Commit previousCommit = null;
+		Commit currentCommit = null;
 
 		if (versions.hasNext())
 			currentVersion = versions.next();
@@ -93,7 +94,7 @@ public class Analyser {
 			currentCommit = git.getCommit(currentSha);
 
 			if (currentCommit.getDate().isAfter(currentVersion.getEndDate())) {
-				this.evalStatistics(new ArrayList<>(files.values()), previousCommit.getDate());
+				this.evalStatistics(new ArrayList<>(files.values()), (previousCommit == null) ? null : previousCommit.getDate());
 				if (versions.hasNext()) {
 					currentVersion = versions.next();
 					files = resetFilesForNewVersion(files, currentVersion.getName());

@@ -8,7 +8,6 @@ import java.util.List;
 public class DatasetEntry {
 	
 	public static final String CSV_HEADER = "Version,Name,Size,NR,NAuth,LOC added,MAX LOC added,AVG LOC added,Churn,MAX Churn,AVG Churn,ChgSetSize,Age\n";
-	private static final char CSV_SEPARATOR = ',';
 	
 	private LocalDateTime birth;
 	private String version;
@@ -115,7 +114,7 @@ public class DatasetEntry {
 	}
 	
 	public String toCSV(LocalDateTime currentDate) {
-		long age = ChronoUnit.WEEKS.between(this.birth, currentDate);
+		long age = (currentDate == null) ? 0 : ChronoUnit.WEEKS.between(this.birth, currentDate);
 
 		return String.format("%s,%s,%d,%d,%d,%d,%d,%.3f,%d,%.3f,%d,%d", 
 				this.version, this.name, this.size, this.numberOfRevisions(),
