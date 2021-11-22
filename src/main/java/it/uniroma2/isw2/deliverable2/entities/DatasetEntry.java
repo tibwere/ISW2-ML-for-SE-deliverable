@@ -116,10 +116,10 @@ public class DatasetEntry {
 	public String toCSV(LocalDateTime currentDate) {
 		long age = (currentDate == null) ? 0 : ChronoUnit.WEEKS.between(this.birth, currentDate);
 
-		return String.format("%s,%s,%d,%d,%d,%d,%d,%.3f,%d,%.3f,%d,%d", 
+		return String.format("%s,%s,%d,%d,%d,%d,%d,%.3f,%d,%d,%.3f,%d,%d", 
 				this.version, this.name, this.size, this.numberOfRevisions(),
 				this.numberOfAuthors(), this.additions, this.maxAddition,this.avgAdditions(),
-				this.churn(), this.avgChurn(), this.chgSetSize(),age
+				this.churn(), this.maxChurn, this.avgChurn(), this.chgSetSize(),age
 		);
 	}
 }
