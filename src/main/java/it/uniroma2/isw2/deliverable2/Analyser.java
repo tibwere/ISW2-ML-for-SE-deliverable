@@ -21,7 +21,7 @@ import it.uniroma2.isw2.deliverable2.entities.Version;
 public class Analyser {
 
 	private static final String RESULTS_FOLDER = "results/";
-	private static final String PROJECT_NAME = "BOOKKEEPER";
+	private static final String PROJECT_NAME = "STORM";
 	
 	private JIRAHelper jira;
 	private GitHelper git;
@@ -95,6 +95,7 @@ public class Analyser {
 		int versionsIdx = 0;
 		
 		LocalDateTime targetDate = versions.get(versions.size()-1).getEndDate();
+		
 		List<Commit> commits = git.getCommits(targetDate);
 		int commitsIdx = 0;
 		

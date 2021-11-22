@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 
 public class SimpleLogger {
 	
+	private static final boolean ENABLED = false;
+	
 	private SimpleLogger() {
 		throw new IllegalStateException("Log class should not be instantiated");
 	}
@@ -12,19 +14,23 @@ public class SimpleLogger {
 	private static final Logger LOGGER = Logger.getLogger("ISW2-DELIVERABLE-2");
 	
 	public static void logSevere(String message) {
-		LOGGER.log(Level.SEVERE, message);
+		if (ENABLED)
+			LOGGER.log(Level.SEVERE, message);
 	}
 	
 	public static void logInfo(String message) {
-		LOGGER.log(Level.INFO, message);
+		if (ENABLED)
+			LOGGER.log(Level.INFO, message);
 	}
 	
 	public static void logInfo(String fmt, Object []args) {
-		LOGGER.log(Level.INFO, fmt, args);
+		if (ENABLED)
+			LOGGER.log(Level.INFO, fmt, args);
 	}
 	
 	public static void logInfo(String fmt, Object arg) {
-		LOGGER.log(Level.INFO, fmt, arg);
+		if (ENABLED)
+			LOGGER.log(Level.INFO, fmt, arg);
 	}
 	
 }
