@@ -88,6 +88,9 @@ public class DatasetEntry {
 	}
 	
 	private double avgAdditions() {
+		if (this.updateTimes == 0)
+			return 0;
+		
 		return ((double)this.additions/this.updateTimes);
 	}
 	
@@ -96,6 +99,9 @@ public class DatasetEntry {
 	}
 	
 	private double avgChurn() {
+		if (this.updateTimes == 0)
+			return 0;
+		
 		return ((double)this.churn()/this.updateTimes);
 	}
 	
