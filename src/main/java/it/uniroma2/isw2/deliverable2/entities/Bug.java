@@ -42,6 +42,13 @@ public class Bug {
 		bug.ov = v;
 		bug.avs = extractAffectedVersions(fields.get("versions").getAsJsonArray(), versions);
 		
+		/* 
+		 * Since the version list received as parameter is sorted by ascending releaseDate 
+		 * as iv I take the first affected version
+		 */
+		if (!bug.avs.isEmpty())
+			bug.iv = bug.avs.get(0);
+		
 		return bug; 
 	}
 
@@ -96,9 +103,16 @@ public class Bug {
 	}
 	
 	public String toString() {
-		return new StringBuilder(this.key).append("FV: ").append(this.fv.getName())
-				.append(", OV: ").append(this.ov.getName())
-				.append(", size(AV) = ").append(this.avs.size())
-				.toString();
+		StringBuilder sb = new StringBuilder(this.key)
+				.append(" [FV: ").append(this.fv.getName())
+				.append(", OV: ").append(this.ov.getName());
+				
+		if (this.iv != null) {
+			return sb.append(", IV:").append(this.iv.getName())
+					.append(", sizeof(AV): ").append(this.avs.size())
+					.append("]").toString();
+		} else {
+			return sb.append("]").toString();
+		}
 	}
 }

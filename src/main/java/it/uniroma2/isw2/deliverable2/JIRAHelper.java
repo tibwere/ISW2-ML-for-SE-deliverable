@@ -36,15 +36,11 @@ public class JIRAHelper {
 			String id = jsonVersion.get("id").getAsString();
 			String name = jsonVersion.get("name").getAsString();
 			
-			SimpleLogger.logInfo("New version inserted [ID: {0}, Name: {1}, Date: {2}]",
-					new Object[] {id, name, date});
-			
 			Version version = new Version(id, name, date);
 			allVersions.add(version);
 		}
 		
 		allVersions.sort((v1, v2) -> v1.getReleaseDate().compareTo(v2.getReleaseDate()));
-		SimpleLogger.logInfo("Founded {0} versions", allVersions.size());
 		
 		return allVersions;
 	}
@@ -73,8 +69,8 @@ public class JIRAHelper {
 			
 			for (JsonElement element : jsonIssues) {
 				JsonObject jsonIssue = element.getAsJsonObject();
-				Bug bug;
-				if ((bug = Bug.fromJsonObject(jsonIssue, versions)) != null)
+				Bug bug = Bug.fromJsonObject(jsonIssue, versions);
+				if (bug != null)
 					bugs.add(bug);
 			}
 	

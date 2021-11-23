@@ -25,8 +25,6 @@ public class RestHelper {
 		Request req = new Request.Builder().url(url).build();
 
 		Response res = client.newCall(req).execute();
-		SimpleLogger.logInfo("Retrieved results from {0}", url);
-
 		return JsonParser.parseString(res.body().string()).getAsJsonObject();
 	}
 
@@ -55,14 +53,12 @@ public class RestHelper {
 		Path cachePath = Paths.get(cache);
 
 		if (Files.exists(cachePath)) {
-			SimpleLogger.logInfo("Retrieved results from cache ({0})", cache);
 			return Files.readString(cachePath);
 		} else {
 			OkHttpClient client = new OkHttpClient();
 			Request req = new Request.Builder().url(url).header("Authorization", "token " + token).build();
 
 			Response res = client.newCall(req).execute();
-			SimpleLogger.logInfo("Retrieved results from: {0}", url);
 			return res.body().string();
 		}
 	}
@@ -72,6 +68,5 @@ public class RestHelper {
 		Files.createDirectories(cachePath.getParent());
 		Files.createFile(cachePath);
 		Files.writeString(cachePath, body, StandardCharsets.UTF_8);
-		SimpleLogger.logInfo("Cached results in {0}", cacheFile);
 	}
 }

@@ -12,6 +12,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.google.gson.JsonSyntaxException;
 
@@ -22,6 +24,8 @@ import it.uniroma2.isw2.deliverable2.entities.Diff;
 import it.uniroma2.isw2.deliverable2.entities.Version;
 
 public class Analyser {
+	
+	private static final Logger LOGGER = Logger.getLogger("ISW2-DELIVERABLE-2");
 	
 	private String project;
 	
@@ -52,13 +56,25 @@ public class Analyser {
 	}
 	
 	private int initAnalysis() throws JsonSyntaxException, IOException {
+		LOGGER.log(Level.INFO, "*** Retrieve tickets from JIRA ***");
 		this.versions = jiraHelper.getVersions();
+		LOGGER.log(Level.INFO, "Found {0} versions", this.versions.size());
+		
+		LOGGER.log(Level.INFO, "*** Retrieve bugs from JIRA ***");
 		this.bugs = jiraHelper.getBugs(this.versions);
-		int mid = (int)Math.ceil(this.versions.size()/2.0);
-		this.commits = gitHelper.getCommits(this.versions.get(mid).getReleaseDate());
+		LOGGER.log(Level.INFO, "*** Found {0} bugs", this.bugs.size());
+		
+		int targetIdx = (int)Math.ceil(this.versions.size()/2.0);
+		LOGGER.log(Level.INFO, "Considering only first half ov versions ({0})", targetIdx);
+		
+		LOGGER.log(Level.INFO, "*** Retrieve commits for first {0} versions from Github ***", targetIdx);
+		this.commits = gitHelper.getCommits(this.versions.get(targetIdx).getReleaseDate());
+		LOGGER.log(Level.INFO, "*** Found {0} commits", this.commits.size());
+
+		
 		this.files = new HashMap<>();
 		
-		return mid;
+		return targetIdx;
 	}
 	
 	private void createDataset(int targetVersionIndex) throws IOException {
@@ -67,6 +83,10 @@ public class Analyser {
 				
 		while (versionsIdx < targetVersionIndex && commitsIdx < this.commits.size()) {			
 			if (this.needSwitchVersion(versionsIdx, commitsIdx)) {
+				LOGGER.log(Level.INFO, "After {0} commits switch from version {1} to {2}", new Object[] {
+						commitsIdx, this.versions.get(versionsIdx).toString(), this.versions.get(versionsIdx+1).toString() 
+				});
+				
 				this.evalStatistics(commitsIdx);
 				this.resetFilesForNewVersion(++versionsIdx);
 			}
@@ -111,6 +131,7 @@ public class Analyser {
 	}
 	
 	private void evalStatistics(int commitsIdx) throws IOException {
+		int counter = 0;
 		LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
 
 		Comparator<DatasetEntry> comparator = Comparator
@@ -122,10 +143,14 @@ public class Analyser {
 		File dataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
 		try (FileWriter writer = new FileWriter(dataset, true)) {
 			for (DatasetEntry e : entries) {
-				if (e.getSize() > 0)
+				if (e.getSize() > 0) {
+					counter++;
 					writer.append(String.format("%s%n", e.toCSV(date)));
+				}
 			}
 		}
+		
+		LOGGER.log(Level.INFO, "Evaluated statistics for {0} entries", counter);
 	}
 	
 	private void setupResultsFolder() throws IOException {
