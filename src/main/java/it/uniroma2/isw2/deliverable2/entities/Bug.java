@@ -24,9 +24,7 @@ public class Bug {
 			return null;
 		
 		bug.key = json.get("key").getAsString();
-		
-		System.out.println("Chiave messa");
-		
+				
 		JsonObject fields = json.get("fields").getAsJsonObject();
 		Version v;
 		
@@ -35,16 +33,12 @@ public class Bug {
 		if ((v = extractFixVersion(fields.get("fixVersions").getAsJsonArray(), versions)) == null)
 			return null;
 		bug.fv = v;
-		
-		System.out.println("Fix version messa");
-		
+				
 		if (fields.get("created") == null)
 			return null;
 		if ((v = extractOpenVersion(fields.get("created").getAsString(), versions)) == null)
 			return null;
 		
-		System.out.println("Open Version messa");
-
 		bug.ov = v;
 		bug.avs = extractAffectedVersions(fields.get("versions").getAsJsonArray(), versions);
 		
