@@ -23,28 +23,35 @@ public class Bug {
 		if (json.get("key") == null)
 			return null;
 		
+		/* Setting the key */
 		bug.key = json.get("key").getAsString();
 				
 		JsonObject fields = json.get("fields").getAsJsonObject();
 		Version v;
 		
+		/* Setting the FV */
 		if (fields.get("fixVersions") == null)
 			return null;	
 		if ((v = extractFixVersion(fields.get("fixVersions").getAsJsonArray(), versions)) == null)
 			return null;
 		bug.fv = v;
-				
+			
+		/* Setting OV*/
 		if (fields.get("created") == null)
 			return null;
 		if ((v = extractOpenVersion(fields.get("created").getAsString(), versions)) == null)
 			return null;
-		
 		bug.ov = v;
+		if (bug.fv.getReleaseDate().isBefore(bug.ov.getReleaseDate()))
+			return null;
+		
+		/* Setting AVs */
 		bug.avs = extractAffectedVersions(fields.get("versions").getAsJsonArray(), versions);
 		
 		/* 
-		 * Since the version list received as parameter is sorted by ascending releaseDate 
-		 * as iv I take the first affected version
+		 * Setting IV
+		 * n.b. Since the version list received as parameter is sorted by ascending releaseDate 
+		 * as IV I take the first AV
 		 */
 		if (!bug.avs.isEmpty())
 			bug.iv = bug.avs.get(0);
@@ -100,6 +107,22 @@ public class Bug {
 			if (v.getReleaseDate().isAfter(LocalDate.parse(openDate.substring(0, 10)).atStartOfDay()))
 				return v;
 		return null;
+	}
+	
+	public Version getFv() {
+		return fv;
+	}
+
+	public void setFv(Version fv) {
+		this.fv = fv;
+	}
+
+	public Version getOv() {
+		return ov;
+	}
+
+	public void setOv(Version ov) {
+		this.ov = ov;
 	}
 	
 	public String toString() {
