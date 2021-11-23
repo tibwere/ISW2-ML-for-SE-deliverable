@@ -84,7 +84,7 @@ public class Analyser {
 		while (versionsIdx < targetVersionIndex && commitsIdx < this.commits.size()) {			
 			if (this.needSwitchVersion(versionsIdx, commitsIdx)) {
 				LOGGER.log(Level.INFO, "After {0} commits switch from version {1} to {2}", new Object[] {
-						commitsIdx, this.versions.get(versionsIdx).toString(), this.versions.get(versionsIdx+1).toString() 
+						commitsIdx, this.versions.get(versionsIdx), this.versions.get(versionsIdx+1)
 				});
 				
 				this.evalStatistics(commitsIdx);
