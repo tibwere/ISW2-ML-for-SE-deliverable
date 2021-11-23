@@ -11,6 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
+import it.uniroma2.isw2.deliverable2.entities.Bug;
 import it.uniroma2.isw2.deliverable2.entities.Version;
 
 public class JIRAHelper {
@@ -21,7 +22,7 @@ public class JIRAHelper {
 		this.projectName = projectName;
 	}
 	
-	private List<Version> getAllVersionsByJSON() throws JsonSyntaxException, IOException {
+	public List<Version> getVersions() throws JsonSyntaxException, IOException {
 		List<Version> allVersions = new ArrayList<>();
 		
 		final String URL = "https://issues.apache.org/jira/rest/api/2/project/" + this.projectName;
@@ -42,25 +43,44 @@ public class JIRAHelper {
 			allVersions.add(version);
 		}
 		
-		allVersions.sort((v1, v2) -> v1.getStartDate().compareTo(v2.getStartDate()));
+		allVersions.sort((v1, v2) -> v1.getReleaseDate().compareTo(v2.getReleaseDate()));
 		SimpleLogger.logInfo("Founded {0} versions", allVersions.size());
 		
 		return allVersions;
 	}
 	
-	public List<Version> getVersions() throws IOException {		
-		List<Version> consideredVersions = new ArrayList<>();
-		List<Version> allVersions = this.getAllVersionsByJSON();
+	private String getBugsURL(int startIndex, int maxResults) {
+		return new StringBuilder("https://issues.apache.org/jira/rest/api/2/search?jql=")
+				.append("project=").append(this.projectName)
+				.append("%20AND%20issueType=Bug%20AND%20resolution=Fixed%20AND%20status%20in%20(Resolved,Closed)&fields=fixVersions,versions,created")
+				.append("&startAt=").append(startIndex)
+				.append("&maxResults=").append(maxResults)
+				.toString();			
+	}
+	
+	public List<Bug> getBugs(List<Version> versions) throws IOException {
 		
-		for (int i=0; i<(int)Math.ceil(allVersions.size()/2.0); ++i) {
-			Version current = allVersions.get(i);
-			Version next = allVersions.get(i+1);
+		final int MAX_RESULTS = 1000;
+		
+		int visited = 0;
+		int total = 0;
+		List<Bug> bugs = new ArrayList<>();	
+		
+		do {
+			JsonObject response = RestHelper.getJSONObject(this.getBugsURL(visited, MAX_RESULTS));
+			JsonArray jsonIssues = response.get("issues").getAsJsonArray(); 
+			total = response.get("total").getAsInt();
 			
-			current.setEndDate(next.getStartDate());
-			consideredVersions.add(current);
-		}		
-		
-		SimpleLogger.logInfo("Considered versions: {0}", consideredVersions.size());
-		return consideredVersions;
+			for (JsonElement element : jsonIssues) {
+				JsonObject jsonIssue = element.getAsJsonObject();
+				Bug bug;
+				if ((bug = Bug.fromJsonObject(jsonIssue, versions)) != null)
+					bugs.add(bug);
+			}
+	
+			visited += jsonIssues.size();
+		} while(visited<total);
+
+		return bugs;
 	}
 }

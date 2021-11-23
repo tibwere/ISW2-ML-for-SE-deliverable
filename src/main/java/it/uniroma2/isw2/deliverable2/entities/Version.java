@@ -5,13 +5,12 @@ import java.time.LocalDateTime;
 public class Version {
 	private String id;
 	private String name;
-	private LocalDateTime startDate;
-	private LocalDateTime endDate;
+	private LocalDateTime releaseDate;
 
 	public Version(String id, String name, LocalDateTime startDate) {
 		this.id = id;
 		this.name = name;
-		this.startDate = startDate;
+		this.releaseDate = startDate;
 	}
 
 	public String getId() {
@@ -22,21 +21,12 @@ public class Version {
 		return name;
 	}
 
-	public LocalDateTime getStartDate() {
-		return startDate;
-	}
-
-	public LocalDateTime getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(LocalDateTime endDate) {
-		this.endDate = endDate;
+	public LocalDateTime getReleaseDate() {
+		return releaseDate;
 	}
 
 	@Override
 	public String toString() {
-		return new StringBuilder(this.name).append("(").append(this.id).append(")").append(" [from: ")
-				.append(this.startDate).append(" to: ").append(this.endDate).append("]").toString();
+		return new StringBuilder(this.name).append(" (").append(this.releaseDate).append(")").toString();
 	}
 }

@@ -13,26 +13,119 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.JsonSyntaxException;
+
+import it.uniroma2.isw2.deliverable2.entities.Bug;
 import it.uniroma2.isw2.deliverable2.entities.Commit;
 import it.uniroma2.isw2.deliverable2.entities.DatasetEntry;
 import it.uniroma2.isw2.deliverable2.entities.Diff;
 import it.uniroma2.isw2.deliverable2.entities.Version;
 
 public class Analyser {
-
-	private static final String RESULTS_FOLDER = "results/";
-	private static final String PROJECT_NAME = "STORM";
 	
-	private JIRAHelper jira;
-	private GitHelper git;
 	private String project;
-
+	
+	private GitHelper gitHelper;
+	private JIRAHelper jiraHelper;
+	
+	private List<Version> versions;
+	private List<Commit> commits;
+	private List<Bug> bugs;
+	private Map<String, DatasetEntry> files;
+	
+	private static final String RESULTS_FOLDER = "results/";
+	
 	public Analyser(String project) throws IOException {
-		this.jira = new JIRAHelper(project);
-		this.git = new GitHelper(project);
 		this.project = project;
+		this.gitHelper = new GitHelper(this.project);
+		this.jiraHelper = new JIRAHelper(this.project);
 		
-		setupResultsFolder();
+		this.setupResultsFolder();
+	}
+	
+	public void run() throws IOException {
+		/* Init attributes */
+		int targetVersionIdx = this.initAnalysis();
+		
+		/* Create dataset */
+		this.createDataset(targetVersionIdx);		
+	}
+	
+	private int initAnalysis() throws JsonSyntaxException, IOException {
+		this.versions = jiraHelper.getVersions();
+		this.bugs = jiraHelper.getBugs(this.versions);
+		int mid = (int)Math.ceil(this.versions.size()/2.0);
+		this.commits = gitHelper.getCommits(this.versions.get(mid).getReleaseDate());
+		this.files = new HashMap<>();
+		
+		return mid;
+	}
+	
+	private void createDataset(int targetVersionIndex) throws IOException {
+		int versionsIdx = 0;
+		int commitsIdx = 0;
+				
+		while (versionsIdx < targetVersionIndex && commitsIdx < this.commits.size()) {			
+			if (this.needSwitchVersion(versionsIdx, commitsIdx)) {
+				this.evalStatistics(commitsIdx);
+				this.resetFilesForNewVersion(++versionsIdx);
+			}
+			
+			this.applyDiff(versionsIdx, commitsIdx++);
+		}
+		
+		// Dump pending commits
+		this.evalStatistics(commitsIdx);
+	}
+	
+	private void applyDiff(int versionsIdx, int commitsIdx) {
+		for (Diff d : this.commits.get(commitsIdx).getDiffs()) {
+			String key = d.getFilename();
+			
+			DatasetEntry entry = null;
+			if (this.files.containsKey(key))
+				entry = this.files.get(key);
+			else
+				entry = new DatasetEntry(versions.get(versionsIdx).getName(), d.getFilename(), commits.get(commitsIdx).getDate());
+			
+			entry.updateChurn(d.getAdditions(), d.getDeletions());
+			entry.insertCommit(this.commits.get(commitsIdx));
+
+			this.files.put(key, entry);
+		}
+	}
+	
+	private void resetFilesForNewVersion(int versionsIdx) {
+		Map<String, DatasetEntry> newEntries = new HashMap<>();
+		
+		for (DatasetEntry entry : this.files.values()) {
+			DatasetEntry newEntry = new DatasetEntry(versions.get(versionsIdx).getName(), entry.getName(), entry.getBirth(), entry.getSize());
+			newEntries.put(entry.getName(), newEntry);
+		}
+		
+		this.files = newEntries;
+	}
+	
+	private boolean needSwitchVersion(int versionsIdx, int commitsIdx) {
+		return this.commits.get(commitsIdx).getDate().isAfter(this.versions.get(versionsIdx+1).getReleaseDate());
+	}
+	
+	private void evalStatistics(int commitsIdx) throws IOException {
+		LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
+
+		Comparator<DatasetEntry> comparator = Comparator
+				.comparing(DatasetEntry::getVersion)
+				.thenComparing(DatasetEntry::getName);
+		
+		List<DatasetEntry> entries = new ArrayList<>(this.files.values());
+		entries.sort(comparator);
+		File dataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
+		try (FileWriter writer = new FileWriter(dataset, true)) {
+			for (DatasetEntry e : entries) {
+				if (e.getSize() > 0)
+					writer.append(String.format("%s%n", e.toCSV(date)));
+			}
+		}
 	}
 	
 	private void setupResultsFolder() throws IOException {
@@ -47,77 +140,5 @@ public class Analyser {
 		Files.createFile(dataset);
 		Files.writeString(dataset, DatasetEntry.CSV_HEADER);
 	}
-
-	private void evalStatistics(List<DatasetEntry> entries, LocalDateTime date) throws IOException {
-		Comparator<DatasetEntry> comparator = Comparator
-				.comparing(DatasetEntry::getVersion)
-				.thenComparing(DatasetEntry::getName);
-		
-		entries.sort(comparator);
-		File dataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
-		try (FileWriter writer = new FileWriter(dataset, true)) {
-			for (DatasetEntry e : entries) {
-				if (e.getSize() > 0)
-					writer.append(String.format("%s%n", e.toCSV(date)));
-			}
-		}
-	}
 	
-	private Map<String, DatasetEntry> resetFilesForNewVersion(Map<String, DatasetEntry> files, String version) {
-		Map<String, DatasetEntry> newEntries = new HashMap<>();
-		
-		for (DatasetEntry entry : files.values()) {
-			DatasetEntry newEntry = new DatasetEntry(version, entry.getName(), entry.getBirth(), entry.getSize());
-			newEntries.put(entry.getName(), newEntry);
-		}
-		
-		return newEntries;
-	}
-	
-	private boolean needSwitchVersion(Version version, Commit commit) {
-		return commit.getDate().isAfter(version.getEndDate());
-	}
-	
-	private void applyDiff(Version currentVersion, Commit currentCommit, Map<String, DatasetEntry> files) {
-		for (Diff d : currentCommit.getDiffs()) {
-			String key = d.getFilename();
-			DatasetEntry entry = (files.containsKey(key)) ? files.get(key) : new DatasetEntry(currentVersion.getName(), d.getFilename(), currentCommit.getDate());
-			
-			entry.updateChurn(d.getAdditions(), d.getDeletions());
-			entry.insertCommit(currentCommit);
-
-			files.put(key, entry);
-		}
-	}
-	
-	public void createDataset() throws IOException {
-		List<Version> versions = jira.getVersions();
-		int versionsIdx = 0;
-		
-		LocalDateTime targetDate = versions.get(versions.size()-1).getEndDate();
-		
-		List<Commit> commits = git.getCommits(targetDate);
-		int commitsIdx = 0;
-		
-		Map<String, DatasetEntry> files = new HashMap<>();
-		
-		while (versionsIdx < versions.size() && commitsIdx < commits.size()) {			
-			if (needSwitchVersion(versions.get(versionsIdx), commits.get(commitsIdx))) {
-				LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
-				this.evalStatistics(new ArrayList<>(files.values()), date);
-				files = resetFilesForNewVersion(files, versions.get(++versionsIdx).getName());
-			}
-			
-			applyDiff(versions.get(versionsIdx), commits.get(commitsIdx++), files);
-		}
-		
-		// Dump pending commits
-		LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
-		this.evalStatistics(new ArrayList<>(files.values()), date);
-	}
-
-	public static void main(String[] args) throws IOException {
-		Analyser analyser = new Analyser(PROJECT_NAME);
-		analyser.createDataset();
-	}
 }
