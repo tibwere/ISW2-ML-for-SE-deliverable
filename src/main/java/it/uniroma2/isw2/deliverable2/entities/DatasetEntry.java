@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DatasetEntry {
 	
-	public static final String CSV_HEADER = "Version,Name,Size,NR,NAuth,LOC added,MAX LOC added,AVG LOC added,Churn,MAX Churn,AVG Churn,ChgSetSize,Age\n";
+	public static final String CSV_HEADER = "Version,Name,Size,NR,NAuth,LOC added,MAX LOC added,AVG LOC added,Churn,MAX Churn,AVG Churn,ChgSetSize,Age,Buggyness\n";
 	
 	private LocalDateTime birth;
 	private String version;
@@ -19,6 +19,7 @@ public class DatasetEntry {
 	private	int maxAddition;
 	private int updateTimes;
 	private List<Commit> commits;
+	private boolean buggyness;
 	
 	public DatasetEntry(String version, String name, LocalDateTime birth) {
 		this.version = version;
@@ -119,13 +120,18 @@ public class DatasetEntry {
 		return files.size();
 	}
 	
+	public void setBuggyness(boolean buggynes) {
+		this.buggyness = buggynes;
+	}
+	
 	public String toCSV(LocalDateTime currentDate) {
 		long age = (currentDate == null) ? 0 : ChronoUnit.WEEKS.between(this.birth, currentDate);
+		String buggynessStr = (this.buggyness) ? "Y" : "N";
 
-		return String.format("%s,%s,%d,%d,%d,%d,%d,%.3f,%d,%d,%.3f,%d,%d", 
+		return String.format("%s,%s,%d,%d,%d,%d,%d,%.3f,%d,%d,%.3f,%d,%d,%s", 
 				this.version, this.name, this.size, this.numberOfRevisions(),
 				this.numberOfAuthors(), this.additions, this.maxAddition,this.avgAdditions(),
-				this.churn(), this.maxChurn, this.avgChurn(), this.chgSetSize(),age
+				this.churn(), this.maxChurn, this.avgChurn(), this.chgSetSize(),age,buggynessStr
 		);
 	}
 }

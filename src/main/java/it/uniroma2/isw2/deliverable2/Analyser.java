@@ -10,8 +10,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -87,7 +89,7 @@ public class Analyser {
 						commitsIdx, this.versions.get(versionsIdx), this.versions.get(versionsIdx+1)
 				});
 				
-				this.evalStatistics(commitsIdx);
+				this.evalStatistics(commitsIdx, versionsIdx);
 				this.resetFilesForNewVersion(++versionsIdx);
 			}
 			
@@ -95,7 +97,7 @@ public class Analyser {
 		}
 		
 		// Dump pending commits
-		this.evalStatistics(commitsIdx);
+		this.evalStatistics(commitsIdx, versionsIdx);
 	}
 	
 	private void applyDiff(int versionsIdx, int commitsIdx) {
@@ -130,7 +132,7 @@ public class Analyser {
 		return this.commits.get(commitsIdx).getDate().isAfter(this.versions.get(versionsIdx+1).getReleaseDate());
 	}
 	
-	private void evalStatistics(int commitsIdx) throws IOException {
+	private void evalStatistics(int commitsIdx, int versionIdx) throws IOException {
 		int counter = 0;
 		LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
 
@@ -145,12 +147,29 @@ public class Analyser {
 			for (DatasetEntry e : entries) {
 				if (e.getSize() > 0) {
 					counter++;
+					evalBugginess(e, versionIdx);
 					writer.append(String.format("%s%n", e.toCSV(date)));
 				}
 			}
 		}
 		
 		LOGGER.log(Level.INFO, "Evaluated statistics for {0} entries", counter);
+	}
+	
+	private void evalBugginess(DatasetEntry entry, int versionIdx) {
+		for (Bug bug : this.bugs) {
+			Set<String> touchedFiles = new HashSet<>();
+			
+			for (Commit commit : this.commits) {
+				if (commit.getMessage().contains(bug.getKey())) {
+					for (Diff d : commit.getDiffs())
+						touchedFiles.add(d.getFilename());
+				}
+			}
+			
+			if (touchedFiles.contains(entry.getName()) && bug.getAvs().contains(this.versions.get(versionIdx)))
+				entry.setBuggyness(true);
+		}
 	}
 	
 	private void setupResultsFolder() throws IOException {

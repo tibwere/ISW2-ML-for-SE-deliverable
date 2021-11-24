@@ -76,15 +76,17 @@ public class GitHelper {
 		String cache = String.format(CACHE_COMMIT_INFO, this.projectName, sha);
 		String remote = String.format(REMOTE_COMMIT_INFO, this.projectName, sha);
 		
-		Commit c = new Commit();		
-		JsonObject jsonCommit = RestHelper.getJSONObject(remote, this.token, cache);
-		JsonObject jsonAuthorObj = jsonCommit.get("commit").getAsJsonObject().get("author").getAsJsonObject();
+		Commit c = new Commit();
+		JsonObject jsonResponse = RestHelper.getJSONObject(remote, this.token, cache);
+		JsonObject jsonCommit = jsonResponse.get("commit").getAsJsonObject();
+		JsonObject jsonAuthor = jsonCommit.get("author").getAsJsonObject();
 		
 		c.setSha(sha);
-		c.setAuthor(jsonAuthorObj.get("name").getAsString());
-		c.setDate(jsonAuthorObj.get("date").getAsString());
+		c.setAuthor(jsonAuthor.getAsJsonObject().get("name").getAsString());
+		c.setDate(jsonAuthor.get("date").getAsString());
+		c.setMessage(jsonCommit.get("message").getAsString());
 		
-		JsonArray jsonDiffs = jsonCommit.get("files").getAsJsonArray();
+		JsonArray jsonDiffs = jsonResponse.get("files").getAsJsonArray();
 		jsonDiffs.forEach(element -> {
 			JsonObject jsonDiff = element.getAsJsonObject();
 			Diff d = new Diff();

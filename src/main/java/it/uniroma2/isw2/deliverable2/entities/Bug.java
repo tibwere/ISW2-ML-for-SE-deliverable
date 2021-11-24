@@ -138,4 +138,12 @@ public class Bug {
 			return sb.append("]").toString();
 		}
 	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public List<Version> getAvs() {
+		return avs;
+	}
 }

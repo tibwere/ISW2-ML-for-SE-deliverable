@@ -11,6 +11,7 @@ public class Commit {
 
 	private String sha;
 	private LocalDateTime date;
+	private String message;
 	private String author;
 	
 	private List<Diff> diffs;
@@ -58,5 +59,13 @@ public class Commit {
 	
 	public List<Diff> getDiffs() {
 		return this.diffs;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }
