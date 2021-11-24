@@ -117,7 +117,7 @@ public class Analyser {
 		}
 	}
 	
-	private void createDataset(int targetVersionIndex) throws IOException {
+	private void createDataset(int targetVersionIndex) {
 		int versionsIdx = 0;
 		int commitsIdx = 0;
 				
