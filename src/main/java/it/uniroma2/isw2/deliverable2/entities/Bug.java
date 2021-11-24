@@ -18,6 +18,15 @@ public class Bug {
 	
 	private Set<String> touchedFile;
 	
+	/* Factorized fields of json in order to avoid smells */
+	private static final String JSON_NAME = "name";
+	private static final String JSON_KEY = "key";
+	private static final String JSON_FIELDS = "fields";
+	private static final String JSON_FVS = "fixVersions";
+	private static final String JSON_OV_RELEASE_DATE = "created";
+	private static final String JSON_AVS = "versions";
+	private static final String JSON_RELEASE_DATE = "releaseDate";
+	
 	private Bug() {
 		this.touchedFile = new HashSet<>();
 	}
@@ -96,41 +105,41 @@ public class Bug {
 	
 	public static Bug fromJsonObject(JsonObject json, List<Version> versions) {
 		Bug bug = new Bug();
-		if (json.get("key") == null)
+		if (json.get(JSON_KEY) == null)
 			return null;
 		
 		/* Setting the key */
-		bug.key = json.get("key").getAsString();
+		bug.key = json.get(JSON_KEY).getAsString();
 						
-		JsonObject fields = json.get("fields").getAsJsonObject();
+		JsonObject fields = json.get(JSON_FIELDS).getAsJsonObject();
 		Version v;
 		
 		/* Setting the FV */
-		if (fields.get("fixVersions") == null)
+		if (fields.get(JSON_FVS) == null)
 			return null;	
-		if ((v = extractFixVersion(fields.get("fixVersions").getAsJsonArray(), versions)) == null)
+		if ((v = extractFixVersion(fields.get(JSON_FVS).getAsJsonArray(), versions)) == null)
 			return null;
 		bug.fv = v;
 			
 		/* Setting OV*/
-		if (fields.get("created") == null)
+		if (fields.get(JSON_OV_RELEASE_DATE) == null)
 			return null;
-		if ((v = extractOpenVersion(fields.get("created").getAsString(), versions)) == null)
+		if ((v = extractOpenVersion(fields.get(JSON_OV_RELEASE_DATE).getAsString(), versions)) == null)
 			return null;
 		bug.ov = v;
 		if (bug.fv.getReleaseDate().isBefore(bug.ov.getReleaseDate()))
 			return null;
 		
 		/* Setting IV */
-		bug.iv = extractInjectedVersion(fields.get("versions").getAsJsonArray(), versions);
+		bug.iv = extractInjectedVersion(fields.get(JSON_AVS).getAsJsonArray(), versions);
 		
 		return bug; 
 	}
 
 	private static Version extractInjectedVersion(JsonArray jsonAvs, List<Version> versions) {		
 		for (JsonElement element : jsonAvs) {
-			if (element.getAsJsonObject().get("name") != null) {
-				String versionName = element.getAsJsonObject().get("name").getAsString();
+			if (element.getAsJsonObject().get(JSON_NAME) != null) {
+				String versionName = element.getAsJsonObject().get(JSON_NAME).getAsString();
 				
 				for (Version v : versions)
 					if (v.getName().equals(versionName))
@@ -149,8 +158,8 @@ public class Bug {
 			if (missingFields(jsonFixVersion))
 				continue;
 						
-			String version = jsonFixVersion.get("name").getAsString();
-			LocalDateTime date = LocalDate.parse(jsonFixVersion.get("releaseDate").getAsString()).atStartOfDay();
+			String version = jsonFixVersion.get(JSON_NAME).getAsString();
+			LocalDateTime date = LocalDate.parse(jsonFixVersion.get(JSON_RELEASE_DATE).getAsString()).atStartOfDay();
 			
 			if (fixDate == null || date.isAfter(fixDate)) {
 				fixVersion = version;
@@ -167,8 +176,8 @@ public class Bug {
 	}
 	
 	private static boolean missingFields(JsonObject jsonFixVersion) {		
-		return jsonFixVersion.get("name") == null || jsonFixVersion.get("name").getAsString() == null
-				|| jsonFixVersion.get("releaseDate") == null || jsonFixVersion.get("releaseDate").getAsString() == null;
+		return jsonFixVersion.get(JSON_NAME) == null || jsonFixVersion.get(JSON_NAME).getAsString() == null
+				|| jsonFixVersion.get(JSON_RELEASE_DATE) == null || jsonFixVersion.get(JSON_RELEASE_DATE).getAsString() == null;
 	}
 	
 	private static Version extractOpenVersion(String openDate, List<Version> versions) {

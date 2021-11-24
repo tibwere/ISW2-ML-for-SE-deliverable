@@ -130,7 +130,7 @@ public class Analyser {
 				this.evalStatistics(commitsIdx, versionsIdx++);
 			}
 			
-			this.applyDiff(versionsIdx, commitsIdx++);
+			this.applyDiff(commitsIdx++);
 		}
 	}
 	
@@ -169,7 +169,7 @@ public class Analyser {
 		return (int)Math.round(sum/pValues.size());
 	}
 	
-	private void applyDiff(int versionsIdx, int commitsIdx) {
+	private void applyDiff(int commitsIdx) {
 		for (Diff d : this.commits.get(commitsIdx).getDiffs()) {
 			String key = d.getFilename();
 			
@@ -190,7 +190,7 @@ public class Analyser {
 		return this.commits.get(commitsIdx).getDate().isAfter(this.versions.get(versionsIdx+1).getReleaseDate());
 	}
 	
-	private void evalStatistics(int commitsIdx, int versionIdx) throws IOException {
+	private void evalStatistics(int commitsIdx, int versionIdx) {
 		LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
 
 		for (VersionedFile f : this.files.values()) 
