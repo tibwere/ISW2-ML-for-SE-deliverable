@@ -51,7 +51,7 @@ public class JIRAHelper {
 				.append("%20AND%20issueType=Bug%20AND%20resolution=Fixed%20AND%20status%20in%20(Resolved,Closed)&fields=fixVersions,versions,created")
 				.append("&startAt=").append(startIndex)
 				.append("&maxResults=").append(maxResults)
-				.toString();			
+				.toString();
 	}
 	
 	public List<Bug> getBugs(List<Version> versions) throws IOException {

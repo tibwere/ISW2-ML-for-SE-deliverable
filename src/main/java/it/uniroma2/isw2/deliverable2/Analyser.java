@@ -10,10 +10,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,9 +19,10 @@ import com.google.gson.JsonSyntaxException;
 
 import it.uniroma2.isw2.deliverable2.entities.Bug;
 import it.uniroma2.isw2.deliverable2.entities.Commit;
-import it.uniroma2.isw2.deliverable2.entities.DatasetEntry;
 import it.uniroma2.isw2.deliverable2.entities.Diff;
+import it.uniroma2.isw2.deliverable2.entities.Metrics;
 import it.uniroma2.isw2.deliverable2.entities.Version;
+import it.uniroma2.isw2.deliverable2.entities.VersionedFile;
 
 public class Analyser {
 	
@@ -37,7 +36,7 @@ public class Analyser {
 	private List<Version> versions;
 	private List<Commit> commits;
 	private List<Bug> bugs;
-	private Map<String, DatasetEntry> files;
+	private Map<String, VersionedFile> files;
 	
 	private static final String RESULTS_FOLDER = "results/";
 	
@@ -53,62 +52,132 @@ public class Analyser {
 		/* Init attributes */
 		int targetVersionIdx = this.initAnalysis();
 		
+		/* Fill IV of bugs using proportion */
+		this.fillIVs();
+		
+		/* Fill the set of touched files for each bug */
+		this.fillTouchedFiles();
+				
 		/* Create dataset */
-		this.createDataset(targetVersionIdx);		
+		this.createDataset(targetVersionIdx);	
+		
+		/* Create csv and arff files */
+		this.dumpStatistics();
 	}
 	
 	private int initAnalysis() throws JsonSyntaxException, IOException {
 		LOGGER.log(Level.INFO, "*** Retrieve tickets from JIRA ***");
 		this.versions = jiraHelper.getVersions();
 		LOGGER.log(Level.INFO, "Found {0} versions", this.versions.size());
-		
+						
 		LOGGER.log(Level.INFO, "*** Retrieve bugs from JIRA ***");
 		this.bugs = jiraHelper.getBugs(this.versions);
 		LOGGER.log(Level.INFO, "*** Found {0} bugs", this.bugs.size());
 		
-		int targetIdx = (int)Math.ceil(this.versions.size()/2.0);
-		LOGGER.log(Level.INFO, "Considering only first half ov versions ({0})", targetIdx);
+		/* Sort bugs for OV */
+		this.bugs.sort((b1, b2) -> b1.getOv().getReleaseDate().compareTo(b2.getOv().getReleaseDate()));
 		
-		LOGGER.log(Level.INFO, "*** Retrieve commits for first {0} versions from Github ***", targetIdx);
-		this.commits = gitHelper.getCommits(this.versions.get(targetIdx).getReleaseDate());
+		int targetIdx = (int)Math.ceil(this.versions.size()/2.0);
+		LocalDateTime lastBugFixVersionReleaseDate = this.bugs.get(this.bugs.size()-1).getFv().getReleaseDate();
+		LocalDateTime lastConsideredVersionReleaseDate = this.versions.get(targetIdx).getReleaseDate();
+		
+		LOGGER.log(Level.INFO, "*** Retrieve commits from Github ***");
+		this.commits = gitHelper.getCommits(getMaxDate(lastBugFixVersionReleaseDate, lastConsideredVersionReleaseDate));
 		LOGGER.log(Level.INFO, "*** Found {0} commits", this.commits.size());
 
-		
 		this.files = new HashMap<>();
 		
+		LOGGER.log(Level.INFO, "Considering only first half of versions ({0})", targetIdx);
 		return targetIdx;
+	}
+	
+	private void fillIVs() {
+		
+		List<Double> pValues = new ArrayList<>();
+		
+		for (int i=0; i<this.bugs.size(); ++i) {
+			if (this.bugs.get(i).getIv() != null)
+				/* For bugs in which IV is known P is evaluated */
+				pValues.add(this.bugs.get(i).getProportion(this.versions));
+			else
+				/* For others IV is set according to average P evaluated previously */
+				this.bugs.get(i).setIv(integerAverageProportion(pValues), this.versions);
+		}
+	}
+	
+	private void fillTouchedFiles() {
+		for (Bug bug : this.bugs) {		
+			for (Commit commit : this.commits) {
+				/* It's possible that more than one commit is used to fix a bug */
+				if (commit.getMessage().contains(bug.getKey())) {
+					for (Diff d : commit.getDiffs())
+						bug.addTouchedFile(d.getFilename());
+				}
+			}
+		}
 	}
 	
 	private void createDataset(int targetVersionIndex) throws IOException {
 		int versionsIdx = 0;
 		int commitsIdx = 0;
 				
-		while (versionsIdx < targetVersionIndex && commitsIdx < this.commits.size()) {			
+		while (versionsIdx < targetVersionIndex) {			
 			if (this.needSwitchVersion(versionsIdx, commitsIdx)) {
 				LOGGER.log(Level.INFO, "After {0} commits switch from version {1} to {2}", new Object[] {
 						commitsIdx, this.versions.get(versionsIdx), this.versions.get(versionsIdx+1)
 				});
 				
-				this.evalStatistics(commitsIdx, versionsIdx);
-				this.resetFilesForNewVersion(++versionsIdx);
+				this.evalStatistics(commitsIdx, versionsIdx++);
 			}
 			
 			this.applyDiff(versionsIdx, commitsIdx++);
 		}
+	}
+	
+	
+	private void dumpStatistics() throws IOException {
+		List<Metrics> metrics = new ArrayList<>();
+		for (VersionedFile f : this.files.values())
+			metrics.addAll(f.getComputedMetrics());
 		
-		// Dump pending commits
-		this.evalStatistics(commitsIdx, versionsIdx);
+		Comparator<Metrics> comparator = Comparator
+				.comparing(Metrics::getVersion)
+				.thenComparing(Metrics::getName);
+		
+		metrics.sort(comparator);
+		
+		File dataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
+		try (FileWriter writer = new FileWriter(dataset, true)) {
+			for (Metrics m : metrics)
+				writer.append(String.format("%s%n", m));
+		}
+		
+	}
+	
+	private LocalDateTime getMaxDate(LocalDateTime d1, LocalDateTime d2) {
+		return (d1.isAfter(d2)) ? d1 : d2;
+	}
+	
+	private int integerAverageProportion(List<Double> pValues)  {
+		double sum = 0.0;
+		
+		for (Double p : pValues) 
+			sum += p;
+		
+		LOGGER.log(Level.INFO, "New value of P evaluated: {0}", sum/pValues.size());
+				
+		return (int)Math.round(sum/pValues.size());
 	}
 	
 	private void applyDiff(int versionsIdx, int commitsIdx) {
 		for (Diff d : this.commits.get(commitsIdx).getDiffs()) {
 			String key = d.getFilename();
 			
-			DatasetEntry entry = null;
+			VersionedFile entry = null;
 			if (this.files.containsKey(key))
 				entry = this.files.get(key);
 			else
-				entry = new DatasetEntry(versions.get(versionsIdx).getName(), d.getFilename(), commits.get(commitsIdx).getDate());
+				entry = new VersionedFile(d.getFilename(), commits.get(commitsIdx).getDate());
 			
 			entry.updateChurn(d.getAdditions(), d.getDeletions());
 			entry.insertCommit(this.commits.get(commitsIdx));
@@ -117,62 +186,17 @@ public class Analyser {
 		}
 	}
 	
-	private void resetFilesForNewVersion(int versionsIdx) {
-		Map<String, DatasetEntry> newEntries = new HashMap<>();
-		
-		for (DatasetEntry entry : this.files.values()) {
-			DatasetEntry newEntry = DatasetEntry.fromPrevious(entry, versions.get(versionsIdx).getName());
-			newEntries.put(entry.getName(), newEntry);
-		}
-		
-		this.files = newEntries;
-	}
-	
 	private boolean needSwitchVersion(int versionsIdx, int commitsIdx) {
 		return this.commits.get(commitsIdx).getDate().isAfter(this.versions.get(versionsIdx+1).getReleaseDate());
 	}
 	
 	private void evalStatistics(int commitsIdx, int versionIdx) throws IOException {
-		int counter = 0;
 		LocalDateTime date = (commitsIdx > 0) ? commits.get(commitsIdx-1).getDate() : null;
 
-		Comparator<DatasetEntry> comparator = Comparator
-				.comparing(DatasetEntry::getVersion)
-				.thenComparing(DatasetEntry::getName);
+		for (VersionedFile f : this.files.values()) 
+			f.computeMetrics(this.versions.get(versionIdx), date, this.bugs);
 		
-		List<DatasetEntry> entries = new ArrayList<>(this.files.values());
-		entries.sort(comparator);
-		File dataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
-		try (FileWriter writer = new FileWriter(dataset, true)) {
-			for (DatasetEntry e : entries) {
-				if (e.getSize() > 0) {
-					counter++;
-					evalBugginess(e, versionIdx);
-					writer.append(String.format("%s%n", e.toCSV(date)));
-				}
-			}
-		}
-		
-		LOGGER.log(Level.INFO, "Evaluated statistics for {0} entries", counter);
-	}
-	
-	private void evalBugginess(DatasetEntry entry, int versionIdx) {	
-		for (Bug bug : this.bugs) {
-			/* List of files touched by commits that fix current bug */
-			Set<String> touchedFiles = new HashSet<>();
-			
-			for (Commit commit : this.commits) {
-				/* It's possible that more than one commit is used to fix a bug */
-				if (commit.getMessage().contains(bug.getKey())) {
-					for (Diff d : commit.getDiffs())
-						touchedFiles.add(d.getFilename());
-				}
-			}
-			
-			/* If current version belongs to affected version of the bug -> the entry is buggy! */
-			if (touchedFiles.contains(entry.getName()) && bug.getAvs().contains(this.versions.get(versionIdx)))
-				entry.setBuggyness(true);
-		}
+		LOGGER.log(Level.INFO, "Evaluated statistics for {0} entries", this.files.values().size());
 	}
 	
 	private void setupResultsFolder() throws IOException {
@@ -185,7 +209,7 @@ public class Analyser {
 			Files.delete(dataset);
 		
 		Files.createFile(dataset);
-		Files.writeString(dataset, DatasetEntry.CSV_HEADER);
+		Files.writeString(dataset, Metrics.CSV_HEADER);
 	}
 	
 }
