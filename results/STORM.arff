@@ -13,7 +13,7 @@
 @attribute 'AVG Churn' numeric
 @attribute ChgSetSize numeric
 @attribute Age numeric
-@attribute Buggyness class {Y, N}
+@attribute Buggyness {N, Y}
 
 @data
 0.10.0,examples/src/main/java/backtype/storm/contrib/jms/example/ExampleJmsTopology.java,131,0,0,0,0,0,0,0,0,0,207,N

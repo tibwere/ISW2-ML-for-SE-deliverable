@@ -15,6 +15,10 @@ import weka.core.converters.CSVLoader;
 
 public class WekaHelper {
 	
+	private WekaHelper() {
+		throw new IllegalStateException("This class should not be instantiated (for now)");
+	}
+	
 	public static void createArffFile(File csvSourceFile, File arffDestinationFile) throws IOException {
 	    CSVLoader loader = new CSVLoader();
 	    loader.setSource(csvSourceFile);
@@ -35,7 +39,7 @@ public class WekaHelper {
 		
 		final String CORRECT_VERSION_HEADER = "@attribute Version string";
 		final String CORRECT_NAME_HEADER = "@attribute Name string";
-		final String CORRECT_BUGGYNESS_HEADER = "@attribute Buggyness class {Y, N}";
+		final String CORRECT_BUGGYNESS_HEADER = "@attribute Buggyness {N, Y}";
 		
 		
 		Path filePath = Paths.get(arff.getAbsolutePath());
