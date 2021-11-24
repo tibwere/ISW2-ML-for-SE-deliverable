@@ -3,7 +3,9 @@ package it.uniroma2.isw2.deliverable2.entities;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DatasetEntry {
 	
@@ -18,7 +20,7 @@ public class DatasetEntry {
 	private int maxChurn;
 	private	int maxAddition;
 	private int updateTimes;
-	private List<Commit> commits;
+	private Set<Commit> commits;
 	private boolean buggyness;
 	
 	public DatasetEntry(String version, String name, LocalDateTime birth) {
@@ -31,12 +33,7 @@ public class DatasetEntry {
 		this.maxChurn=0;
 		this.maxAddition = 0;
 		this.updateTimes = 0;
-		commits = new ArrayList<>();
-	}
-	
-	public DatasetEntry(String version, String name, LocalDateTime birth, int initialSize) {
-		this(version, name, birth);
-		this.size = initialSize;
+		this.commits = new HashSet<>();
 	}
 	
 	public int getSize() {
@@ -70,7 +67,6 @@ public class DatasetEntry {
 	}
 	
 	public void insertCommit(Commit commit) {
-		if (!commits.contains(commit))
 			commits.add(commit);
 	}
 	
@@ -133,5 +129,11 @@ public class DatasetEntry {
 				this.numberOfAuthors(), this.additions, this.maxAddition,this.avgAdditions(),
 				this.churn(), this.maxChurn, this.avgChurn(), this.chgSetSize(),age,buggynessStr
 		);
+	}
+	
+	public static DatasetEntry fromPrevious(DatasetEntry oldEntry, String currentVersionName) {
+		DatasetEntry newEntry = new DatasetEntry(currentVersionName, oldEntry.getName(), oldEntry.getBirth());
+		newEntry.size = oldEntry.getSize();
+		return newEntry;				
 	}
 }

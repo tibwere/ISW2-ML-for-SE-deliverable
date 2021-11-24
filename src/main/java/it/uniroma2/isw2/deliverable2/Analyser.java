@@ -121,7 +121,7 @@ public class Analyser {
 		Map<String, DatasetEntry> newEntries = new HashMap<>();
 		
 		for (DatasetEntry entry : this.files.values()) {
-			DatasetEntry newEntry = new DatasetEntry(versions.get(versionsIdx).getName(), entry.getName(), entry.getBirth(), entry.getSize());
+			DatasetEntry newEntry = DatasetEntry.fromPrevious(entry, versions.get(versionsIdx).getName());
 			newEntries.put(entry.getName(), newEntry);
 		}
 		
@@ -156,17 +156,20 @@ public class Analyser {
 		LOGGER.log(Level.INFO, "Evaluated statistics for {0} entries", counter);
 	}
 	
-	private void evalBugginess(DatasetEntry entry, int versionIdx) {
+	private void evalBugginess(DatasetEntry entry, int versionIdx) {	
 		for (Bug bug : this.bugs) {
+			/* List of files touched by commits that fix current bug */
 			Set<String> touchedFiles = new HashSet<>();
 			
 			for (Commit commit : this.commits) {
+				/* It's possible that more than one commit is used to fix a bug */
 				if (commit.getMessage().contains(bug.getKey())) {
 					for (Diff d : commit.getDiffs())
 						touchedFiles.add(d.getFilename());
 				}
 			}
 			
+			/* If current version belongs to affected version of the bug -> the entry is buggy! */
 			if (touchedFiles.contains(entry.getName()) && bug.getAvs().contains(this.versions.get(versionIdx)))
 				entry.setBuggyness(true);
 		}
