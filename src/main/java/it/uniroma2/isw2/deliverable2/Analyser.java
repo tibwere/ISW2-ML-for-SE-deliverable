@@ -23,6 +23,7 @@ import it.uniroma2.isw2.deliverable2.entities.Diff;
 import it.uniroma2.isw2.deliverable2.entities.Metrics;
 import it.uniroma2.isw2.deliverable2.entities.Version;
 import it.uniroma2.isw2.deliverable2.entities.VersionedFile;
+import it.uniroma2.isw2.deliverable2.weka.WekaHelper;
 
 public class Analyser {
 	
@@ -146,12 +147,17 @@ public class Analyser {
 		
 		metrics.sort(comparator);
 		
-		File dataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
-		try (FileWriter writer = new FileWriter(dataset, true)) {
+		File csvDataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
+		File arffDataset = new File(String.format("%s%s.arff", RESULTS_FOLDER, this.project));
+
+		try (FileWriter writer = new FileWriter(csvDataset, true)) {
 			for (Metrics m : metrics)
 				writer.append(String.format("%s%n", m));
 		}
+		LOGGER.log(Level.INFO, "Dumped dataset on CSV file");
 		
+		WekaHelper.createArffFile(csvDataset, arffDataset);
+		LOGGER.log(Level.INFO, "Dumped dataset on ARFF file");
 	}
 	
 	private LocalDateTime getMaxDate(LocalDateTime d1, LocalDateTime d2) {

@@ -20,7 +20,13 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
-	<dependencies>
+	<dependencies>  
+		<!-- https://mvnrepository.com/artifact/nz.ac.waikato.cms.weka/weka-stable -->
+		<dependency>
+			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<artifactId>weka-stable</artifactId>
+			<version>3.8.5</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
