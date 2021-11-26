@@ -3,9 +3,6 @@ package it.uniroma2.isw2.deliverable2;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -44,8 +41,6 @@ public class MetricsExtractor {
 		this.gitHelper = new GitHelper(this.project);
 		this.jiraHelper = new JIRAHelper(this.project);
 		this.resultsFolder = resultsFolder;
-		
-		this.setupResultsFolder();
 	}
 	
 	public void extract() throws IOException {
@@ -149,7 +144,7 @@ public class MetricsExtractor {
 		
 		File csvDataset = new File(String.format("%s%s_all_metrics.csv", this.resultsFolder, this.project));
 
-		try (FileWriter writer = new FileWriter(csvDataset, true)) {
+		try (FileWriter writer = new FileWriter(csvDataset, false)) {
 			writer.append(Metrics.CSV_HEADER);
 			for (Metrics m : metrics)
 				writer.append(String.format("%s%n", m));
@@ -200,17 +195,5 @@ public class MetricsExtractor {
 			f.computeMetrics(this.versions.get(versionIdx), date, this.bugs);
 		
 		LOGGER.log(Level.INFO, "Evaluated statistics for {0} entries", this.files.values().size());
-	}
-	
-	private void setupResultsFolder() throws IOException {
-		Path resultPath = Paths.get(this.resultsFolder);
-		if (!Files.exists(resultPath))
-			Files.createDirectory(resultPath);
-		
-		Path dataset = Paths.get(String.format("%s%s_all_metrics.csv", this.resultsFolder, this.project));
-		if (Files.exists(dataset))
-			Files.delete(dataset);
-		
-		Files.createFile(dataset);
 	}	
 }
