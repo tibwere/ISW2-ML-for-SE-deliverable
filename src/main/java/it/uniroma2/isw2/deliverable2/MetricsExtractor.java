@@ -23,11 +23,10 @@ import it.uniroma2.isw2.deliverable2.entities.Diff;
 import it.uniroma2.isw2.deliverable2.entities.Metrics;
 import it.uniroma2.isw2.deliverable2.entities.Version;
 import it.uniroma2.isw2.deliverable2.entities.VersionedFile;
-import it.uniroma2.isw2.deliverable2.weka.WekaHelper;
 
-public class Analyser {
+public class MetricsExtractor {
 	
-	private static final Logger LOGGER = Logger.getLogger("ISW2-DELIVERABLE-2");
+	private static final Logger LOGGER = Logger.getLogger("ISW2-DELIVERABLE-2(EX)");
 	
 	private String project;
 	
@@ -38,20 +37,20 @@ public class Analyser {
 	private List<Commit> commits;
 	private List<Bug> bugs;
 	private Map<String, VersionedFile> files;
-	
-	private static final String RESULTS_FOLDER = "results/";
-	
-	public Analyser(String project) throws IOException {
+	private String resultsFolder;
+		
+	public MetricsExtractor(String project, String resultsFolder) throws IOException {
 		this.project = project;
 		this.gitHelper = new GitHelper(this.project);
 		this.jiraHelper = new JIRAHelper(this.project);
+		this.resultsFolder = resultsFolder;
 		
 		this.setupResultsFolder();
 	}
 	
-	public void run() throws IOException {
+	public void extract() throws IOException {
 		/* Init attributes */
-		int targetVersionIdx = this.initAnalysis();
+		int targetVersionIdx = this.retrieveInformations();
 		
 		/* Fill IV of bugs using proportion */
 		this.fillIVs();
@@ -62,11 +61,11 @@ public class Analyser {
 		/* Create dataset */
 		this.createDataset(targetVersionIdx);	
 		
-		/* Create csv and arff files */
-		this.dumpStatistics();
+		/* Create csv file */
+		this.dumpStatisticsOnCSVFile();
 	}
 	
-	private int initAnalysis() throws JsonSyntaxException, IOException {
+	private int retrieveInformations() throws JsonSyntaxException, IOException {
 		LOGGER.log(Level.INFO, "*** Retrieve tickets from JIRA ***");
 		this.versions = jiraHelper.getVersions();
 		LOGGER.log(Level.INFO, "Found {0} versions", this.versions.size());
@@ -136,28 +135,26 @@ public class Analyser {
 	}
 	
 	
-	private void dumpStatistics() throws IOException {
+	private void dumpStatisticsOnCSVFile() throws IOException {
 		List<Metrics> metrics = new ArrayList<>();
 		for (VersionedFile f : this.files.values())
 			metrics.addAll(f.getComputedMetrics());
 		
-		Comparator<Metrics> comparator = Comparator
-				.comparing(Metrics::getVersion)
-				.thenComparing(Metrics::getName);
+		/* First, order by release date of version ...*/
+		Comparator<Metrics> comparator = Comparator.comparing(m -> m.getVersion().getReleaseDate());
+		/* ... then order by name */
+		comparator = comparator.thenComparing(Comparator.comparing(Metrics::getName));
 		
 		metrics.sort(comparator);
 		
-		File csvDataset = new File(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
-		File arffDataset = new File(String.format("%s%s.arff", RESULTS_FOLDER, this.project));
+		File csvDataset = new File(String.format("%s%s_all_metrics.csv", this.resultsFolder, this.project));
 
 		try (FileWriter writer = new FileWriter(csvDataset, true)) {
+			writer.append(Metrics.CSV_HEADER);
 			for (Metrics m : metrics)
 				writer.append(String.format("%s%n", m));
 		}
 		LOGGER.log(Level.INFO, "Dumped dataset on CSV file");
-		
-		WekaHelper.createArffFile(csvDataset, arffDataset);
-		LOGGER.log(Level.INFO, "Dumped dataset on ARFF file");
 	}
 	
 	private LocalDateTime getMaxDate(LocalDateTime d1, LocalDateTime d2) {
@@ -206,16 +203,14 @@ public class Analyser {
 	}
 	
 	private void setupResultsFolder() throws IOException {
-		Path resultFolder = Paths.get(RESULTS_FOLDER);
-		if (!Files.exists(resultFolder))
-			Files.createDirectory(resultFolder);
+		Path resultPath = Paths.get(this.resultsFolder);
+		if (!Files.exists(resultPath))
+			Files.createDirectory(resultPath);
 		
-		Path dataset = Paths.get(String.format("%s%s.csv", RESULTS_FOLDER, this.project));
+		Path dataset = Paths.get(String.format("%s%s_all_metrics.csv", this.resultsFolder, this.project));
 		if (Files.exists(dataset))
 			Files.delete(dataset);
 		
 		Files.createFile(dataset);
-		Files.writeString(dataset, Metrics.CSV_HEADER);
-	}
-	
+	}	
 }

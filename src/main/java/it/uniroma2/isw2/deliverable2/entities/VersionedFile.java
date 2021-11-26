@@ -74,7 +74,7 @@ public class VersionedFile {
 			Metrics m = new Metrics();	
 			
 			int churn = this.additions - this.deletions;
-			m.setVersion(currentVersion.getName());
+			m.setVersion(currentVersion);
 			m.setName(this.name);
 			m.setSize(this.size);
 			m.setNumberOfRevisions(this.commits.size());

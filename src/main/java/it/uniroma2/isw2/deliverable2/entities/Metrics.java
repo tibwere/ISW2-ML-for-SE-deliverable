@@ -4,7 +4,7 @@ public class Metrics {
 	
 	public static final String CSV_HEADER = "Version,Name,Size,NR,NAuth,LOC added,MAX LOC added,AVG LOC added,Churn,MAX Churn,AVG Churn,ChgSetSize,Age,Buggyness\n";
 	
-	private String version;
+	private Version version;
 	private String name;
 	private int size;
 	private int numberOfRevisions;
@@ -18,17 +18,17 @@ public class Metrics {
 	private int changeSetSize;
 	private long age;
 	private char buggyness;
-	
+		
 	@Override
 	public String toString() {
 		return String.format("%s,%s,%d,%d,%d,%d,%d,%.3f,%d,%d,%.3f,%d,%d,%s", 
-				this.version, this.name, this.size, this.numberOfRevisions,
+				this.version.getName(), this.name, this.size, this.numberOfRevisions,
 				this.numberOfAuthors, this.locAdded, this.maxLOCAdded,this.averageLOCAdded,
 				this.churn, this.maxChurn, this.averageChurn, this.changeSetSize, this.age, this.buggyness
 		);
 	}
 
-	public void setVersion(String version) {
+	public void setVersion(Version version) {
 		this.version = version;
 	}
 
@@ -84,7 +84,7 @@ public class Metrics {
 		this.buggyness = (buggyness) ? 'Y' : 'N';
 	}
 
-	public String getVersion() {
+	public Version getVersion() {
 		return version;
 	}
 
