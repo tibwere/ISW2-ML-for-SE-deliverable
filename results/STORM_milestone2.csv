@@ -12,7 +12,6 @@ STORM,10,RandomForest,1.000,0.026,0.796,0.045
 STORM,11,RandomForest,1.000,0.033,0.999,0.055
 STORM,12,RandomForest,0.985,0.192,0.993,0.290
 STORM,13,RandomForest,1.000,0.338,0.951,0.468
-Dataset,#TrainingRelease,Classifier,Precision,Recall,AUC,Kappa
 STORM,1,NaiveBayes,NaN,NaN,NaN,1.000
 STORM,2,NaiveBayes,NaN,0.000,0.107,0.000
 STORM,3,NaiveBayes,0.416,0.356,0.341,0.336
@@ -26,7 +25,6 @@ STORM,10,NaiveBayes,0.970,0.423,0.950,0.555
 STORM,11,NaiveBayes,0.973,0.322,0.953,0.447
 STORM,12,NaiveBayes,0.973,0.107,0.946,0.170
 STORM,13,NaiveBayes,0.396,0.351,0.414,0.278
-Dataset,#TrainingRelease,Classifier,Precision,Recall,AUC,Kappa
 STORM,1,IBk,NaN,NaN,NaN,1.000
 STORM,2,IBk,NaN,0.000,0.112,0.000
 STORM,3,IBk,0.142,0.154,0.087,0.073

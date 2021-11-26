@@ -36,39 +36,39 @@ public class MachineLearningAnalyser {
 	}
 	
 	public void finalizeAnalysis() throws Exception {
+		
 		AbstractClassifier []classifiers = {
 				new RandomForest(),
 				new NaiveBayes(),
 				new IBk()
 		};
 		
-		for (AbstractClassifier c : classifiers)
-			this.walkForward(c);
-	}
-	
-	private void walkForward(AbstractClassifier classifier) throws Exception {
-
 		File outfile = new File(String.format("%s%s_milestone2.csv", this.resultsFolder, this.projectName));
 		try (FileWriter writer = new FileWriter(outfile, true)) {
 			writer.append(CSV_HEADER);
-			for (int testingIdx = 1; testingIdx < this.versionNames.size(); ++testingIdx) {
-				Instances trainingSet = new Instances(this.fullDataset, 0);
-				Instances testingSet = new Instances(this.fullDataset, 0);
+			
+			for (AbstractClassifier c : classifiers)
+				this.walkForward(c, writer);
+		}
+	}
+	
+	private void walkForward(AbstractClassifier classifier, FileWriter writer) throws Exception {
+		for (int testingIdx = 1; testingIdx < this.versionNames.size(); ++testingIdx) {
+			Instances trainingSet = new Instances(this.fullDataset, 0);
+			Instances testingSet = new Instances(this.fullDataset, 0);
 
-				for (Instance row : fullDataset) {
-					if (this.versionNames.indexOf(row.stringValue(VERSION_IDX)) == testingIdx)
-						testingSet.add(row);
-					if (this.versionNames.indexOf(row.stringValue(VERSION_IDX)) < testingIdx)
-						trainingSet.add(row);
-				}
-
-				LOGGER.log(Level.INFO,
-						"Training set size: {0} [Releases up to {1}]- Testing set size: {2} [Release {3}]",
-						new Object[] { trainingSet.size(), this.versionNames.get(testingIdx - 1), testingSet.size(),
-								this.versionNames.get(testingIdx) });
-
-				writer.append(this.evaluation(trainingSet, testingSet, classifier, testingIdx));
+			for (Instance row : fullDataset) {
+				if (this.versionNames.indexOf(row.stringValue(VERSION_IDX)) == testingIdx)
+					testingSet.add(row);
+				if (this.versionNames.indexOf(row.stringValue(VERSION_IDX)) < testingIdx)
+					trainingSet.add(row);
 			}
+
+			LOGGER.log(Level.INFO, "Training set size: {0} [Releases up to {1}]- Testing set size: {2} [Release {3}]",
+					new Object[] { trainingSet.size(), this.versionNames.get(testingIdx - 1), testingSet.size(),
+							this.versionNames.get(testingIdx) });
+
+			writer.append(this.evaluation(trainingSet, testingSet, classifier, testingIdx));
 		}
 	}
 	

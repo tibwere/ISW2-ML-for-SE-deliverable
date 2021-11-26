@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class Launcher {
 	
-	private static final String PROJECT_NAME = "STORM";
+	private static final String PROJECT_NAME = "BOOKKEEPER";
 	private static final String RESULTS_FOLDER = "results/";
 	
 	public static void main(String[] args) throws Exception {
