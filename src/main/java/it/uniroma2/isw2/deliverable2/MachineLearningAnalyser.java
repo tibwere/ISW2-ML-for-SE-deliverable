@@ -69,22 +69,24 @@ public class MachineLearningAnalyser {
 				}
 			}
 
-			res.setNumberOfTrainingReleases(trainingSet.size());
-			res.setPercentageOfTrainingReleases(((double)trainingSet.size())/fullDataset.size());
-			
-			int totalDefects = defectsInTesting+defectsInTraining;
-			if (totalDefects > 0) {
-				res.setPercentageOfDefectiveInTraining(((double)defectsInTraining)/(defectsInTesting+defectsInTraining));
-				res.setPercentageOfDefectiveInTesting(((double)defectsInTesting)/(defectsInTesting+defectsInTraining));
-			} else {
-				res.setPercentageOfDefectiveInTraining(0);
-				res.setPercentageOfDefectiveInTesting(0);
-			}
-			
-			
+			this.fillResultsWithInformationsOnDatasets(res, trainingSet ,defectsInTraining, testingSet, defectsInTesting);
 			this.evaluation(trainingSet, testingSet, profile, res);
 			LOGGER.log(Level.INFO, "New result added: {0}", res);
 			writer.append(String.format("%s%n", res));
+		}
+	}
+	
+	private void fillResultsWithInformationsOnDatasets(EvaluationResults res, Instances trainingSet, int defectsInTraining, Instances testingSetint, int defectsInTesting) {
+		res.setNumberOfTrainingReleases(trainingSet.size());
+		res.setPercentageOfTrainingReleases(((double)trainingSet.size())/fullDataset.size());
+		
+		int totalDefects = defectsInTesting+defectsInTraining;
+		if (totalDefects > 0) {
+			res.setPercentageOfDefectiveInTraining(((double)defectsInTraining)/(defectsInTesting+defectsInTraining));
+			res.setPercentageOfDefectiveInTesting(((double)defectsInTesting)/(defectsInTesting+defectsInTraining));
+		} else {
+			res.setPercentageOfDefectiveInTraining(0);
+			res.setPercentageOfDefectiveInTesting(0);
 		}
 	}
 	
