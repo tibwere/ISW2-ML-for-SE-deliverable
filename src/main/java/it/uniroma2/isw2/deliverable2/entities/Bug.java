@@ -60,7 +60,7 @@ public class Bug {
 		int ovIndex = versions.indexOf(this.ov);
 		int ivIndex = fvIndex - (fvIndex - ovIndex)*proportion;
 		
-		this.iv = versions.get(ivIndex);
+		this.iv = versions.get((ivIndex > 0) ? ivIndex : 0);
 	}
 	
 	public boolean belongsTo(Version version) {

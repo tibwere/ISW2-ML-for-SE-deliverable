@@ -88,16 +88,33 @@ public class MetricsExtractor {
 	
 	private void fillIVs() {
 		
-		List<Double> pValues = new ArrayList<>();
+		final int DEFAULT_P = 1;
 		
-		for (int i=0; i<this.bugs.size(); ++i) {
-			if (this.bugs.get(i).getIv() != null)
-				/* For bugs in which IV is known P is evaluated */
-				pValues.add(this.bugs.get(i).getProportion(this.versions));
-			else
-				/* For others IV is set according to average P evaluated previously */
-				this.bugs.get(i).setIv(integerAverageProportion(pValues), this.versions);
+		int versionIdx = 0;
+		
+		for (Bug b : this.bugs) {
+			versionIdx = this.versions.indexOf(b.getOv());
+			
+			if (b.getIv() == null) {
+				if (versionIdx == 0)
+					b.setIv(DEFAULT_P, this.versions);
+				else
+					b.setIv(meanProportionOfVersions(versionIdx), this.versions);				
+			}
+			
+			double p = b.getProportion(this.versions);
+			this.versions.get(versionIdx).updateProportion(p);
 		}
+	}
+	
+	private int meanProportionOfVersions(int currentVersionIdx) {
+		double sum = 0.0;
+		
+		for (int i=0; i<currentVersionIdx; ++i)
+			sum += this.versions.get(i).getProportion();
+		
+		
+		return (int)Math.ceil(sum/currentVersionIdx);
 	}
 	
 	private void fillTouchedFiles() {
@@ -154,17 +171,6 @@ public class MetricsExtractor {
 	
 	private LocalDateTime getMaxDate(LocalDateTime d1, LocalDateTime d2) {
 		return (d1.isAfter(d2)) ? d1 : d2;
-	}
-	
-	private int integerAverageProportion(List<Double> pValues)  {
-		double sum = 0.0;
-		
-		for (Double p : pValues) 
-			sum += p;
-		
-		LOGGER.log(Level.INFO, "New value of P evaluated: {0}", sum/pValues.size());
-				
-		return (int)Math.round(sum/pValues.size());
 	}
 	
 	private void applyDiff(int commitsIdx) {

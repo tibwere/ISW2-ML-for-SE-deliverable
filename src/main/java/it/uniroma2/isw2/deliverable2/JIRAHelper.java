@@ -23,7 +23,7 @@ public class JIRAHelper {
 	}
 	
 	public List<Version> getVersions() throws JsonSyntaxException, IOException {
-		List<Version> allVersions = new ArrayList<>();
+		List<Version> versions = new ArrayList<>();
 		
 		final String URL = "https://issues.apache.org/jira/rest/api/2/project/" + this.projectName;
 		JsonArray jsonVersions = RestHelper.getJSONObject(URL).get("versions").getAsJsonArray();
@@ -33,16 +33,15 @@ public class JIRAHelper {
 				continue;
 			
 			LocalDateTime date = LocalDate.parse(jsonVersion.get("releaseDate").getAsString()).atStartOfDay();
-			String id = jsonVersion.get("id").getAsString();
 			String name = jsonVersion.get("name").getAsString();
 			
-			Version version = new Version(id, name, date);
-			allVersions.add(version);
+			Version version = new Version(name, date);
+			versions.add(version);
 		}
 		
-		allVersions.sort((v1, v2) -> v1.getReleaseDate().compareTo(v2.getReleaseDate()));
+		versions.sort((v1, v2) -> v1.getReleaseDate().compareTo(v2.getReleaseDate()));
 		
-		return allVersions;
+		return versions;
 	}
 	
 	private String getBugsURL(int startIndex, int maxResults) {

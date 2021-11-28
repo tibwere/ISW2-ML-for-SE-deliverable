@@ -3,18 +3,14 @@ package it.uniroma2.isw2.deliverable2.entities;
 import java.time.LocalDateTime;
 
 public class Version {
-	private String id;
 	private String name;
 	private LocalDateTime releaseDate;
+	private double proportion;
+	private int bugCount;
 
-	public Version(String id, String name, LocalDateTime startDate) {
-		this.id = id;
+	public Version(String name, LocalDateTime startDate) {
 		this.name = name;
 		this.releaseDate = startDate;
-	}
-
-	public String getId() {
-		return id;
 	}
 	
 	public String getName() {
@@ -23,6 +19,14 @@ public class Version {
 
 	public LocalDateTime getReleaseDate() {
 		return releaseDate;
+	}
+	
+	public void updateProportion(double newP) {
+		this.proportion += ((newP - this.proportion)/++bugCount);
+	}
+	
+	public double getProportion() {
+		return this.proportion;
 	}
 
 	@Override
