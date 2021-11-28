@@ -33,44 +33,44 @@ public class AnalysisProfile {
 
 	private void setFeatureSelectionTechnique(String featureSelectionTechnique) throws WrongProfileException {
 		
-		final String []TECHNIQUES = {
+		String []techniques = {
 				FEATURE_SELECTION_NO, FEATURE_SELECTION_BEST_FIRST
 		};
 		
-		if(Arrays.asList(TECHNIQUES).contains(featureSelectionTechnique))
+		if(Arrays.asList(techniques).contains(featureSelectionTechnique))
 			this.featureSelectionTechnique = featureSelectionTechnique;
 		else
 			throw new WrongProfileException("Invalid feature selection techinque chosen");
 	}
 
 	private void setSamplingTechnique(String samplingTechnique) throws WrongProfileException {
-		final String []TECHNIQUES = {
+		String []techniques = {
 				SAMPLING_NO, SAMPLING_OVERSAMPLING, SAMPLING_UNDERSAMPLING, SAMPLING_SMOTE
 		};
 		
-		if(Arrays.asList(TECHNIQUES).contains(samplingTechnique))
+		if(Arrays.asList(techniques).contains(samplingTechnique))
 			this.samplingTechnique = samplingTechnique;
 		else
 			throw new WrongProfileException("Invalid sampling techinque chosen");	
 	}
 
 	private void setCostSensitiveTechnique(String costSensitiveTechnique) throws WrongProfileException {
-		final String []TECHNIQUES = {
+		String []techniques = {
 				COST_SENSITIVE_CLASSIFIER_NO, COST_SENSITIVE_CLASSIFIER_SENSITIVE_LEARNING, COST_SENSITIVE_CLASSIFIER_SENSITIVE_THRESHOLD
 		};
 		
-		if(Arrays.asList(TECHNIQUES).contains(costSensitiveTechnique))
+		if(Arrays.asList(techniques).contains(costSensitiveTechnique))
 			this.costSensitiveTechnique = costSensitiveTechnique;
 		else
 			throw new WrongProfileException("Invalid cost sensitive techinque chosen");		
 	}
 
 	private void setClassifier(String classifier) throws WrongProfileException {
-		final String []TECHNIQUES = {
+		String []techniques = {
 				CLASSIFIER_RANDOM_FOREST, CLASSIFIER_NAIVE_BAYES, CLASSIFIER_IBK
 		};
 		
-		if(Arrays.asList(TECHNIQUES).contains(classifier))
+		if(Arrays.asList(techniques).contains(classifier))
 			this.classifier = classifier;
 		else
 			throw new WrongProfileException("Invalid feature selection techinque chosen");		

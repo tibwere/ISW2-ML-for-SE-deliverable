@@ -25,7 +25,7 @@ public class Launcher {
 		
 		Path []datasets = {
 				Paths.get(String.format("%s%s_all_metrics.csv", RESULTS_FOLDER, PROJECT_NAME)),
-				Paths.get(String.format("%s%s_milestone2.csv", RESULTS_FOLDER, PROJECT_NAME))
+				Paths.get(String.format("%s%s_final_results.csv", RESULTS_FOLDER, PROJECT_NAME))
 		};
 		
 		for (Path ds : datasets) {

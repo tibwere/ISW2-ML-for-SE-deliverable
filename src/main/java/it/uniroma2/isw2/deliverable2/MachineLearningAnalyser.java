@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import it.uniroma2.isw2.deliverable2.entities.AnalysisProfile;
@@ -70,10 +71,19 @@ public class MachineLearningAnalyser {
 
 			res.setNumberOfTrainingReleases(trainingSet.size());
 			res.setPercentageOfTrainingReleases(((double)trainingSet.size())/fullDataset.size());
-			res.setPercentageOfDefectiveInTraining(((double)defectsInTraining)/(defectsInTesting+defectsInTraining));
-			res.setPercentageOfDefectiveInTesting(((double)defectsInTesting)/(defectsInTesting+defectsInTraining));
+			
+			int totalDefects = defectsInTesting+defectsInTraining;
+			if (totalDefects > 0) {
+				res.setPercentageOfDefectiveInTraining(((double)defectsInTraining)/(defectsInTesting+defectsInTraining));
+				res.setPercentageOfDefectiveInTesting(((double)defectsInTesting)/(defectsInTesting+defectsInTraining));
+			} else {
+				res.setPercentageOfDefectiveInTraining(0);
+				res.setPercentageOfDefectiveInTesting(0);
+			}
+			
 			
 			this.evaluation(trainingSet, testingSet, profile, res);
+			LOGGER.log(Level.INFO, "New result added: {0}", res);
 			writer.append(String.format("%s%n", res));
 		}
 	}
