@@ -1,0 +1,19 @@
+dataset,#TrainingRelease,%training,%Defective in training,%Defective in testing,classifier,balancing,Feature Selection,Sensitivity,TP,FP,TN,FN,Precision,Recall,AUC,Kappa
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.927,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,no sampling,no selection,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.816,0.032
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,no sampling,no selection,no cost sensitive,0.034,0.000,1.000,0.966,1.000,0.034,0.734,0.060
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,no sampling,no selection,no cost sensitive,0.015,0.000,1.000,0.985,1.000,0.015,0.914,0.024
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,no sampling,no selection,no cost sensitive,0.375,0.025,0.975,0.625,0.250,0.375,0.936,0.281
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.271,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,no sampling,no selection,no cost sensitive,0.015,0.003,0.997,0.985,0.667,0.015,0.872,0.018
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,no sampling,no selection,no cost sensitive,0.667,0.152,0.848,0.333,0.020,0.667,0.721,0.030
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,no sampling,no selection,no cost sensitive,0.203,0.026,0.974,0.797,0.429,0.203,0.719,0.232
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,no sampling,no selection,no cost sensitive,0.170,0.007,0.993,0.830,0.852,0.170,0.822,0.235
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,no sampling,no selection,no cost sensitive,0.563,0.084,0.916,0.438,0.130,0.563,0.918,0.183
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,no sampling,no selection,no cost sensitive,0.636,0.000,1.000,0.364,1.000,0.636,0.811,0.719
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,no selection,no cost sensitive,0.667,0.195,0.805,0.333,0.016,0.667,0.736,0.022
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,no selection,no cost sensitive,0.203,0.064,0.936,0.797,0.235,0.203,0.570,0.149
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,no selection,no cost sensitive,0.370,0.003,0.997,0.630,0.962,0.370,0.685,0.480
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,no selection,no cost sensitive,0.938,0.154,0.846,0.063,0.120,0.938,0.892,0.181
