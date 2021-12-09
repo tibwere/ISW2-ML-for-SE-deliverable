@@ -119,12 +119,11 @@ public class AnalysisProfile {
 		
 		List<AnalysisProfile> profiles = new ArrayList<>();
 		
-//		for (String fs : featureSelection)
+		for (String fs : featureSelection)
 //			for (String s : sampling)
 //				for (String csc : costSensitiveClassifiers)
 					for (String c : classifiers)
-						profiles.add(new AnalysisProfile(FEATURE_SELECTION_NO, SAMPLING_NO, COST_SENSITIVE_CLASSIFIER_NO, c));
-//						profiles.add(new AnalysisProfile(fs, s, csc, c));
+						profiles.add(new AnalysisProfile(fs, SAMPLING_NO, COST_SENSITIVE_CLASSIFIER_NO, c));
 		
 		return profiles;
 	}

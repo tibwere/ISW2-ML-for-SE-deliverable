@@ -9,32 +9,27 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import it.uniroma2.isw2.deliverable2.entities.AnalysisProfile;
+import it.uniroma2.isw2.deliverable2.entities.AnalysisRun;
 import it.uniroma2.isw2.deliverable2.entities.EvaluationResults;
-import weka.classifiers.AbstractClassifier;
-import weka.classifiers.Evaluation;
-import weka.classifiers.bayes.NaiveBayes;
-import weka.classifiers.lazy.IBk;
-import weka.classifiers.trees.RandomForest;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.CSVLoader;
 
 public class MachineLearningAnalyser {
 	
+	private static final int VERSION_IDX = 0;
 	private static final Logger LOGGER = Logger.getLogger("ISW2-DELIVERABLE-2(ML)");
- 	private static final int VERSION_IDX = 0;
- 	private static final int BUGGYNESS_IDX = 13;
 	
 	private String projectName;
 	private String resultsFolder;
-	private List<String> versionNames;
 	private Instances fullDataset;
+	private List<String> versionNames;
 	
 	public MachineLearningAnalyser(String projectName, String resultsFolder) throws IOException {
 		this.projectName = projectName;
 		this.resultsFolder = resultsFolder;
 		this.fullDataset = this.loadCSV(new File(String.format("%s%s_all_metrics.csv", this.resultsFolder, this.projectName)));
-		this.versionNames = this.getVersionNames();
+		this.versionNames = getVersionNames(this.fullDataset);
 	}
 	
 	public void finalizeAnalysis() throws Exception {
@@ -50,65 +45,24 @@ public class MachineLearningAnalyser {
 	private void walkForward(AnalysisProfile profile, FileWriter writer) throws Exception {
 		
 		for (int testingIdx = 1; testingIdx < this.versionNames.size(); ++testingIdx) {
-			Instances trainingSet = new Instances(this.fullDataset, 0);
-			Instances testingSet = new Instances(this.fullDataset, 0);
-			EvaluationResults res = new EvaluationResults(this.projectName, profile);
-			int defectsInTraining = 0;
-			int defectsInTesting = 0;
-
+			AnalysisRun actualRun = new AnalysisRun(fullDataset, profile, projectName, testingIdx);
+			
 			for (Instance row : fullDataset) {
-				if (this.versionNames.indexOf(row.stringValue(VERSION_IDX)) == testingIdx) {
-					testingSet.add(row);
-					if (row.stringValue(BUGGYNESS_IDX).equals("Y"))
-						defectsInTesting++;
+				if (versionNames.indexOf(row.stringValue(VERSION_IDX)) == testingIdx)
+					actualRun.addToTesting(row);
 					
-				} else if (this.versionNames.indexOf(row.stringValue(VERSION_IDX)) < testingIdx) {
-					trainingSet.add(row);
-					if (row.stringValue(BUGGYNESS_IDX).equals("Y"))
-						defectsInTraining++;
-				}
+				else if (versionNames.indexOf(row.stringValue(VERSION_IDX)) < testingIdx)
+					actualRun.addToTraining(row);
 			}
+			
+			actualRun.setupClassIndexes();
+			actualRun.initializeResults(this.fullDataset.size());
+			actualRun.applyFeatureSelection(profile.getFeatureSelectionTechnique());
+			actualRun.evaluate(profile.getClassifier());	
 
-			this.fillResultsWithInformationsOnDatasets(res, trainingSet ,defectsInTraining, testingSet, defectsInTesting);
-			this.evaluation(trainingSet, testingSet, profile, res);
-			LOGGER.log(Level.INFO, "New result added: {0}", res);
-			writer.append(String.format("%s%n", res));
+			LOGGER.log(Level.INFO, "New result added: {0}", actualRun.getResults());
+			writer.append(String.format("%s%n", actualRun.getResults()));
 		}
-	}
-	
-	private void fillResultsWithInformationsOnDatasets(EvaluationResults res, Instances trainingSet, int defectsInTraining, Instances testingSetint, int defectsInTesting) {
-		res.setNumberOfTrainingReleases(trainingSet.size());
-		res.setPercentageOfTrainingReleases(((double)trainingSet.size())/fullDataset.size());
-		
-		int totalDefects = defectsInTesting+defectsInTraining;
-		if (totalDefects > 0) {
-			res.setPercentageOfDefectiveInTraining(((double)defectsInTraining)/(defectsInTesting+defectsInTraining));
-			res.setPercentageOfDefectiveInTesting(((double)defectsInTesting)/(defectsInTesting+defectsInTraining));
-		} else {
-			res.setPercentageOfDefectiveInTraining(0);
-			res.setPercentageOfDefectiveInTesting(0);
-		}
-	}
-	
-	private void evaluation(Instances trainingSet, Instances testingSet, AnalysisProfile profile, EvaluationResults results) throws Exception {
-		int numberOfAttributes = trainingSet.numAttributes();
-		trainingSet.setClassIndex(numberOfAttributes - 1);
-		testingSet.setClassIndex(numberOfAttributes - 1);
-		
-		AbstractClassifier classifier = null;
-		if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_RANDOM_FOREST))
-			classifier = new RandomForest();
-		else if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_NAIVE_BAYES))
-			classifier = new NaiveBayes();
-		else
-			classifier = new IBk();
-		
-		classifier.buildClassifier(trainingSet);
-		
-		Evaluation eval = new Evaluation(testingSet);
-		eval.evaluateModel(classifier, testingSet);
-		
-		results.setStatistics(eval);
 	}
 	
 	private Instances loadCSV(File csvFile) throws IOException {
@@ -117,10 +71,10 @@ public class MachineLearningAnalyser {
 		return loader.getDataSet();
 	}
 	
-	private List<String> getVersionNames() {
+	private List<String> getVersionNames(Instances fullDataset) {
 		List<String> versions = new ArrayList<>();
 		
-		for (Instance row : this.fullDataset)
+		for (Instance row : fullDataset)
 			if (!versions.contains(row.stringValue(VERSION_IDX)))
 				versions.add(row.stringValue(VERSION_IDX));
 		

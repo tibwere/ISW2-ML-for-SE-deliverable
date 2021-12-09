@@ -17,3 +17,21 @@ BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,no selection,no cost sensitive
 BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,no selection,no cost sensitive,0.203,0.064,0.936,0.797,0.235,0.203,0.570,0.149
 BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,no selection,no cost sensitive,0.370,0.003,0.997,0.630,0.962,0.370,0.685,0.480
 BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,no selection,no cost sensitive,0.938,0.154,0.846,0.063,0.120,0.938,0.892,0.181
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,no sampling,best first,no cost sensitive,0.205,0.000,1.000,0.795,1.000,0.205,0.876,0.273
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,no sampling,best first,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.672,0.032
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,no sampling,best first,no cost sensitive,0.051,0.015,0.985,0.949,0.250,0.051,0.672,0.056
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,no sampling,best first,no cost sensitive,0.037,0.000,1.000,0.963,1.000,0.037,0.883,0.059
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,no sampling,best first,no cost sensitive,0.500,0.036,0.964,0.500,0.235,0.500,0.929,0.299
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,no sampling,best first,no cost sensitive,0.152,0.008,0.992,0.848,0.870,0.152,0.887,0.194
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,no sampling,best first,no cost sensitive,0.667,0.174,0.826,0.333,0.018,0.667,0.723,0.026
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,no sampling,best first,no cost sensitive,0.559,0.192,0.808,0.441,0.220,0.559,0.703,0.217
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,no sampling,best first,no cost sensitive,0.578,0.127,0.873,0.422,0.517,0.578,0.806,0.431
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,no sampling,best first,no cost sensitive,0.875,0.300,0.700,0.125,0.061,0.875,0.860,0.077
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,no sampling,best first,no cost sensitive,0.629,0.000,1.000,0.371,1.000,0.629,0.814,0.713
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,best first,no cost sensitive,0.667,0.168,0.832,0.333,0.018,0.667,0.788,0.027
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,best first,no cost sensitive,0.305,0.070,0.930,0.695,0.295,0.305,0.712,0.231
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,best first,no cost sensitive,0.281,0.014,0.986,0.719,0.826,0.281,0.817,0.358
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,best first,no cost sensitive,0.875,0.078,0.922,0.125,0.200,0.875,0.926,0.301
