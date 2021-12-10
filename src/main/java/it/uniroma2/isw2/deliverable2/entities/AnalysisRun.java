@@ -1,5 +1,8 @@
 package it.uniroma2.isw2.deliverable2.entities;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import weka.attributeSelection.AttributeSelection;
 import weka.attributeSelection.BestFirst;
 import weka.attributeSelection.CfsSubsetEval;
@@ -7,15 +10,20 @@ import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.lazy.IBk;
+import weka.classifiers.meta.FilteredClassifier;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.filters.Filter;
+import weka.filters.supervised.instance.Resample;
+import weka.filters.supervised.instance.SMOTE;
+import weka.filters.supervised.instance.SpreadSubsample;
 import weka.filters.unsupervised.attribute.Remove;
 
 public class AnalysisRun {
 	
-	private static final int BUGGYNESS_IDX = 13;
+	private static final String MAJORITY_KEY = "MAJORITY";
+	private static final String MINORITY_KEY = "MINORITY";
 		
  	private Instances trainingSet;
 	private Instances testingSet;
@@ -67,15 +75,66 @@ public class AnalysisRun {
 		}
 	}
 	
-	public void evaluate(String classifierType) throws Exception {
+	private Map<String, Integer> getMajorityAndMinorityFromTrainingSet() {
+		int countYes = 0;
+		int countNo = 0;
+		
+		for (Instance row : this.trainingSet) {
+			if (row.stringValue(row.classIndex()).equals("Y"))
+				countYes++;
+			else
+				countNo++;
+		}
+		
+		Map<String, Integer> majmin = new HashMap<>();
+		if (countYes > countNo) {
+			majmin.put(MAJORITY_KEY, countYes);
+			majmin.put(MINORITY_KEY, countNo);
+		} else {
+			majmin.put(MAJORITY_KEY, countNo);
+			majmin.put(MINORITY_KEY, countYes);
+		}
+		
+		return majmin;
+	}
+	
+	private void applySampling(FilteredClassifier fc, String samplingType) throws Exception {
+
+		if (samplingType.equals(AnalysisProfile.SAMPLING_UNDERSAMPLING)) {
+			SpreadSubsample  spreadSubsample = new SpreadSubsample();
+			String[] opts = new String[]{ "-M", "1.0"};
+			spreadSubsample.setOptions(opts);
+			fc.setFilter(spreadSubsample);
+		} else if (samplingType.equals(AnalysisProfile.SAMPLING_OVERSAMPLING)) {
+			Map<String, Integer> majmin = this.getMajorityAndMinorityFromTrainingSet();
+			double y = 100 * ((majmin.get(MAJORITY_KEY) - majmin.get(MINORITY_KEY))/((double)majmin.get(MINORITY_KEY)));		
+			Resample resample = new Resample();
+			resample.setNoReplacement(false);
+			resample.setBiasToUniformClass(1.0);
+			resample.setSampleSizePercent(y);
+			resample.setInputFormat(this.trainingSet);
+			fc.setFilter(resample);
+		} else if (samplingType.equals(AnalysisProfile.SAMPLING_SMOTE)) {
+			SMOTE smote = new SMOTE();
+			smote.setInputFormat(this.trainingSet);
+			fc.setFilter(smote);
+		}
+	}
+	
+	public void evaluate(AnalysisProfile profile) throws Exception {
 		
 		AbstractClassifier classifier = null;
-		if (classifierType.equals(AnalysisProfile.CLASSIFIER_RANDOM_FOREST))
+		if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_RANDOM_FOREST))
 			classifier = new RandomForest();
-		else if (classifierType.equals(AnalysisProfile.CLASSIFIER_NAIVE_BAYES))
+		else if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_NAIVE_BAYES))
 			classifier = new NaiveBayes();
 		else
 			classifier = new IBk();
+		
+		FilteredClassifier fc = new FilteredClassifier();
+		fc.setClassifier(classifier);
+		
+		this.applySampling(fc, profile.getSamplingTechnique());
 		
 		classifier.buildClassifier(trainingSet);
 		Evaluation eval = new Evaluation(testingSet);
@@ -92,7 +151,7 @@ public class AnalysisRun {
 		int counter = 0;
 		
 		for (Instance row : this.trainingSet)
-			if (row.stringValue(BUGGYNESS_IDX).equals("Y"))
+			if (row.stringValue(row.classIndex()).equals("Y"))
 				counter++;
 		
 		return counter;
@@ -102,7 +161,7 @@ public class AnalysisRun {
 		int counter = 0;
 		
 		for (Instance row : this.testingSet)
-			if (row.stringValue(BUGGYNESS_IDX).equals("Y"))
+			if (row.stringValue(row.classIndex()).equals("Y"))
 				counter++;
 		
 		return counter;

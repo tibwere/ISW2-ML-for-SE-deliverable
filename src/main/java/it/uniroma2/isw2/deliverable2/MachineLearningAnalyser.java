@@ -58,7 +58,7 @@ public class MachineLearningAnalyser {
 			actualRun.setupClassIndexes();
 			actualRun.initializeResults(this.fullDataset.size());
 			actualRun.applyFeatureSelection(profile.getFeatureSelectionTechnique());
-			actualRun.evaluate(profile.getClassifier());	
+			actualRun.evaluate(profile);	
 
 			LOGGER.log(Level.INFO, "New result added: {0}", actualRun.getResults());
 			writer.append(String.format("%s%n", actualRun.getResults()));
