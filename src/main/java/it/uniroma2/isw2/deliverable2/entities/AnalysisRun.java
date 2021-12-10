@@ -1,16 +1,14 @@
 package it.uniroma2.isw2.deliverable2.entities;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import weka.attributeSelection.AttributeSelection;
 import weka.attributeSelection.BestFirst;
 import weka.attributeSelection.CfsSubsetEval;
 import weka.classifiers.AbstractClassifier;
+import weka.classifiers.CostMatrix;
 import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.lazy.IBk;
-import weka.classifiers.meta.FilteredClassifier;
+import weka.classifiers.meta.CostSensitiveClassifier;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -22,8 +20,8 @@ import weka.filters.unsupervised.attribute.Remove;
 
 public class AnalysisRun {
 	
-	private static final String MAJORITY_KEY = "MAJORITY";
-	private static final String MINORITY_KEY = "MINORITY";
+	private static final double CFP = 1.0;
+	private static final double CFN = 10.0;
 		
  	private Instances trainingSet;
 	private Instances testingSet;
@@ -67,7 +65,7 @@ public class AnalysisRun {
 		}
 	}
 	
-	public void applyFeatureSelection(String selectionType) throws Exception {
+	private void applyFeatureSelection(String selectionType) throws Exception {
 		if (selectionType.equals(AnalysisProfile.FEATURE_SELECTION_BEST_FIRST)) {
 			Remove removeFilter = this.getRemoveFilter(getSelectedIndexes());	
 			this.trainingSet = Filter.useFilter(this.trainingSet, removeFilter);
@@ -75,7 +73,7 @@ public class AnalysisRun {
 		}
 	}
 	
-	private Map<String, Integer> getMajorityAndMinorityFromTrainingSet() {
+	private String getYValueForOversampling() {
 		int countYes = 0;
 		int countNo = 0;
 		
@@ -86,61 +84,78 @@ public class AnalysisRun {
 				countNo++;
 		}
 		
-		Map<String, Integer> majmin = new HashMap<>();
-		if (countYes > countNo) {
-			majmin.put(MAJORITY_KEY, countYes);
-			majmin.put(MINORITY_KEY, countNo);
-		} else {
-			majmin.put(MAJORITY_KEY, countNo);
-			majmin.put(MINORITY_KEY, countYes);
-		}
+		double y;
+		if (countYes > countNo)
+			y = 2 * ((double)countYes/this.trainingSet.size()) * 100;
+		else
+			y = 2 * ((double)countNo/this.trainingSet.size()) * 100;
 		
-		return majmin;
+		return String.valueOf(y);
 	}
 	
-	private void applySampling(FilteredClassifier fc, String samplingType) throws Exception {
-
+	private void applySampling(String samplingType) throws Exception {
+		
 		if (samplingType.equals(AnalysisProfile.SAMPLING_UNDERSAMPLING)) {
 			SpreadSubsample  spreadSubsample = new SpreadSubsample();
 			String[] opts = new String[]{ "-M", "1.0"};
 			spreadSubsample.setOptions(opts);
-			fc.setFilter(spreadSubsample);
-		} else if (samplingType.equals(AnalysisProfile.SAMPLING_OVERSAMPLING)) {
-			Map<String, Integer> majmin = this.getMajorityAndMinorityFromTrainingSet();
-			double y = 100 * ((majmin.get(MAJORITY_KEY) - majmin.get(MINORITY_KEY))/((double)majmin.get(MINORITY_KEY)));		
+			spreadSubsample.setInputFormat(this.trainingSet);
+			
+			this.trainingSet = Filter.useFilter(this.trainingSet, spreadSubsample);
+		} else if (samplingType.equals(AnalysisProfile.SAMPLING_OVERSAMPLING)) {	
 			Resample resample = new Resample();
-			resample.setNoReplacement(false);
-			resample.setBiasToUniformClass(1.0);
-			resample.setSampleSizePercent(y);
+			String[] opts = new String[]{ "-B", "1.0", "-Z", this.getYValueForOversampling()};
+			resample.setOptions(opts);
 			resample.setInputFormat(this.trainingSet);
-			fc.setFilter(resample);
+			
+			this.trainingSet = Filter.useFilter(this.trainingSet, resample);
 		} else if (samplingType.equals(AnalysisProfile.SAMPLING_SMOTE)) {
 			SMOTE smote = new SMOTE();
 			smote.setInputFormat(this.trainingSet);
-			fc.setFilter(smote);
+			this.trainingSet = Filter.useFilter(this.trainingSet, smote);
 		}
+	}
+	
+	private CostMatrix createCostMatrix(double weightFalsePositive, double weightFalseNegative) {
+		CostMatrix costMatrix = new CostMatrix(2);
+		costMatrix.setCell(0, 0, 0.0);
+		costMatrix.setCell(1, 0, weightFalsePositive);
+		costMatrix.setCell(0, 1, weightFalseNegative);
+		costMatrix.setCell(1, 1, 0.0);
+		return costMatrix;
 	}
 	
 	public void evaluate(AnalysisProfile profile) throws Exception {
 		
-		AbstractClassifier classifier = null;
+		AbstractClassifier basicClassifier = null;
 		if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_RANDOM_FOREST))
-			classifier = new RandomForest();
+			basicClassifier = new RandomForest();
 		else if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_NAIVE_BAYES))
-			classifier = new NaiveBayes();
+			basicClassifier = new NaiveBayes();
 		else
-			classifier = new IBk();
+			basicClassifier = new IBk();
 		
-		FilteredClassifier fc = new FilteredClassifier();
-		fc.setClassifier(classifier);
+		this.applyFeatureSelection(profile.getFeatureSelectionTechnique());
+		this.applySampling(profile.getSamplingTechnique());
 		
-		this.applySampling(fc, profile.getSamplingTechnique());
+		Evaluation eval = null;	
+		CostSensitiveClassifier costSensitiveClassifier = new CostSensitiveClassifier();
+		costSensitiveClassifier.setClassifier(basicClassifier);
+		costSensitiveClassifier.setCostMatrix(createCostMatrix(CFP, CFN));
 		
-		classifier.buildClassifier(trainingSet);
-		Evaluation eval = new Evaluation(testingSet);
-		eval.evaluateModel(classifier, testingSet);
+		if (profile.getCostSensitiveTechnique().equals(AnalysisProfile.COST_SENSITIVE_CLASSIFIER_NO)) {
+			basicClassifier.buildClassifier(trainingSet);
+			eval = new Evaluation(this.testingSet);
+			eval.evaluateModel(basicClassifier, testingSet);
+		} else {
+			costSensitiveClassifier.setMinimizeExpectedCost(profile.getCostSensitiveTechnique().equals(AnalysisProfile.COST_SENSITIVE_CLASSIFIER_SENSITIVE_THRESHOLD));
+			costSensitiveClassifier.buildClassifier(trainingSet);
+			eval = new Evaluation(testingSet, costSensitiveClassifier.getCostMatrix());
+			eval.evaluateModel(costSensitiveClassifier, testingSet);
+		}	
 		
-		results.setStatistics(eval);		
+		results.setStatistics(eval);	
+		
 	}
 	
 	public EvaluationResults getResults() {

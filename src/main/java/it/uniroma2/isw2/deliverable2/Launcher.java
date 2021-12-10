@@ -12,6 +12,9 @@ public class Launcher {
 	
 	public static void main(String[] args) throws Exception {
 		
+		/* Needed for SMOTE in presence of NaN */
+		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
+		
 		setupResultsFolder();
 		
 		new MetricsExtractor(PROJECT_NAME, RESULTS_FOLDER).extract();		

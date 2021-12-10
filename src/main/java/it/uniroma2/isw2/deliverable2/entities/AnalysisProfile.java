@@ -121,9 +121,9 @@ public class AnalysisProfile {
 		
 		for (String fs : featureSelection)
 			for (String s : sampling)
-//				for (String csc : costSensitiveClassifiers)
+				for (String csc : costSensitiveClassifiers)
 					for (String c : classifiers)
-						profiles.add(new AnalysisProfile(fs, s, COST_SENSITIVE_CLASSIFIER_NO, c));
+						profiles.add(new AnalysisProfile(fs, s, csc, c));
 		
 		return profiles;
 	}

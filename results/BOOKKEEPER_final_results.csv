@@ -1,4 +1,4 @@
-dataset,#TrainingRelease,%training,%Defective in training,%Defective in testing,classifier,balancing,Feature Selection,Sensitivity,TP,FP,TN,FN,Precision,Recall,AUC,Kappa
+Dataset,#TrainingRelease,%Training,%Defective in training,%Defective in testing,Classifier,Balancing,Feature Selection,Sensitivity,TP,FP,TN,FN,Precision,Recall,AUC,Kappa
 BOOKKEEPER,344,0.084,0.000,1.000,random forest,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
 BOOKKEEPER,836,0.205,0.441,0.559,random forest,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.927,0.000
 BOOKKEEPER,1328,0.326,0.987,0.013,random forest,no sampling,no selection,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.816,0.032
@@ -17,60 +17,204 @@ BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,no selection,no cost sensitive
 BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,no selection,no cost sensitive,0.203,0.064,0.936,0.797,0.235,0.203,0.570,0.149
 BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,no selection,no cost sensitive,0.370,0.003,0.997,0.630,0.962,0.370,0.685,0.480
 BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,no selection,no cost sensitive,0.938,0.154,0.846,0.063,0.120,0.938,0.892,0.181
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.934,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.824,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.738,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.917,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.934,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.271,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,no sampling,no selection,sensitive learning,0.015,0.003,0.997,0.985,0.667,0.015,0.821,0.018
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,no sampling,no selection,sensitive learning,0.333,0.086,0.914,0.667,0.018,0.333,0.715,0.025
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,no sampling,no selection,sensitive learning,0.051,0.013,0.987,0.949,0.273,0.051,0.648,0.060
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,no sampling,no selection,sensitive learning,0.081,0.003,0.997,0.919,0.846,0.081,0.678,0.119
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,no sampling,no selection,sensitive learning,0.313,0.041,0.959,0.688,0.147,0.313,0.876,0.175
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,no sampling,no selection,sensitive learning,0.636,0.000,1.000,0.364,1.000,0.636,0.811,0.719
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,no selection,sensitive learning,0.667,0.195,0.805,0.333,0.016,0.667,0.736,0.022
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,no selection,sensitive learning,0.203,0.064,0.936,0.797,0.235,0.203,0.570,0.149
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,no selection,sensitive learning,0.370,0.003,0.997,0.630,0.962,0.370,0.685,0.480
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,no selection,sensitive learning,0.938,0.154,0.846,0.063,0.120,0.938,0.892,0.181
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,no sampling,no selection,sensitive threshold,0.000,0.003,0.997,1.000,0.000,0.000,0.499,-0.004
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,no sampling,no selection,sensitive threshold,0.000,0.016,0.984,1.000,0.000,0.000,0.492,-0.007
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,no sampling,no selection,sensitive threshold,0.017,0.003,0.997,0.983,0.333,0.017,0.507,0.024
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,no sampling,no selection,sensitive threshold,0.030,0.003,0.997,0.970,0.667,0.030,0.513,0.041
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,no sampling,no selection,sensitive threshold,0.125,0.007,0.993,0.875,0.286,0.125,0.559,0.163
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,no sampling,no selection,sensitive threshold,0.636,0.000,1.000,0.364,1.000,0.636,0.818,0.719
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,no selection,sensitive threshold,0.667,0.195,0.805,0.333,0.016,0.667,0.736,0.022
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,no selection,sensitive threshold,0.203,0.064,0.936,0.797,0.235,0.203,0.570,0.149
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,no selection,sensitive threshold,0.370,0.003,0.997,0.630,0.962,0.370,0.683,0.480
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,no selection,sensitive threshold,0.938,0.154,0.846,0.063,0.120,0.938,0.892,0.181
 BOOKKEEPER,344,0.084,0.000,1.000,random forest,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,random forest,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.927,0.000
-BOOKKEEPER,1328,0.326,0.987,0.013,random forest,oversampling,no selection,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.816,0.032
-BOOKKEEPER,1968,0.483,0.802,0.198,random forest,oversampling,no selection,no cost sensitive,0.034,0.000,1.000,0.966,1.000,0.034,0.734,0.060
-BOOKKEEPER,2637,0.647,0.688,0.312,random forest,oversampling,no selection,no cost sensitive,0.015,0.000,1.000,0.985,1.000,0.015,0.914,0.024
-BOOKKEEPER,3346,0.821,0.964,0.036,random forest,oversampling,no selection,no cost sensitive,0.375,0.025,0.975,0.625,0.250,0.375,0.936,0.281
-BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.271,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,oversampling,no selection,no cost sensitive,0.015,0.003,0.997,0.985,0.667,0.015,0.872,0.018
-BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,oversampling,no selection,no cost sensitive,0.667,0.152,0.848,0.333,0.020,0.667,0.721,0.030
-BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,oversampling,no selection,no cost sensitive,0.203,0.026,0.974,0.797,0.429,0.203,0.719,0.232
-BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,oversampling,no selection,no cost sensitive,0.170,0.007,0.993,0.830,0.852,0.170,0.822,0.235
-BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,oversampling,no selection,no cost sensitive,0.563,0.084,0.916,0.438,0.130,0.563,0.918,0.183
-BOOKKEEPER,344,0.084,0.000,1.000,ibk,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,ibk,oversampling,no selection,no cost sensitive,0.636,0.000,1.000,0.364,1.000,0.636,0.811,0.719
-BOOKKEEPER,1328,0.326,0.987,0.013,ibk,oversampling,no selection,no cost sensitive,0.667,0.195,0.805,0.333,0.016,0.667,0.736,0.022
-BOOKKEEPER,1968,0.483,0.802,0.198,ibk,oversampling,no selection,no cost sensitive,0.203,0.064,0.936,0.797,0.235,0.203,0.570,0.149
-BOOKKEEPER,2637,0.647,0.688,0.312,ibk,oversampling,no selection,no cost sensitive,0.370,0.003,0.997,0.630,0.962,0.370,0.685,0.480
-BOOKKEEPER,3346,0.821,0.964,0.036,ibk,oversampling,no selection,no cost sensitive,0.938,0.154,0.846,0.063,0.120,0.938,0.892,0.181
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,oversampling,no selection,no cost sensitive,0.455,0.000,1.000,0.545,1.000,0.455,0.922,0.549
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,oversampling,no selection,no cost sensitive,0.667,0.278,0.722,0.333,0.011,0.667,0.729,0.013
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,oversampling,no selection,no cost sensitive,0.593,0.215,0.785,0.407,0.211,0.593,0.740,0.208
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,oversampling,no selection,no cost sensitive,0.659,0.073,0.927,0.341,0.679,0.659,0.883,0.593
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,oversampling,no selection,no cost sensitive,1.000,0.211,0.789,0.000,0.096,1.000,0.934,0.140
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.275,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,oversampling,no selection,no cost sensitive,0.811,0.022,0.978,0.189,0.930,0.811,0.913,0.822
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,oversampling,no selection,no cost sensitive,1.000,0.386,0.614,0.000,0.012,1.000,0.767,0.015
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,oversampling,no selection,no cost sensitive,0.119,0.025,0.975,0.881,0.318,0.119,0.729,0.131
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,oversampling,no selection,no cost sensitive,0.815,0.178,0.822,0.185,0.519,0.815,0.868,0.523
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,oversampling,no selection,no cost sensitive,0.625,0.127,0.873,0.375,0.099,0.625,0.909,0.138
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.521,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,oversampling,no selection,no cost sensitive,0.689,0.008,0.992,0.311,0.968,0.689,0.865,0.749
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,oversampling,no selection,no cost sensitive,0.667,0.421,0.579,0.333,0.007,0.667,0.530,0.005
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,oversampling,no selection,no cost sensitive,0.390,0.100,0.900,0.610,0.274,0.390,0.643,0.243
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,oversampling,no selection,no cost sensitive,0.541,0.038,0.962,0.459,0.768,0.541,0.746,0.567
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,oversampling,no selection,no cost sensitive,1.000,0.172,0.828,0.000,0.115,1.000,0.929,0.174
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,oversampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,oversampling,no selection,sensitive learning,0.008,0.000,1.000,0.992,1.000,0.008,0.929,0.011
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,oversampling,no selection,sensitive learning,0.000,0.096,0.904,1.000,0.000,0.000,0.707,-0.009
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,oversampling,no selection,sensitive learning,0.085,0.025,0.975,0.915,0.250,0.085,0.751,0.086
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,oversampling,no selection,sensitive learning,0.163,0.003,0.997,0.837,0.917,0.163,0.912,0.233
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,oversampling,no selection,sensitive learning,0.375,0.039,0.961,0.625,0.176,0.375,0.933,0.217
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,oversampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.275,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,oversampling,no selection,sensitive learning,0.705,0.214,0.786,0.295,0.547,0.705,0.854,0.450
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,oversampling,no selection,sensitive learning,1.000,0.619,0.381,0.000,0.008,1.000,0.753,0.006
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,oversampling,no selection,sensitive learning,0.102,0.025,0.975,0.898,0.286,0.102,0.704,0.109
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,oversampling,no selection,sensitive learning,0.933,0.556,0.444,0.067,0.283,0.933,0.794,0.201
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,oversampling,no selection,sensitive learning,0.500,0.084,0.916,0.500,0.118,0.500,0.883,0.161
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,oversampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.521,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,oversampling,no selection,sensitive learning,0.689,0.008,0.992,0.311,0.968,0.689,0.865,0.749
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,oversampling,no selection,sensitive learning,0.667,0.418,0.582,0.333,0.007,0.667,0.530,0.006
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,oversampling,no selection,sensitive learning,0.390,0.100,0.900,0.610,0.274,0.390,0.643,0.243
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,oversampling,no selection,sensitive learning,0.541,0.038,0.962,0.459,0.768,0.541,0.746,0.567
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,oversampling,no selection,sensitive learning,1.000,0.171,0.829,0.000,0.116,1.000,0.929,0.175
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,oversampling,no selection,sensitive threshold,0.114,0.003,0.997,0.886,0.938,0.114,0.555,0.154
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,oversampling,no selection,sensitive threshold,0.333,0.151,0.849,0.667,0.010,0.333,0.591,0.011
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,oversampling,no selection,sensitive threshold,0.085,0.015,0.985,0.915,0.357,0.085,0.535,0.107
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,oversampling,no selection,sensitive threshold,0.356,0.024,0.976,0.644,0.774,0.356,0.666,0.417
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,oversampling,no selection,sensitive threshold,0.125,0.006,0.994,0.875,0.333,0.125,0.560,0.172
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,oversampling,no selection,sensitive threshold,0.689,0.008,0.992,0.311,0.968,0.689,0.841,0.749
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,oversampling,no selection,sensitive threshold,0.667,0.418,0.582,0.333,0.007,0.667,0.625,0.006
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,oversampling,no selection,sensitive threshold,0.390,0.100,0.900,0.610,0.274,0.390,0.645,0.243
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,oversampling,no selection,sensitive threshold,0.541,0.038,0.962,0.459,0.768,0.541,0.751,0.567
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,oversampling,no selection,sensitive threshold,1.000,0.171,0.829,0.000,0.116,1.000,0.915,0.175
 BOOKKEEPER,344,0.084,0.000,1.000,random forest,undersampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,random forest,undersampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.927,0.000
-BOOKKEEPER,1328,0.326,0.987,0.013,random forest,undersampling,no selection,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.816,0.032
-BOOKKEEPER,1968,0.483,0.802,0.198,random forest,undersampling,no selection,no cost sensitive,0.034,0.000,1.000,0.966,1.000,0.034,0.734,0.060
-BOOKKEEPER,2637,0.647,0.688,0.312,random forest,undersampling,no selection,no cost sensitive,0.015,0.000,1.000,0.985,1.000,0.015,0.914,0.024
-BOOKKEEPER,3346,0.821,0.964,0.036,random forest,undersampling,no selection,no cost sensitive,0.375,0.025,0.975,0.625,0.250,0.375,0.936,0.281
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,undersampling,no selection,no cost sensitive,0.735,0.000,1.000,0.265,1.000,0.735,0.900,0.802
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,undersampling,no selection,no cost sensitive,0.667,0.407,0.593,0.333,0.008,0.667,0.661,0.006
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,undersampling,no selection,no cost sensitive,0.780,0.361,0.639,0.220,0.173,0.780,0.761,0.162
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,undersampling,no selection,no cost sensitive,0.859,0.293,0.707,0.141,0.408,0.859,0.878,0.398
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,undersampling,no selection,no cost sensitive,1.000,0.363,0.637,0.000,0.058,1.000,0.905,0.072
 BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,undersampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.271,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,undersampling,no selection,no cost sensitive,0.015,0.003,0.997,0.985,0.667,0.015,0.872,0.018
-BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,undersampling,no selection,no cost sensitive,0.667,0.152,0.848,0.333,0.020,0.667,0.721,0.030
-BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,undersampling,no selection,no cost sensitive,0.203,0.026,0.974,0.797,0.429,0.203,0.719,0.232
-BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,undersampling,no selection,no cost sensitive,0.170,0.007,0.993,0.830,0.852,0.170,0.822,0.235
-BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,undersampling,no selection,no cost sensitive,0.563,0.084,0.916,0.438,0.130,0.563,0.918,0.183
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,undersampling,no selection,no cost sensitive,0.045,0.006,0.994,0.955,0.750,0.045,0.828,0.057
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,undersampling,no selection,no cost sensitive,0.000,0.039,0.961,1.000,0.000,0.000,0.644,-0.008
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,undersampling,no selection,no cost sensitive,0.119,0.034,0.966,0.881,0.250,0.119,0.756,0.110
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,undersampling,no selection,no cost sensitive,0.985,0.993,0.007,0.015,0.189,0.985,0.835,-0.003
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,undersampling,no selection,no cost sensitive,0.125,0.042,0.958,0.875,0.063,0.125,0.880,0.056
 BOOKKEEPER,344,0.084,0.000,1.000,ibk,undersampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,ibk,undersampling,no selection,no cost sensitive,0.636,0.000,1.000,0.364,1.000,0.636,0.811,0.719
-BOOKKEEPER,1328,0.326,0.987,0.013,ibk,undersampling,no selection,no cost sensitive,0.667,0.195,0.805,0.333,0.016,0.667,0.736,0.022
-BOOKKEEPER,1968,0.483,0.802,0.198,ibk,undersampling,no selection,no cost sensitive,0.203,0.064,0.936,0.797,0.235,0.203,0.570,0.149
-BOOKKEEPER,2637,0.647,0.688,0.312,ibk,undersampling,no selection,no cost sensitive,0.370,0.003,0.997,0.630,0.962,0.370,0.685,0.480
-BOOKKEEPER,3346,0.821,0.964,0.036,ibk,undersampling,no selection,no cost sensitive,0.938,0.154,0.846,0.063,0.120,0.938,0.892,0.181
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,undersampling,no selection,no cost sensitive,0.765,0.133,0.867,0.235,0.678,0.765,0.819,0.607
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,undersampling,no selection,no cost sensitive,0.667,0.542,0.458,0.333,0.006,0.667,0.564,0.002
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,undersampling,no selection,no cost sensitive,0.763,0.243,0.757,0.237,0.233,0.763,0.762,0.257
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,undersampling,no selection,no cost sensitive,0.844,0.364,0.636,0.156,0.353,0.844,0.741,0.313
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,undersampling,no selection,no cost sensitive,1.000,0.335,0.665,0.000,0.063,1.000,0.833,0.080
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.895,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.646,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.789,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.899,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.893,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.271,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,undersampling,no selection,sensitive learning,0.038,0.006,0.994,0.962,0.714,0.038,0.660,0.046
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,undersampling,no selection,sensitive learning,0.000,0.039,0.961,1.000,0.000,0.000,0.542,-0.008
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,undersampling,no selection,sensitive learning,0.119,0.033,0.967,0.881,0.259,0.119,0.730,0.114
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,undersampling,no selection,sensitive learning,0.978,0.995,0.005,0.022,0.188,0.978,0.718,-0.007
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,undersampling,no selection,sensitive learning,0.125,0.035,0.965,0.875,0.074,0.125,0.802,0.067
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,undersampling,no selection,sensitive learning,0.765,0.133,0.867,0.235,0.678,0.765,0.819,0.607
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,undersampling,no selection,sensitive learning,0.667,0.542,0.458,0.333,0.006,0.667,0.564,0.002
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,undersampling,no selection,sensitive learning,0.763,0.243,0.757,0.237,0.233,0.763,0.762,0.257
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,undersampling,no selection,sensitive learning,0.844,0.364,0.636,0.156,0.353,0.844,0.741,0.313
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,undersampling,no selection,sensitive learning,1.000,0.333,0.667,0.000,0.063,1.000,0.833,0.081
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,undersampling,no selection,sensitive threshold,0.038,0.003,0.997,0.962,0.833,0.038,0.518,0.050
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,undersampling,no selection,sensitive threshold,0.000,0.027,0.973,1.000,0.000,0.000,0.487,-0.008
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,undersampling,no selection,sensitive threshold,0.119,0.025,0.975,0.881,0.318,0.119,0.547,0.131
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,undersampling,no selection,sensitive threshold,0.763,0.115,0.885,0.237,0.609,0.763,0.824,0.591
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,undersampling,no selection,sensitive threshold,0.063,0.029,0.971,0.938,0.045,0.063,0.517,0.028
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,undersampling,no selection,sensitive threshold,0.765,0.133,0.867,0.235,0.678,0.765,0.816,0.607
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,undersampling,no selection,sensitive threshold,0.667,0.542,0.458,0.333,0.006,0.667,0.563,0.002
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,undersampling,no selection,sensitive threshold,0.763,0.243,0.757,0.237,0.233,0.763,0.760,0.257
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,undersampling,no selection,sensitive threshold,0.844,0.364,0.636,0.156,0.353,0.844,0.740,0.313
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,undersampling,no selection,sensitive threshold,1.000,0.333,0.667,0.000,0.063,1.000,0.833,0.081
 BOOKKEEPER,344,0.084,0.000,1.000,random forest,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,random forest,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.927,0.000
-BOOKKEEPER,1328,0.326,0.987,0.013,random forest,smote,no selection,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.816,0.032
-BOOKKEEPER,1968,0.483,0.802,0.198,random forest,smote,no selection,no cost sensitive,0.034,0.000,1.000,0.966,1.000,0.034,0.734,0.060
-BOOKKEEPER,2637,0.647,0.688,0.312,random forest,smote,no selection,no cost sensitive,0.015,0.000,1.000,0.985,1.000,0.015,0.914,0.024
-BOOKKEEPER,3346,0.821,0.964,0.036,random forest,smote,no selection,no cost sensitive,0.375,0.025,0.975,0.625,0.250,0.375,0.936,0.281
-BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.271,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,smote,no selection,no cost sensitive,0.015,0.003,0.997,0.985,0.667,0.015,0.872,0.018
-BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,smote,no selection,no cost sensitive,0.667,0.152,0.848,0.333,0.020,0.667,0.721,0.030
-BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,smote,no selection,no cost sensitive,0.203,0.026,0.974,0.797,0.429,0.203,0.719,0.232
-BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,smote,no selection,no cost sensitive,0.170,0.007,0.993,0.830,0.852,0.170,0.822,0.235
-BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,smote,no selection,no cost sensitive,0.563,0.084,0.916,0.438,0.130,0.563,0.918,0.183
-BOOKKEEPER,344,0.084,0.000,1.000,ibk,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,ibk,smote,no selection,no cost sensitive,0.636,0.000,1.000,0.364,1.000,0.636,0.811,0.719
-BOOKKEEPER,1328,0.326,0.987,0.013,ibk,smote,no selection,no cost sensitive,0.667,0.195,0.805,0.333,0.016,0.667,0.736,0.022
-BOOKKEEPER,1968,0.483,0.802,0.198,ibk,smote,no selection,no cost sensitive,0.203,0.064,0.936,0.797,0.235,0.203,0.570,0.149
-BOOKKEEPER,2637,0.647,0.688,0.312,ibk,smote,no selection,no cost sensitive,0.370,0.003,0.997,0.630,0.962,0.370,0.685,0.480
-BOOKKEEPER,3346,0.821,0.964,0.036,ibk,smote,no selection,no cost sensitive,0.938,0.154,0.846,0.063,0.120,0.938,0.892,0.181
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,smote,no selection,no cost sensitive,0.023,0.000,1.000,0.977,1.000,0.023,0.908,0.033
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,smote,no selection,no cost sensitive,0.667,0.190,0.810,0.333,0.016,0.667,0.761,0.023
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,smote,no selection,no cost sensitive,0.153,0.025,0.975,0.847,0.375,0.153,0.736,0.175
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,smote,no selection,no cost sensitive,0.170,0.000,1.000,0.830,1.000,0.170,0.910,0.250
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,smote,no selection,no cost sensitive,0.688,0.069,0.931,0.313,0.183,0.688,0.952,0.264
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.309,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,smote,no selection,no cost sensitive,0.015,0.003,0.997,0.985,0.667,0.015,0.881,0.018
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,smote,no selection,no cost sensitive,0.667,0.217,0.783,0.333,0.014,0.667,0.677,0.019
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,smote,no selection,no cost sensitive,0.542,0.130,0.870,0.458,0.288,0.542,0.714,0.295
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,smote,no selection,no cost sensitive,0.504,0.061,0.939,0.496,0.660,0.504,0.833,0.487
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,smote,no selection,no cost sensitive,1.000,0.206,0.794,0.000,0.098,1.000,0.931,0.145
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.503,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,smote,no selection,no cost sensitive,0.659,0.000,1.000,0.341,1.000,0.659,0.822,0.739
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,smote,no selection,no cost sensitive,0.667,0.220,0.780,0.333,0.014,0.667,0.723,0.019
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,smote,no selection,no cost sensitive,0.254,0.070,0.930,0.746,0.259,0.254,0.592,0.185
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,smote,no selection,no cost sensitive,0.385,0.005,0.995,0.615,0.945,0.385,0.691,0.491
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,smote,no selection,no cost sensitive,0.938,0.157,0.843,0.063,0.118,0.938,0.890,0.178
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.924,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.770,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.736,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.917,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.940,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.309,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,smote,no selection,sensitive learning,0.015,0.003,0.997,0.985,0.667,0.015,0.854,0.018
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,smote,no selection,sensitive learning,0.667,0.221,0.779,0.333,0.014,0.667,0.687,0.018
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,smote,no selection,sensitive learning,0.390,0.107,0.893,0.610,0.261,0.390,0.671,0.232
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,smote,no selection,sensitive learning,0.267,0.056,0.944,0.733,0.529,0.267,0.692,0.260
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,smote,no selection,sensitive learning,0.875,0.241,0.759,0.125,0.075,0.875,0.889,0.102
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.503,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,smote,no selection,sensitive learning,0.659,0.000,1.000,0.341,1.000,0.659,0.822,0.739
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,smote,no selection,sensitive learning,0.667,0.220,0.780,0.333,0.014,0.667,0.723,0.019
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,smote,no selection,sensitive learning,0.254,0.070,0.930,0.746,0.259,0.254,0.592,0.185
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,smote,no selection,sensitive learning,0.385,0.005,0.995,0.615,0.945,0.385,0.691,0.491
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,smote,no selection,sensitive learning,0.938,0.157,0.843,0.063,0.118,0.938,0.890,0.178
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,smote,no selection,sensitive threshold,0.000,0.003,0.997,1.000,0.000,0.000,0.499,-0.004
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,smote,no selection,sensitive threshold,0.000,0.041,0.959,1.000,0.000,0.000,0.480,-0.008
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,smote,no selection,sensitive threshold,0.085,0.010,0.990,0.915,0.455,0.085,0.537,0.118
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,smote,no selection,sensitive threshold,0.059,0.002,0.998,0.941,0.889,0.059,0.529,0.089
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,smote,no selection,sensitive threshold,0.313,0.022,0.978,0.688,0.238,0.313,0.645,0.252
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,smote,no selection,sensitive threshold,0.659,0.000,1.000,0.341,1.000,0.659,0.830,0.739
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,smote,no selection,sensitive threshold,0.667,0.220,0.780,0.333,0.014,0.667,0.723,0.019
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,smote,no selection,sensitive threshold,0.254,0.070,0.930,0.746,0.259,0.254,0.592,0.185
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,smote,no selection,sensitive threshold,0.385,0.005,0.995,0.615,0.945,0.385,0.690,0.491
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,smote,no selection,sensitive threshold,0.938,0.157,0.843,0.063,0.118,0.938,0.890,0.178
 BOOKKEEPER,344,0.084,0.000,1.000,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
 BOOKKEEPER,836,0.205,0.441,0.559,random forest,no sampling,best first,no cost sensitive,0.205,0.000,1.000,0.795,1.000,0.205,0.876,0.273
 BOOKKEEPER,1328,0.326,0.987,0.013,random forest,no sampling,best first,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.672,0.032
@@ -89,57 +233,201 @@ BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,best first,no cost sensitive,0
 BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,best first,no cost sensitive,0.305,0.070,0.930,0.695,0.295,0.305,0.712,0.231
 BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,best first,no cost sensitive,0.281,0.014,0.986,0.719,0.826,0.281,0.817,0.358
 BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,best first,no cost sensitive,0.875,0.078,0.922,0.125,0.200,0.875,0.926,0.301
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.901,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.786,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.670,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.879,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.923,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,no sampling,best first,sensitive learning,0.068,0.008,0.992,0.932,0.750,0.068,0.865,0.084
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,no sampling,best first,sensitive learning,0.333,0.100,0.900,0.667,0.015,0.333,0.716,0.021
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,no sampling,best first,sensitive learning,0.305,0.125,0.875,0.695,0.191,0.305,0.626,0.142
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,no sampling,best first,sensitive learning,0.178,0.082,0.918,0.822,0.338,0.178,0.662,0.117
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,no sampling,best first,sensitive learning,0.625,0.280,0.720,0.375,0.048,0.625,0.700,0.050
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,no sampling,best first,sensitive learning,0.629,0.000,1.000,0.371,1.000,0.629,0.814,0.713
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,best first,sensitive learning,0.667,0.168,0.832,0.333,0.018,0.667,0.788,0.027
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,best first,sensitive learning,0.305,0.070,0.930,0.695,0.295,0.305,0.712,0.231
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,best first,sensitive learning,0.267,0.014,0.986,0.733,0.818,0.267,0.817,0.340
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,best first,sensitive learning,0.813,0.073,0.927,0.188,0.200,0.813,0.926,0.296
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,no sampling,best first,sensitive threshold,0.023,0.003,0.997,0.977,0.750,0.023,0.510,0.029
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,no sampling,best first,sensitive threshold,0.000,0.017,0.983,1.000,0.000,0.000,0.491,-0.007
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,no sampling,best first,sensitive threshold,0.000,0.005,0.995,1.000,0.000,0.000,0.498,-0.009
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,no sampling,best first,sensitive threshold,0.030,0.002,0.998,0.970,0.800,0.030,0.514,0.044
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,no sampling,best first,sensitive threshold,0.000,0.007,0.993,1.000,0.000,0.000,0.496,-0.011
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,no sampling,best first,sensitive threshold,0.629,0.000,1.000,0.371,1.000,0.629,0.814,0.713
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,no sampling,best first,sensitive threshold,0.667,0.168,0.832,0.333,0.018,0.667,0.749,0.027
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,no sampling,best first,sensitive threshold,0.305,0.070,0.930,0.695,0.295,0.305,0.617,0.231
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,no sampling,best first,sensitive threshold,0.267,0.014,0.986,0.733,0.818,0.267,0.626,0.340
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,no sampling,best first,sensitive threshold,0.813,0.073,0.927,0.188,0.200,0.813,0.870,0.296
 BOOKKEEPER,344,0.084,0.000,1.000,random forest,oversampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,random forest,oversampling,best first,no cost sensitive,0.205,0.000,1.000,0.795,1.000,0.205,0.876,0.273
-BOOKKEEPER,1328,0.326,0.987,0.013,random forest,oversampling,best first,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.672,0.032
-BOOKKEEPER,1968,0.483,0.802,0.198,random forest,oversampling,best first,no cost sensitive,0.051,0.015,0.985,0.949,0.250,0.051,0.672,0.056
-BOOKKEEPER,2637,0.647,0.688,0.312,random forest,oversampling,best first,no cost sensitive,0.037,0.000,1.000,0.963,1.000,0.037,0.883,0.059
-BOOKKEEPER,3346,0.821,0.964,0.036,random forest,oversampling,best first,no cost sensitive,0.500,0.036,0.964,0.500,0.235,0.500,0.929,0.299
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,oversampling,best first,no cost sensitive,0.826,0.206,0.794,0.174,0.596,0.826,0.911,0.553
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,oversampling,best first,no cost sensitive,0.667,0.482,0.518,0.333,0.006,0.667,0.739,0.004
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,oversampling,best first,no cost sensitive,0.627,0.303,0.697,0.373,0.167,0.627,0.716,0.144
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,oversampling,best first,no cost sensitive,0.726,0.101,0.899,0.274,0.628,0.726,0.866,0.590
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,oversampling,best first,no cost sensitive,1.000,0.297,0.703,0.000,0.070,1.000,0.920,0.094
 BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,oversampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,oversampling,best first,no cost sensitive,0.152,0.008,0.992,0.848,0.870,0.152,0.887,0.194
-BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,oversampling,best first,no cost sensitive,0.667,0.174,0.826,0.333,0.018,0.667,0.723,0.026
-BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,oversampling,best first,no cost sensitive,0.559,0.192,0.808,0.441,0.220,0.559,0.703,0.217
-BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,oversampling,best first,no cost sensitive,0.578,0.127,0.873,0.422,0.517,0.578,0.806,0.431
-BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,oversampling,best first,no cost sensitive,0.875,0.300,0.700,0.125,0.061,0.875,0.860,0.077
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,oversampling,best first,no cost sensitive,0.712,0.008,0.992,0.288,0.969,0.712,0.922,0.768
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,oversampling,best first,no cost sensitive,0.333,0.185,0.815,0.667,0.008,0.333,0.759,0.007
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,oversampling,best first,no cost sensitive,0.525,0.143,0.857,0.475,0.263,0.525,0.721,0.264
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,oversampling,best first,no cost sensitive,0.711,0.077,0.923,0.289,0.686,0.711,0.866,0.626
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,oversampling,best first,no cost sensitive,1.000,0.232,0.768,0.000,0.088,1.000,0.890,0.126
 BOOKKEEPER,344,0.084,0.000,1.000,ibk,oversampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,ibk,oversampling,best first,no cost sensitive,0.629,0.000,1.000,0.371,1.000,0.629,0.814,0.713
-BOOKKEEPER,1328,0.326,0.987,0.013,ibk,oversampling,best first,no cost sensitive,0.667,0.168,0.832,0.333,0.018,0.667,0.788,0.027
-BOOKKEEPER,1968,0.483,0.802,0.198,ibk,oversampling,best first,no cost sensitive,0.305,0.070,0.930,0.695,0.295,0.305,0.712,0.231
-BOOKKEEPER,2637,0.647,0.688,0.312,ibk,oversampling,best first,no cost sensitive,0.281,0.014,0.986,0.719,0.826,0.281,0.817,0.358
-BOOKKEEPER,3346,0.821,0.964,0.036,ibk,oversampling,best first,no cost sensitive,0.875,0.078,0.922,0.125,0.200,0.875,0.926,0.301
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,oversampling,best first,no cost sensitive,0.689,0.019,0.981,0.311,0.929,0.689,0.878,0.729
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,oversampling,best first,no cost sensitive,0.667,0.421,0.579,0.333,0.007,0.667,0.543,0.005
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,oversampling,best first,no cost sensitive,0.492,0.187,0.813,0.508,0.203,0.492,0.718,0.185
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,oversampling,best first,no cost sensitive,0.541,0.094,0.906,0.459,0.575,0.541,0.821,0.457
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,oversampling,best first,no cost sensitive,0.938,0.213,0.787,0.063,0.090,0.938,0.922,0.129
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,oversampling,best first,sensitive learning,0.227,0.000,1.000,0.773,1.000,0.227,0.909,0.301
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,oversampling,best first,sensitive learning,0.000,0.093,0.907,1.000,0.000,0.000,0.717,-0.009
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,oversampling,best first,sensitive learning,0.119,0.030,0.970,0.881,0.280,0.119,0.715,0.120
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,oversampling,best first,sensitive learning,0.193,0.005,0.995,0.807,0.897,0.193,0.906,0.268
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,oversampling,best first,sensitive learning,0.313,0.038,0.962,0.688,0.156,0.313,0.922,0.185
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,oversampling,best first,sensitive learning,0.583,0.050,0.950,0.417,0.811,0.583,0.863,0.585
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,oversampling,best first,sensitive learning,0.333,0.218,0.782,0.667,0.007,0.333,0.727,0.005
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,oversampling,best first,sensitive learning,0.508,0.193,0.807,0.492,0.203,0.508,0.701,0.187
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,oversampling,best first,sensitive learning,0.652,0.181,0.819,0.348,0.458,0.652,0.786,0.405
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,oversampling,best first,sensitive learning,0.938,0.361,0.639,0.063,0.055,0.938,0.800,0.065
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,oversampling,best first,sensitive learning,0.689,0.011,0.989,0.311,0.958,0.689,0.878,0.744
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,oversampling,best first,sensitive learning,0.667,0.411,0.589,0.333,0.008,0.667,0.543,0.006
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,oversampling,best first,sensitive learning,0.424,0.118,0.882,0.576,0.258,0.424,0.718,0.237
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,oversampling,best first,sensitive learning,0.467,0.035,0.965,0.533,0.759,0.467,0.821,0.506
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,oversampling,best first,sensitive learning,0.875,0.125,0.875,0.125,0.136,0.875,0.921,0.205
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,oversampling,best first,sensitive threshold,0.102,0.030,0.970,0.898,0.250,0.102,0.536,0.099
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,oversampling,best first,sensitive threshold,0.053,0.003,0.997,0.947,0.875,0.053,0.525,0.072
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,oversampling,best first,sensitive threshold,0.000,0.019,0.981,1.000,0.000,0.000,0.491,-0.008
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,oversampling,best first,sensitive threshold,0.169,0.039,0.961,0.831,0.294,0.169,0.565,0.161
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,oversampling,best first,sensitive threshold,0.111,0.003,0.997,0.889,0.882,0.111,0.554,0.162
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,oversampling,best first,sensitive threshold,0.125,0.024,0.976,0.875,0.105,0.125,0.551,0.093
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,oversampling,best first,sensitive threshold,0.689,0.011,0.989,0.311,0.958,0.689,0.839,0.744
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,oversampling,best first,sensitive threshold,0.667,0.411,0.589,0.333,0.008,0.667,0.628,0.006
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,oversampling,best first,sensitive threshold,0.424,0.115,0.885,0.576,0.263,0.424,0.654,0.242
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,oversampling,best first,sensitive threshold,0.459,0.035,0.965,0.541,0.756,0.459,0.712,0.499
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,oversampling,best first,sensitive threshold,0.875,0.122,0.878,0.125,0.139,0.875,0.877,0.209
 BOOKKEEPER,344,0.084,0.000,1.000,random forest,undersampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,random forest,undersampling,best first,no cost sensitive,0.205,0.000,1.000,0.795,1.000,0.205,0.876,0.273
-BOOKKEEPER,1328,0.326,0.987,0.013,random forest,undersampling,best first,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.672,0.032
-BOOKKEEPER,1968,0.483,0.802,0.198,random forest,undersampling,best first,no cost sensitive,0.051,0.015,0.985,0.949,0.250,0.051,0.672,0.056
-BOOKKEEPER,2637,0.647,0.688,0.312,random forest,undersampling,best first,no cost sensitive,0.037,0.000,1.000,0.963,1.000,0.037,0.883,0.059
-BOOKKEEPER,3346,0.821,0.964,0.036,random forest,undersampling,best first,no cost sensitive,0.500,0.036,0.964,0.500,0.235,0.500,0.929,0.299
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,undersampling,best first,no cost sensitive,0.924,0.781,0.219,0.076,0.303,0.924,0.881,0.087
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,undersampling,best first,no cost sensitive,0.667,0.741,0.259,0.333,0.004,0.667,0.639,-0.001
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,undersampling,best first,no cost sensitive,0.864,0.738,0.262,0.136,0.102,0.864,0.731,0.029
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,undersampling,best first,no cost sensitive,0.874,0.341,0.659,0.126,0.376,0.874,0.863,0.353
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,undersampling,best first,no cost sensitive,1.000,0.623,0.377,0.000,0.035,1.000,0.889,0.026
 BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,undersampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,undersampling,best first,no cost sensitive,0.152,0.008,0.992,0.848,0.870,0.152,0.887,0.194
-BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,undersampling,best first,no cost sensitive,0.667,0.174,0.826,0.333,0.018,0.667,0.723,0.026
-BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,undersampling,best first,no cost sensitive,0.559,0.192,0.808,0.441,0.220,0.559,0.703,0.217
-BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,undersampling,best first,no cost sensitive,0.578,0.127,0.873,0.422,0.517,0.578,0.806,0.431
-BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,undersampling,best first,no cost sensitive,0.875,0.300,0.700,0.125,0.061,0.875,0.860,0.077
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,undersampling,best first,no cost sensitive,0.197,0.028,0.972,0.803,0.722,0.197,0.833,0.220
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,undersampling,best first,no cost sensitive,0.000,0.121,0.879,1.000,0.000,0.000,0.642,-0.009
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,undersampling,best first,no cost sensitive,0.356,0.089,0.911,0.644,0.280,0.356,0.716,0.238
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,undersampling,best first,no cost sensitive,0.333,0.016,0.984,0.667,0.833,0.333,0.846,0.412
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,undersampling,best first,no cost sensitive,0.438,0.144,0.856,0.563,0.064,0.438,0.816,0.076
 BOOKKEEPER,344,0.084,0.000,1.000,ibk,undersampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,ibk,undersampling,best first,no cost sensitive,0.629,0.000,1.000,0.371,1.000,0.629,0.814,0.713
-BOOKKEEPER,1328,0.326,0.987,0.013,ibk,undersampling,best first,no cost sensitive,0.667,0.168,0.832,0.333,0.018,0.667,0.788,0.027
-BOOKKEEPER,1968,0.483,0.802,0.198,ibk,undersampling,best first,no cost sensitive,0.305,0.070,0.930,0.695,0.295,0.305,0.712,0.231
-BOOKKEEPER,2637,0.647,0.688,0.312,ibk,undersampling,best first,no cost sensitive,0.281,0.014,0.986,0.719,0.826,0.281,0.817,0.358
-BOOKKEEPER,3346,0.821,0.964,0.036,ibk,undersampling,best first,no cost sensitive,0.875,0.078,0.922,0.125,0.200,0.875,0.926,0.301
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,undersampling,best first,no cost sensitive,0.803,0.158,0.842,0.197,0.650,0.803,0.826,0.600
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,undersampling,best first,no cost sensitive,0.667,0.529,0.471,0.333,0.006,0.667,0.573,0.002
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,undersampling,best first,no cost sensitive,0.695,0.346,0.654,0.305,0.163,0.695,0.684,0.141
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,undersampling,best first,no cost sensitive,0.807,0.293,0.707,0.193,0.394,0.807,0.774,0.367
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,undersampling,best first,no cost sensitive,1.000,0.319,0.681,0.000,0.066,1.000,0.845,0.085
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.900,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.603,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.721,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.879,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,undersampling,best first,sensitive learning,0.063,0.001,0.999,0.938,0.500,0.063,0.896,0.107
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,undersampling,best first,sensitive learning,0.197,0.028,0.972,0.803,0.722,0.197,0.711,0.220
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,undersampling,best first,sensitive learning,0.000,0.089,0.911,1.000,0.000,0.000,0.534,-0.009
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,undersampling,best first,sensitive learning,0.271,0.084,0.916,0.729,0.239,0.271,0.702,0.177
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,undersampling,best first,sensitive learning,0.215,0.017,0.983,0.785,0.744,0.215,0.719,0.271
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,undersampling,best first,sensitive learning,0.438,0.130,0.870,0.563,0.070,0.438,0.664,0.086
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,undersampling,best first,sensitive learning,0.803,0.158,0.842,0.197,0.650,0.803,0.826,0.600
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,undersampling,best first,sensitive learning,0.667,0.518,0.482,0.333,0.006,0.667,0.573,0.003
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,undersampling,best first,sensitive learning,0.695,0.336,0.664,0.305,0.167,0.695,0.684,0.148
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,undersampling,best first,sensitive learning,0.807,0.275,0.725,0.193,0.408,0.807,0.774,0.387
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,undersampling,best first,sensitive learning,1.000,0.293,0.707,0.000,0.071,1.000,0.845,0.096
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,undersampling,best first,sensitive threshold,0.114,0.014,0.986,0.886,0.750,0.114,0.550,0.136
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,undersampling,best first,sensitive threshold,0.000,0.047,0.953,1.000,0.000,0.000,0.476,-0.009
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,undersampling,best first,sensitive threshold,0.153,0.052,0.948,0.847,0.220,0.153,0.550,0.116
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,undersampling,best first,sensitive threshold,0.052,0.002,0.998,0.948,0.875,0.052,0.525,0.078
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,undersampling,best first,sensitive threshold,0.188,0.059,0.941,0.813,0.067,0.188,0.564,0.068
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,undersampling,best first,sensitive threshold,0.803,0.158,0.842,0.197,0.650,0.803,0.822,0.600
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,undersampling,best first,sensitive threshold,0.667,0.518,0.482,0.333,0.006,0.667,0.574,0.003
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,undersampling,best first,sensitive threshold,0.695,0.336,0.664,0.305,0.167,0.695,0.679,0.148
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,undersampling,best first,sensitive threshold,0.807,0.275,0.725,0.193,0.408,0.807,0.766,0.387
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,undersampling,best first,sensitive threshold,1.000,0.293,0.707,0.000,0.071,1.000,0.854,0.096
 BOOKKEEPER,344,0.084,0.000,1.000,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,random forest,smote,best first,no cost sensitive,0.205,0.000,1.000,0.795,1.000,0.205,0.876,0.273
-BOOKKEEPER,1328,0.326,0.987,0.013,random forest,smote,best first,no cost sensitive,0.667,0.146,0.854,0.333,0.021,0.667,0.672,0.032
-BOOKKEEPER,1968,0.483,0.802,0.198,random forest,smote,best first,no cost sensitive,0.051,0.015,0.985,0.949,0.250,0.051,0.672,0.056
-BOOKKEEPER,2637,0.647,0.688,0.312,random forest,smote,best first,no cost sensitive,0.037,0.000,1.000,0.963,1.000,0.037,0.883,0.059
-BOOKKEEPER,3346,0.821,0.964,0.036,random forest,smote,best first,no cost sensitive,0.500,0.036,0.964,0.500,0.235,0.500,0.929,0.299
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,smote,best first,no cost sensitive,0.455,0.000,1.000,0.545,1.000,0.455,0.871,0.549
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,smote,best first,no cost sensitive,0.667,0.166,0.834,0.333,0.019,0.667,0.682,0.027
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,smote,best first,no cost sensitive,0.424,0.082,0.918,0.576,0.333,0.424,0.687,0.304
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,smote,best first,no cost sensitive,0.267,0.003,0.997,0.733,0.947,0.267,0.880,0.363
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,smote,best first,no cost sensitive,0.750,0.097,0.903,0.250,0.148,0.750,0.934,0.219
 BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,smote,best first,no cost sensitive,0.152,0.008,0.992,0.848,0.870,0.152,0.887,0.194
-BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,smote,best first,no cost sensitive,0.667,0.174,0.826,0.333,0.018,0.667,0.723,0.026
-BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,smote,best first,no cost sensitive,0.559,0.192,0.808,0.441,0.220,0.559,0.703,0.217
-BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,smote,best first,no cost sensitive,0.578,0.127,0.873,0.422,0.517,0.578,0.806,0.431
-BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,smote,best first,no cost sensitive,0.875,0.300,0.700,0.125,0.061,0.875,0.860,0.077
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,smote,best first,no cost sensitive,0.250,0.008,0.992,0.750,0.917,0.250,0.896,0.314
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,smote,best first,no cost sensitive,0.667,0.184,0.816,0.333,0.017,0.667,0.689,0.024
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,smote,best first,no cost sensitive,0.576,0.197,0.803,0.424,0.221,0.576,0.712,0.220
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,smote,best first,no cost sensitive,0.519,0.113,0.887,0.481,0.519,0.519,0.827,0.405
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,smote,best first,no cost sensitive,0.813,0.283,0.717,0.188,0.060,0.813,0.874,0.075
 BOOKKEEPER,344,0.084,0.000,1.000,ibk,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
-BOOKKEEPER,836,0.205,0.441,0.559,ibk,smote,best first,no cost sensitive,0.629,0.000,1.000,0.371,1.000,0.629,0.814,0.713
-BOOKKEEPER,1328,0.326,0.987,0.013,ibk,smote,best first,no cost sensitive,0.667,0.168,0.832,0.333,0.018,0.667,0.788,0.027
-BOOKKEEPER,1968,0.483,0.802,0.198,ibk,smote,best first,no cost sensitive,0.305,0.070,0.930,0.695,0.295,0.305,0.712,0.231
-BOOKKEEPER,2637,0.647,0.688,0.312,ibk,smote,best first,no cost sensitive,0.281,0.014,0.986,0.719,0.826,0.281,0.817,0.358
-BOOKKEEPER,3346,0.821,0.964,0.036,ibk,smote,best first,no cost sensitive,0.875,0.078,0.922,0.125,0.200,0.875,0.926,0.301
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,smote,best first,no cost sensitive,0.636,0.000,1.000,0.364,1.000,0.636,0.818,0.719
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,smote,best first,no cost sensitive,0.667,0.184,0.816,0.333,0.017,0.667,0.780,0.024
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,smote,best first,no cost sensitive,0.339,0.082,0.918,0.661,0.286,0.339,0.714,0.237
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,smote,best first,no cost sensitive,0.304,0.019,0.981,0.696,0.788,0.304,0.817,0.372
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,smote,best first,no cost sensitive,0.875,0.088,0.912,0.125,0.182,0.875,0.926,0.275
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.904,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,smote,best first,sensitive learning,0.000,0.008,0.992,1.000,0.000,0.000,0.738,-0.006
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.695,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.898,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.927,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,smote,best first,sensitive learning,0.098,0.008,0.992,0.902,0.813,0.098,0.881,0.125
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,smote,best first,sensitive learning,0.333,0.127,0.873,0.667,0.012,0.333,0.691,0.015
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,smote,best first,sensitive learning,0.525,0.370,0.630,0.475,0.121,0.525,0.674,0.062
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,smote,best first,sensitive learning,0.281,0.084,0.916,0.719,0.442,0.281,0.697,0.230
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,smote,best first,sensitive learning,0.688,0.322,0.678,0.313,0.046,0.688,0.750,0.046
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,smote,best first,sensitive learning,0.636,0.000,1.000,0.364,1.000,0.636,0.818,0.719
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,smote,best first,sensitive learning,0.667,0.184,0.816,0.333,0.017,0.667,0.780,0.024
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,smote,best first,sensitive learning,0.339,0.082,0.918,0.661,0.286,0.339,0.714,0.237
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,smote,best first,sensitive learning,0.296,0.019,0.981,0.704,0.784,0.296,0.818,0.364
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,smote,best first,sensitive learning,0.875,0.081,0.919,0.125,0.194,0.875,0.926,0.293
+BOOKKEEPER,344,0.084,0.000,1.000,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1328,0.326,0.987,0.013,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,1968,0.483,0.802,0.198,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,2637,0.647,0.688,0.312,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,3346,0.821,0.964,0.036,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,344,0.084,0.000,1.000,naive bayes,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,naive bayes,smote,best first,sensitive threshold,0.030,0.003,0.997,0.970,0.800,0.030,0.514,0.040
+BOOKKEEPER,1328,0.326,0.987,0.013,naive bayes,smote,best first,sensitive threshold,0.000,0.024,0.976,1.000,0.000,0.000,0.488,-0.008
+BOOKKEEPER,1968,0.483,0.802,0.198,naive bayes,smote,best first,sensitive threshold,0.017,0.008,0.992,0.983,0.167,0.017,0.504,0.015
+BOOKKEEPER,2637,0.647,0.688,0.312,naive bayes,smote,best first,sensitive threshold,0.044,0.002,0.998,0.956,0.857,0.044,0.521,0.067
+BOOKKEEPER,3346,0.821,0.964,0.036,naive bayes,smote,best first,sensitive threshold,0.063,0.021,0.979,0.938,0.063,0.063,0.521,0.041
+BOOKKEEPER,344,0.084,0.000,1.000,ibk,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+BOOKKEEPER,836,0.205,0.441,0.559,ibk,smote,best first,sensitive threshold,0.636,0.000,1.000,0.364,1.000,0.636,0.818,0.719
+BOOKKEEPER,1328,0.326,0.987,0.013,ibk,smote,best first,sensitive threshold,0.667,0.184,0.816,0.333,0.017,0.667,0.741,0.024
+BOOKKEEPER,1968,0.483,0.802,0.198,ibk,smote,best first,sensitive threshold,0.339,0.082,0.918,0.661,0.286,0.339,0.629,0.237
+BOOKKEEPER,2637,0.647,0.688,0.312,ibk,smote,best first,sensitive threshold,0.296,0.019,0.981,0.704,0.784,0.296,0.639,0.364
+BOOKKEEPER,3346,0.821,0.964,0.036,ibk,smote,best first,sensitive threshold,0.875,0.081,0.919,0.125,0.194,0.875,0.897,0.293

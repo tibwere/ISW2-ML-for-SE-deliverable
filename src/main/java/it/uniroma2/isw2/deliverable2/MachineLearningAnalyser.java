@@ -25,7 +25,7 @@ public class MachineLearningAnalyser {
 	private Instances fullDataset;
 	private List<String> versionNames;
 	
-	public MachineLearningAnalyser(String projectName, String resultsFolder) throws IOException {
+	public MachineLearningAnalyser(String projectName, String resultsFolder) throws IOException {		
 		this.projectName = projectName;
 		this.resultsFolder = resultsFolder;
 		this.fullDataset = this.loadCSV(new File(String.format("%s%s_all_metrics.csv", this.resultsFolder, this.projectName)));
@@ -57,7 +57,6 @@ public class MachineLearningAnalyser {
 			
 			actualRun.setupClassIndexes();
 			actualRun.initializeResults(this.fullDataset.size());
-			actualRun.applyFeatureSelection(profile.getFeatureSelectionTechnique());
 			actualRun.evaluate(profile);	
 
 			LOGGER.log(Level.INFO, "New result added: {0}", actualRun.getResults());

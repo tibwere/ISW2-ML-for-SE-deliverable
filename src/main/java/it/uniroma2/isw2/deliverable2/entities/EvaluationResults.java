@@ -4,8 +4,8 @@ import weka.classifiers.Evaluation;
 
 public class EvaluationResults {
 	
-	public static final String CSV_HEADER = "dataset,#TrainingRelease,%training,%Defective in training,%Defective in testing,"
-			+ "classifier,balancing,Feature Selection,Sensitivity,"
+	public static final String CSV_HEADER = "Dataset,#TrainingRelease,%Training,%Defective in training,%Defective in testing,"
+			+ "Classifier,Balancing,Feature Selection,Sensitivity,"
 			+ "TP,FP,TN,FN,Precision,Recall,AUC,Kappa\n";
 	
 	
