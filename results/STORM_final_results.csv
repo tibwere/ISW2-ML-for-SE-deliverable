@@ -1,0 +1,937 @@
+Dataset,#TrainingRelease,%Training,%Defective in training,%Defective in testing,Classifier,Balancing,Feature Selection,Sensitivity,TP,FP,TN,FN,Precision,Recall,AUC,Kappa
+STORM,878,0.033,0.000,0.000,random forest,no sampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.809,0.000
+STORM,4505,0.169,0.243,0.757,random forest,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.932,0.000
+STORM,5988,0.225,0.558,0.442,random forest,no sampling,no selection,no cost sensitive,0.017,0.000,1.000,0.983,1.000,0.017,0.993,0.027
+STORM,7656,0.288,0.986,0.014,random forest,no sampling,no selection,no cost sensitive,0.091,0.056,0.944,0.909,0.011,0.091,0.831,0.007
+STORM,9324,0.350,0.986,0.014,random forest,no sampling,no selection,no cost sensitive,0.273,0.008,0.992,0.727,0.143,0.273,0.948,0.182
+STORM,11640,0.437,0.983,0.017,random forest,no sampling,no selection,no cost sensitive,0.071,0.002,0.998,0.929,0.200,0.071,0.710,0.102
+STORM,13961,0.524,0.821,0.179,random forest,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.722,0.000
+STORM,16282,0.612,0.768,0.232,random forest,no sampling,no selection,no cost sensitive,0.030,0.000,1.000,0.970,1.000,0.030,0.953,0.051
+STORM,18732,0.704,0.795,0.205,random forest,no sampling,no selection,no cost sensitive,0.015,0.000,1.000,0.985,1.000,0.015,1.000,0.025
+STORM,21219,0.797,0.830,0.170,random forest,no sampling,no selection,no cost sensitive,0.074,0.000,1.000,0.926,0.962,0.074,1.000,0.120
+STORM,23712,0.891,0.832,0.168,random forest,no sampling,no selection,no cost sensitive,0.328,0.000,1.000,0.672,1.000,0.328,0.989,0.457
+STORM,878,0.033,0.000,0.000,naive bayes,no sampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.136,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,no sampling,no selection,no cost sensitive,0.010,0.000,1.000,0.990,1.000,0.010,0.688,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,no sampling,no selection,no cost sensitive,0.063,0.014,0.986,0.937,0.568,0.063,0.895,0.071
+STORM,5988,0.225,0.558,0.442,naive bayes,no sampling,no selection,no cost sensitive,0.166,0.064,0.936,0.834,0.408,0.166,0.837,0.130
+STORM,7656,0.288,0.986,0.014,naive bayes,no sampling,no selection,no cost sensitive,0.091,0.013,0.987,0.909,0.045,0.091,0.772,0.052
+STORM,9324,0.350,0.986,0.014,naive bayes,no sampling,no selection,no cost sensitive,0.636,0.223,0.777,0.364,0.013,0.636,0.815,0.017
+STORM,11640,0.437,0.983,0.017,naive bayes,no sampling,no selection,no cost sensitive,0.071,0.004,0.996,0.929,0.091,0.071,0.746,0.075
+STORM,13961,0.524,0.821,0.179,naive bayes,no sampling,no selection,no cost sensitive,0.006,0.001,0.999,0.994,0.250,0.006,0.801,0.008
+STORM,16282,0.612,0.768,0.232,naive bayes,no sampling,no selection,no cost sensitive,0.436,0.002,0.998,0.564,0.971,0.436,0.991,0.569
+STORM,18732,0.704,0.795,0.205,naive bayes,no sampling,no selection,no cost sensitive,0.343,0.001,0.999,0.657,0.975,0.343,0.983,0.470
+STORM,21219,0.797,0.830,0.170,naive bayes,no sampling,no selection,no cost sensitive,0.109,0.000,1.000,0.891,0.974,0.109,0.984,0.174
+STORM,23712,0.891,0.832,0.168,naive bayes,no sampling,no selection,no cost sensitive,0.373,0.091,0.909,0.627,0.396,0.373,0.882,0.289
+STORM,878,0.033,0.000,0.000,ibk,no sampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,no sampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.496,0.000
+STORM,4505,0.169,0.243,0.757,ibk,no sampling,no selection,no cost sensitive,0.275,0.003,0.997,0.725,0.958,0.275,0.637,0.364
+STORM,5988,0.225,0.558,0.442,ibk,no sampling,no selection,no cost sensitive,0.783,0.045,0.955,0.217,0.823,0.783,0.869,0.751
+STORM,7656,0.288,0.986,0.014,ibk,no sampling,no selection,no cost sensitive,0.727,0.188,0.812,0.273,0.025,0.727,0.769,0.036
+STORM,9324,0.350,0.986,0.014,ibk,no sampling,no selection,no cost sensitive,0.727,0.135,0.865,0.273,0.025,0.727,0.831,0.040
+STORM,11640,0.437,0.983,0.017,ibk,no sampling,no selection,no cost sensitive,0.071,0.004,0.996,0.929,0.091,0.071,0.502,0.075
+STORM,13961,0.524,0.821,0.179,ibk,no sampling,no selection,no cost sensitive,0.072,0.000,1.000,0.928,0.929,0.072,0.536,0.124
+STORM,16282,0.612,0.768,0.232,ibk,no sampling,no selection,no cost sensitive,0.344,0.000,1.000,0.656,0.991,0.344,0.983,0.477
+STORM,18732,0.704,0.795,0.205,ibk,no sampling,no selection,no cost sensitive,0.754,0.000,1.000,0.246,0.996,0.754,0.942,0.840
+STORM,21219,0.797,0.830,0.170,ibk,no sampling,no selection,no cost sensitive,0.920,0.001,0.999,0.080,0.994,0.920,0.983,0.949
+STORM,23712,0.891,0.832,0.168,ibk,no sampling,no selection,no cost sensitive,0.786,0.035,0.965,0.214,0.784,0.786,0.881,0.751
+STORM,878,0.033,0.000,0.000,random forest,no sampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.684,0.000
+STORM,4505,0.169,0.243,0.757,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.927,0.000
+STORM,5988,0.225,0.558,0.442,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.988,0.000
+STORM,7656,0.288,0.986,0.014,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.824,0.000
+STORM,9324,0.350,0.986,0.014,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.927,0.000
+STORM,11640,0.437,0.983,0.017,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.723,0.000
+STORM,13961,0.524,0.821,0.179,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.722,0.000
+STORM,16282,0.612,0.768,0.232,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.955,0.000
+STORM,18732,0.704,0.795,0.205,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.997,0.000
+STORM,21219,0.797,0.830,0.170,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.999,0.000
+STORM,23712,0.891,0.832,0.168,random forest,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.991,0.000
+STORM,878,0.033,0.000,0.000,naive bayes,no sampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.136,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,no sampling,no selection,sensitive learning,0.010,0.000,1.000,0.990,1.000,0.010,0.687,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,no sampling,no selection,sensitive learning,0.063,0.013,0.987,0.937,0.583,0.063,0.889,0.073
+STORM,5988,0.225,0.558,0.442,naive bayes,no sampling,no selection,sensitive learning,0.157,0.063,0.937,0.843,0.399,0.157,0.821,0.121
+STORM,7656,0.288,0.986,0.014,naive bayes,no sampling,no selection,sensitive learning,0.091,0.013,0.987,0.909,0.045,0.091,0.731,0.052
+STORM,9324,0.350,0.986,0.014,naive bayes,no sampling,no selection,sensitive learning,0.545,0.225,0.775,0.455,0.011,0.545,0.801,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,no sampling,no selection,sensitive learning,0.071,0.003,0.997,0.929,0.111,0.071,0.774,0.083
+STORM,13961,0.524,0.821,0.179,naive bayes,no sampling,no selection,sensitive learning,0.006,0.001,0.999,0.994,0.250,0.006,0.834,0.008
+STORM,16282,0.612,0.768,0.232,naive bayes,no sampling,no selection,sensitive learning,0.413,0.002,0.998,0.587,0.969,0.413,0.987,0.545
+STORM,18732,0.704,0.795,0.205,naive bayes,no sampling,no selection,sensitive learning,0.320,0.001,0.999,0.680,0.973,0.320,0.968,0.444
+STORM,21219,0.797,0.830,0.170,naive bayes,no sampling,no selection,sensitive learning,0.098,0.000,1.000,0.902,0.971,0.098,0.965,0.157
+STORM,23712,0.891,0.832,0.168,naive bayes,no sampling,no selection,sensitive learning,0.343,0.099,0.901,0.657,0.357,0.343,0.863,0.248
+STORM,878,0.033,0.000,0.000,ibk,no sampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,no sampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.496,0.000
+STORM,4505,0.169,0.243,0.757,ibk,no sampling,no selection,sensitive learning,0.275,0.003,0.997,0.725,0.958,0.275,0.637,0.364
+STORM,5988,0.225,0.558,0.442,ibk,no sampling,no selection,sensitive learning,0.783,0.045,0.955,0.217,0.823,0.783,0.869,0.751
+STORM,7656,0.288,0.986,0.014,ibk,no sampling,no selection,sensitive learning,0.727,0.188,0.812,0.273,0.025,0.727,0.769,0.036
+STORM,9324,0.350,0.986,0.014,ibk,no sampling,no selection,sensitive learning,0.727,0.135,0.865,0.273,0.025,0.727,0.831,0.040
+STORM,11640,0.437,0.983,0.017,ibk,no sampling,no selection,sensitive learning,0.071,0.004,0.996,0.929,0.091,0.071,0.502,0.075
+STORM,13961,0.524,0.821,0.179,ibk,no sampling,no selection,sensitive learning,0.072,0.000,1.000,0.928,0.929,0.072,0.536,0.124
+STORM,16282,0.612,0.768,0.232,ibk,no sampling,no selection,sensitive learning,0.344,0.000,1.000,0.656,0.991,0.344,0.983,0.477
+STORM,18732,0.704,0.795,0.205,ibk,no sampling,no selection,sensitive learning,0.754,0.000,1.000,0.246,0.996,0.754,0.942,0.840
+STORM,21219,0.797,0.830,0.170,ibk,no sampling,no selection,sensitive learning,0.920,0.001,0.999,0.080,0.994,0.920,0.983,0.949
+STORM,23712,0.891,0.832,0.168,ibk,no sampling,no selection,sensitive learning,0.786,0.034,0.966,0.214,0.786,0.786,0.881,0.752
+STORM,878,0.033,0.000,0.000,random forest,no sampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,5988,0.225,0.558,0.442,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,7656,0.288,0.986,0.014,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,9324,0.350,0.986,0.014,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,11640,0.437,0.983,0.017,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,13961,0.524,0.821,0.179,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,16282,0.612,0.768,0.232,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,18732,0.704,0.795,0.205,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,random forest,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,878,0.033,0.000,0.000,naive bayes,no sampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,no sampling,no selection,sensitive threshold,0.010,0.000,1.000,0.990,1.000,0.010,0.505,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,no sampling,no selection,sensitive threshold,0.054,0.011,0.989,0.946,0.581,0.054,0.521,0.063
+STORM,5988,0.225,0.558,0.442,naive bayes,no sampling,no selection,sensitive threshold,0.129,0.049,0.951,0.871,0.409,0.129,0.540,0.106
+STORM,7656,0.288,0.986,0.014,naive bayes,no sampling,no selection,sensitive threshold,0.091,0.010,0.990,0.909,0.056,0.091,0.540,0.061
+STORM,9324,0.350,0.986,0.014,naive bayes,no sampling,no selection,sensitive threshold,0.455,0.178,0.822,0.545,0.012,0.455,0.638,0.014
+STORM,11640,0.437,0.983,0.017,naive bayes,no sampling,no selection,sensitive threshold,0.000,0.003,0.997,1.000,0.000,0.000,0.499,-0.004
+STORM,13961,0.524,0.821,0.179,naive bayes,no sampling,no selection,sensitive threshold,0.006,0.001,0.999,0.994,0.250,0.006,0.502,0.008
+STORM,16282,0.612,0.768,0.232,naive bayes,no sampling,no selection,sensitive threshold,0.167,0.001,0.999,0.833,0.962,0.167,0.583,0.258
+STORM,18732,0.704,0.795,0.205,naive bayes,no sampling,no selection,sensitive threshold,0.198,0.000,1.000,0.802,0.985,0.198,0.599,0.298
+STORM,21219,0.797,0.830,0.170,naive bayes,no sampling,no selection,sensitive threshold,0.059,0.000,1.000,0.941,0.952,0.059,0.529,0.097
+STORM,23712,0.891,0.832,0.168,naive bayes,no sampling,no selection,sensitive threshold,0.229,0.053,0.947,0.771,0.411,0.229,0.588,0.216
+STORM,878,0.033,0.000,0.000,ibk,no sampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,no sampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,ibk,no sampling,no selection,sensitive threshold,0.275,0.003,0.997,0.725,0.958,0.275,0.636,0.364
+STORM,5988,0.225,0.558,0.442,ibk,no sampling,no selection,sensitive threshold,0.783,0.045,0.955,0.217,0.823,0.783,0.869,0.751
+STORM,7656,0.288,0.986,0.014,ibk,no sampling,no selection,sensitive threshold,0.727,0.188,0.812,0.273,0.025,0.727,0.769,0.036
+STORM,9324,0.350,0.986,0.014,ibk,no sampling,no selection,sensitive threshold,0.727,0.135,0.865,0.273,0.025,0.727,0.796,0.040
+STORM,11640,0.437,0.983,0.017,ibk,no sampling,no selection,sensitive threshold,0.071,0.004,0.996,0.929,0.091,0.071,0.534,0.075
+STORM,13961,0.524,0.821,0.179,ibk,no sampling,no selection,sensitive threshold,0.072,0.000,1.000,0.928,0.929,0.072,0.536,0.124
+STORM,16282,0.612,0.768,0.232,ibk,no sampling,no selection,sensitive threshold,0.344,0.000,1.000,0.656,0.991,0.344,0.672,0.477
+STORM,18732,0.704,0.795,0.205,ibk,no sampling,no selection,sensitive threshold,0.754,0.000,1.000,0.246,0.996,0.754,0.877,0.840
+STORM,21219,0.797,0.830,0.170,ibk,no sampling,no selection,sensitive threshold,0.920,0.001,0.999,0.080,0.994,0.920,0.960,0.949
+STORM,23712,0.891,0.832,0.168,ibk,no sampling,no selection,sensitive threshold,0.786,0.034,0.966,0.214,0.786,0.786,0.876,0.752
+STORM,878,0.033,0.000,0.000,random forest,oversampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.716,0.000
+STORM,4505,0.169,0.243,0.757,random forest,oversampling,no selection,no cost sensitive,0.545,0.034,0.966,0.455,0.824,0.545,0.916,0.581
+STORM,5988,0.225,0.558,0.442,random forest,oversampling,no selection,no cost sensitive,0.946,0.108,0.892,0.054,0.698,0.946,0.977,0.741
+STORM,7656,0.288,0.986,0.014,random forest,oversampling,no selection,no cost sensitive,0.818,0.228,0.772,0.182,0.023,0.818,0.847,0.033
+STORM,9324,0.350,0.986,0.014,random forest,oversampling,no selection,no cost sensitive,1.000,0.352,0.648,0.000,0.013,1.000,0.923,0.017
+STORM,11640,0.437,0.983,0.017,random forest,oversampling,no selection,no cost sensitive,0.214,0.138,0.862,0.786,0.009,0.214,0.745,0.006
+STORM,13961,0.524,0.821,0.179,random forest,oversampling,no selection,no cost sensitive,0.089,0.056,0.944,0.911,0.118,0.089,0.736,0.037
+STORM,16282,0.612,0.768,0.232,random forest,oversampling,no selection,no cost sensitive,0.856,0.048,0.952,0.144,0.715,0.856,0.978,0.744
+STORM,18732,0.704,0.795,0.205,random forest,oversampling,no selection,no cost sensitive,0.991,0.017,0.983,0.009,0.901,0.991,0.999,0.934
+STORM,21219,0.797,0.830,0.170,random forest,oversampling,no selection,no cost sensitive,0.997,0.017,0.983,0.003,0.903,0.997,0.999,0.939
+STORM,23712,0.891,0.832,0.168,random forest,oversampling,no selection,no cost sensitive,0.993,0.151,0.849,0.007,0.513,0.993,0.985,0.604
+STORM,878,0.033,0.000,0.000,naive bayes,oversampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.137,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,oversampling,no selection,no cost sensitive,0.010,0.000,1.000,0.990,1.000,0.010,0.680,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,oversampling,no selection,no cost sensitive,0.069,0.017,0.983,0.931,0.548,0.069,0.904,0.076
+STORM,5988,0.225,0.558,0.442,naive bayes,oversampling,no selection,no cost sensitive,0.186,0.063,0.937,0.814,0.439,0.186,0.867,0.156
+STORM,7656,0.288,0.986,0.014,naive bayes,oversampling,no selection,no cost sensitive,0.182,0.016,0.984,0.818,0.071,0.182,0.810,0.094
+STORM,9324,0.350,0.986,0.014,naive bayes,oversampling,no selection,no cost sensitive,0.636,0.192,0.808,0.364,0.016,0.636,0.834,0.021
+STORM,11640,0.437,0.983,0.017,naive bayes,oversampling,no selection,no cost sensitive,0.071,0.010,0.990,0.929,0.040,0.071,0.744,0.044
+STORM,13961,0.524,0.821,0.179,naive bayes,oversampling,no selection,no cost sensitive,0.011,0.004,0.996,0.989,0.200,0.011,0.764,0.013
+STORM,16282,0.612,0.768,0.232,naive bayes,oversampling,no selection,no cost sensitive,0.331,0.001,0.999,0.669,0.971,0.331,0.989,0.460
+STORM,18732,0.704,0.795,0.205,naive bayes,oversampling,no selection,no cost sensitive,0.364,0.000,1.000,0.636,0.992,0.364,0.995,0.496
+STORM,21219,0.797,0.830,0.170,naive bayes,oversampling,no selection,no cost sensitive,0.180,0.000,1.000,0.820,0.984,0.180,0.997,0.275
+STORM,23712,0.891,0.832,0.168,naive bayes,oversampling,no selection,no cost sensitive,0.219,0.047,0.953,0.781,0.425,0.219,0.909,0.215
+STORM,878,0.033,0.000,0.000,ibk,oversampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.829,0.000
+STORM,3164,0.119,0.028,0.972,ibk,oversampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.482,0.000
+STORM,4505,0.169,0.243,0.757,ibk,oversampling,no selection,no cost sensitive,0.293,0.007,0.993,0.707,0.925,0.293,0.658,0.378
+STORM,5988,0.225,0.558,0.442,ibk,oversampling,no selection,no cost sensitive,0.806,0.055,0.945,0.194,0.794,0.806,0.867,0.746
+STORM,7656,0.288,0.986,0.014,ibk,oversampling,no selection,no cost sensitive,0.727,0.197,0.803,0.273,0.024,0.727,0.789,0.034
+STORM,9324,0.350,0.986,0.014,ibk,oversampling,no selection,no cost sensitive,0.909,0.178,0.822,0.091,0.024,0.909,0.898,0.037
+STORM,11640,0.437,0.983,0.017,ibk,oversampling,no selection,no cost sensitive,0.071,0.068,0.932,0.929,0.006,0.071,0.530,0.000
+STORM,13961,0.524,0.821,0.179,ibk,oversampling,no selection,no cost sensitive,0.089,0.023,0.977,0.911,0.242,0.089,0.542,0.092
+STORM,16282,0.612,0.768,0.232,ibk,oversampling,no selection,no cost sensitive,0.649,0.014,0.986,0.351,0.865,0.649,0.881,0.711
+STORM,18732,0.704,0.795,0.205,ibk,oversampling,no selection,no cost sensitive,0.908,0.005,0.995,0.092,0.965,0.908,0.966,0.926
+STORM,21219,0.797,0.830,0.170,ibk,oversampling,no selection,no cost sensitive,0.973,0.005,0.995,0.027,0.971,0.973,0.984,0.968
+STORM,23712,0.891,0.832,0.168,ibk,oversampling,no selection,no cost sensitive,0.813,0.035,0.965,0.187,0.790,0.813,0.885,0.769
+STORM,878,0.033,0.000,0.000,random forest,oversampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,oversampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,oversampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.725,0.000
+STORM,4505,0.169,0.243,0.757,random forest,oversampling,no selection,sensitive learning,0.216,0.000,1.000,0.784,1.000,0.216,0.932,0.299
+STORM,5988,0.225,0.558,0.442,random forest,oversampling,no selection,sensitive learning,0.351,0.000,1.000,0.649,1.000,0.351,0.994,0.461
+STORM,7656,0.288,0.986,0.014,random forest,oversampling,no selection,sensitive learning,0.273,0.132,0.868,0.727,0.014,0.273,0.825,0.013
+STORM,9324,0.350,0.986,0.014,random forest,oversampling,no selection,sensitive learning,0.727,0.070,0.930,0.273,0.047,0.727,0.946,0.080
+STORM,11640,0.437,0.983,0.017,random forest,oversampling,no selection,sensitive learning,0.071,0.017,0.983,0.929,0.024,0.071,0.719,0.028
+STORM,13961,0.524,0.821,0.179,random forest,oversampling,no selection,sensitive learning,0.050,0.005,0.995,0.950,0.474,0.050,0.702,0.077
+STORM,16282,0.612,0.768,0.232,random forest,oversampling,no selection,sensitive learning,0.157,0.004,0.996,0.843,0.857,0.157,0.956,0.236
+STORM,18732,0.704,0.795,0.205,random forest,oversampling,no selection,sensitive learning,0.296,0.000,1.000,0.704,1.000,0.296,0.997,0.421
+STORM,21219,0.797,0.830,0.170,random forest,oversampling,no selection,sensitive learning,0.749,0.001,0.999,0.251,0.988,0.749,0.999,0.832
+STORM,23712,0.891,0.832,0.168,random forest,oversampling,no selection,sensitive learning,0.321,0.000,1.000,0.679,0.992,0.321,0.989,0.448
+STORM,878,0.033,0.000,0.000,naive bayes,oversampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,oversampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.137,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,oversampling,no selection,sensitive learning,0.010,0.000,1.000,0.990,1.000,0.010,0.680,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,oversampling,no selection,sensitive learning,0.069,0.017,0.983,0.931,0.548,0.069,0.899,0.076
+STORM,5988,0.225,0.558,0.442,naive bayes,oversampling,no selection,sensitive learning,0.180,0.068,0.932,0.820,0.414,0.180,0.842,0.142
+STORM,7656,0.288,0.986,0.014,naive bayes,oversampling,no selection,sensitive learning,0.182,0.016,0.984,0.818,0.071,0.182,0.785,0.094
+STORM,9324,0.350,0.986,0.014,naive bayes,oversampling,no selection,sensitive learning,0.545,0.207,0.793,0.455,0.012,0.545,0.813,0.015
+STORM,11640,0.437,0.983,0.017,naive bayes,oversampling,no selection,sensitive learning,0.071,0.011,0.989,0.929,0.038,0.071,0.761,0.042
+STORM,13961,0.524,0.821,0.179,naive bayes,oversampling,no selection,sensitive learning,0.011,0.004,0.996,0.989,0.182,0.011,0.780,0.012
+STORM,16282,0.612,0.768,0.232,naive bayes,oversampling,no selection,sensitive learning,0.416,0.002,0.998,0.584,0.969,0.416,0.988,0.549
+STORM,18732,0.704,0.795,0.205,naive bayes,oversampling,no selection,sensitive learning,0.373,0.001,0.999,0.627,0.984,0.373,0.988,0.504
+STORM,21219,0.797,0.830,0.170,naive bayes,oversampling,no selection,sensitive learning,0.207,0.000,1.000,0.793,0.986,0.207,0.988,0.310
+STORM,23712,0.891,0.832,0.168,naive bayes,oversampling,no selection,sensitive learning,0.251,0.063,0.937,0.749,0.390,0.251,0.884,0.221
+STORM,878,0.033,0.000,0.000,ibk,oversampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,oversampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.829,0.000
+STORM,3164,0.119,0.028,0.972,ibk,oversampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.482,0.000
+STORM,4505,0.169,0.243,0.757,ibk,oversampling,no selection,sensitive learning,0.293,0.007,0.993,0.707,0.925,0.293,0.658,0.378
+STORM,5988,0.225,0.558,0.442,ibk,oversampling,no selection,sensitive learning,0.806,0.055,0.945,0.194,0.794,0.806,0.867,0.746
+STORM,7656,0.288,0.986,0.014,ibk,oversampling,no selection,sensitive learning,0.727,0.197,0.803,0.273,0.024,0.727,0.789,0.034
+STORM,9324,0.350,0.986,0.014,ibk,oversampling,no selection,sensitive learning,0.909,0.170,0.830,0.091,0.025,0.909,0.898,0.039
+STORM,11640,0.437,0.983,0.017,ibk,oversampling,no selection,sensitive learning,0.071,0.062,0.938,0.929,0.007,0.071,0.530,0.002
+STORM,13961,0.524,0.821,0.179,ibk,oversampling,no selection,sensitive learning,0.089,0.022,0.978,0.911,0.250,0.089,0.542,0.094
+STORM,16282,0.612,0.768,0.232,ibk,oversampling,no selection,sensitive learning,0.587,0.013,0.987,0.413,0.865,0.587,0.881,0.666
+STORM,18732,0.704,0.795,0.205,ibk,oversampling,no selection,sensitive learning,0.864,0.004,0.996,0.136,0.970,0.864,0.966,0.901
+STORM,21219,0.797,0.830,0.170,ibk,oversampling,no selection,sensitive learning,0.962,0.004,0.996,0.038,0.973,0.962,0.984,0.962
+STORM,23712,0.891,0.832,0.168,ibk,oversampling,no selection,sensitive learning,0.811,0.034,0.966,0.189,0.791,0.811,0.885,0.769
+STORM,878,0.033,0.000,0.000,random forest,oversampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,5988,0.225,0.558,0.442,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,7656,0.288,0.986,0.014,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,9324,0.350,0.986,0.014,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,11640,0.437,0.983,0.017,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,13961,0.524,0.821,0.179,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,16282,0.612,0.768,0.232,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,18732,0.704,0.795,0.205,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,random forest,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,878,0.033,0.000,0.000,naive bayes,oversampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,oversampling,no selection,sensitive threshold,0.010,0.000,1.000,0.990,1.000,0.010,0.505,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,oversampling,no selection,sensitive threshold,0.069,0.016,0.984,0.931,0.561,0.069,0.527,0.077
+STORM,5988,0.225,0.558,0.442,naive bayes,oversampling,no selection,sensitive threshold,0.146,0.057,0.943,0.854,0.405,0.146,0.544,0.116
+STORM,7656,0.288,0.986,0.014,naive bayes,oversampling,no selection,sensitive threshold,0.182,0.013,0.987,0.818,0.083,0.182,0.584,0.106
+STORM,9324,0.350,0.986,0.014,naive bayes,oversampling,no selection,sensitive threshold,0.455,0.151,0.849,0.545,0.014,0.455,0.652,0.019
+STORM,11640,0.437,0.983,0.017,naive bayes,oversampling,no selection,sensitive threshold,0.071,0.007,0.993,0.929,0.063,0.071,0.532,0.061
+STORM,13961,0.524,0.821,0.179,naive bayes,oversampling,no selection,sensitive threshold,0.011,0.003,0.997,0.989,0.222,0.011,0.504,0.014
+STORM,16282,0.612,0.768,0.232,naive bayes,oversampling,no selection,sensitive threshold,0.151,0.001,0.999,0.849,0.958,0.151,0.575,0.235
+STORM,18732,0.704,0.795,0.205,naive bayes,oversampling,no selection,sensitive threshold,0.222,0.000,1.000,0.778,1.000,0.222,0.611,0.330
+STORM,21219,0.797,0.830,0.170,naive bayes,oversampling,no selection,sensitive threshold,0.068,0.000,1.000,0.932,0.958,0.068,0.534,0.111
+STORM,23712,0.891,0.832,0.168,naive bayes,oversampling,no selection,sensitive threshold,0.152,0.039,0.961,0.848,0.384,0.152,0.556,0.151
+STORM,878,0.033,0.000,0.000,ibk,oversampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,oversampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,ibk,oversampling,no selection,sensitive threshold,0.293,0.007,0.993,0.707,0.925,0.293,0.643,0.378
+STORM,5988,0.225,0.558,0.442,ibk,oversampling,no selection,sensitive threshold,0.806,0.055,0.945,0.194,0.794,0.806,0.875,0.746
+STORM,7656,0.288,0.986,0.014,ibk,oversampling,no selection,sensitive threshold,0.727,0.197,0.803,0.273,0.024,0.727,0.765,0.034
+STORM,9324,0.350,0.986,0.014,ibk,oversampling,no selection,sensitive threshold,0.909,0.168,0.832,0.091,0.025,0.909,0.870,0.040
+STORM,11640,0.437,0.983,0.017,ibk,oversampling,no selection,sensitive threshold,0.071,0.061,0.939,0.929,0.007,0.071,0.505,0.002
+STORM,13961,0.524,0.821,0.179,ibk,oversampling,no selection,sensitive threshold,0.089,0.022,0.978,0.911,0.254,0.089,0.533,0.095
+STORM,16282,0.612,0.768,0.232,ibk,oversampling,no selection,sensitive threshold,0.584,0.013,0.987,0.416,0.864,0.584,0.785,0.663
+STORM,18732,0.704,0.795,0.205,ibk,oversampling,no selection,sensitive threshold,0.864,0.004,0.996,0.136,0.970,0.864,0.930,0.901
+STORM,21219,0.797,0.830,0.170,ibk,oversampling,no selection,sensitive threshold,0.962,0.004,0.996,0.038,0.973,0.962,0.979,0.962
+STORM,23712,0.891,0.832,0.168,ibk,oversampling,no selection,sensitive threshold,0.811,0.034,0.966,0.189,0.791,0.811,0.888,0.769
+STORM,878,0.033,0.000,0.000,random forest,undersampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,undersampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,undersampling,no selection,no cost sensitive,0.413,0.053,0.947,0.587,0.394,0.413,0.837,0.352
+STORM,4505,0.169,0.243,0.757,random forest,undersampling,no selection,no cost sensitive,0.844,0.146,0.854,0.156,0.627,0.844,0.915,0.622
+STORM,5988,0.225,0.558,0.442,random forest,undersampling,no selection,no cost sensitive,0.971,0.231,0.769,0.029,0.528,0.971,0.972,0.566
+STORM,7656,0.288,0.986,0.014,random forest,undersampling,no selection,no cost sensitive,0.909,0.343,0.657,0.091,0.017,0.909,0.839,0.021
+STORM,9324,0.350,0.986,0.014,random forest,undersampling,no selection,no cost sensitive,1.000,0.480,0.520,0.000,0.010,1.000,0.946,0.010
+STORM,11640,0.437,0.983,0.017,random forest,undersampling,no selection,no cost sensitive,0.571,0.380,0.620,0.429,0.009,0.571,0.668,0.006
+STORM,13961,0.524,0.821,0.179,random forest,undersampling,no selection,no cost sensitive,0.200,0.174,0.826,0.800,0.088,0.200,0.667,0.016
+STORM,16282,0.612,0.768,0.232,random forest,undersampling,no selection,no cost sensitive,0.908,0.323,0.677,0.092,0.286,0.908,0.893,0.303
+STORM,18732,0.704,0.795,0.205,random forest,undersampling,no selection,no cost sensitive,1.000,0.104,0.896,0.000,0.601,1.000,0.978,0.700
+STORM,21219,0.797,0.830,0.170,random forest,undersampling,no selection,no cost sensitive,1.000,0.102,0.898,0.000,0.607,1.000,0.991,0.706
+STORM,23712,0.891,0.832,0.168,random forest,undersampling,no selection,no cost sensitive,0.998,0.229,0.771,0.002,0.411,0.998,0.975,0.480
+STORM,878,0.033,0.000,0.000,naive bayes,undersampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,undersampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.136,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,undersampling,no selection,no cost sensitive,0.481,0.091,0.909,0.519,0.307,0.481,0.885,0.309
+STORM,4505,0.169,0.243,0.757,naive bayes,undersampling,no selection,no cost sensitive,0.108,0.018,0.982,0.892,0.632,0.108,0.898,0.127
+STORM,5988,0.225,0.558,0.442,naive bayes,undersampling,no selection,no cost sensitive,0.171,0.068,0.932,0.829,0.403,0.171,0.834,0.132
+STORM,7656,0.288,0.986,0.014,naive bayes,undersampling,no selection,no cost sensitive,0.182,0.026,0.974,0.818,0.044,0.182,0.795,0.061
+STORM,9324,0.350,0.986,0.014,naive bayes,undersampling,no selection,no cost sensitive,0.455,0.216,0.784,0.545,0.010,0.455,0.819,0.010
+STORM,11640,0.437,0.983,0.017,naive bayes,undersampling,no selection,no cost sensitive,0.071,0.008,0.992,0.929,0.050,0.071,0.741,0.052
+STORM,13961,0.524,0.821,0.179,naive bayes,undersampling,no selection,no cost sensitive,0.011,0.005,0.995,0.989,0.167,0.011,0.775,0.011
+STORM,16282,0.612,0.768,0.232,naive bayes,undersampling,no selection,no cost sensitive,0.200,0.013,0.987,0.800,0.693,0.200,0.961,0.270
+STORM,18732,0.704,0.795,0.205,naive bayes,undersampling,no selection,no cost sensitive,0.163,0.007,0.993,0.837,0.775,0.163,0.954,0.233
+STORM,21219,0.797,0.830,0.170,naive bayes,undersampling,no selection,no cost sensitive,0.089,0.000,1.000,0.911,0.968,0.089,0.982,0.143
+STORM,23712,0.891,0.832,0.168,naive bayes,undersampling,no selection,no cost sensitive,0.157,0.041,0.959,0.843,0.377,0.157,0.875,0.153
+STORM,878,0.033,0.000,0.000,ibk,undersampling,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,undersampling,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,undersampling,no selection,no cost sensitive,0.346,0.055,0.945,0.654,0.346,0.346,0.646,0.291
+STORM,4505,0.169,0.243,0.757,ibk,undersampling,no selection,no cost sensitive,0.784,0.103,0.897,0.216,0.689,0.784,0.841,0.650
+STORM,5988,0.225,0.558,0.442,ibk,undersampling,no selection,no cost sensitive,0.931,0.151,0.849,0.069,0.621,0.931,0.890,0.659
+STORM,7656,0.288,0.986,0.014,ibk,undersampling,no selection,no cost sensitive,0.909,0.274,0.726,0.091,0.022,0.909,0.815,0.030
+STORM,9324,0.350,0.986,0.014,ibk,undersampling,no selection,no cost sensitive,1.000,0.360,0.640,0.000,0.013,1.000,0.820,0.017
+STORM,11640,0.437,0.983,0.017,ibk,undersampling,no selection,no cost sensitive,0.500,0.281,0.719,0.500,0.011,0.500,0.567,0.009
+STORM,13961,0.524,0.821,0.179,ibk,undersampling,no selection,no cost sensitive,0.333,0.186,0.814,0.667,0.131,0.333,0.591,0.086
+STORM,16282,0.612,0.768,0.232,ibk,undersampling,no selection,no cost sensitive,0.859,0.280,0.720,0.141,0.304,0.859,0.798,0.324
+STORM,18732,0.704,0.795,0.205,ibk,undersampling,no selection,no cost sensitive,0.953,0.231,0.769,0.047,0.393,0.953,0.864,0.451
+STORM,21219,0.797,0.830,0.170,ibk,undersampling,no selection,no cost sensitive,0.994,0.197,0.803,0.006,0.442,0.994,0.897,0.522
+STORM,23712,0.891,0.832,0.168,ibk,undersampling,no selection,no cost sensitive,0.918,0.186,0.814,0.082,0.441,0.918,0.862,0.504
+STORM,878,0.033,0.000,0.000,random forest,undersampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.835,0.000
+STORM,4505,0.169,0.243,0.757,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.915,0.000
+STORM,5988,0.225,0.558,0.442,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.971,0.000
+STORM,7656,0.288,0.986,0.014,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.847,0.000
+STORM,9324,0.350,0.986,0.014,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.946,0.000
+STORM,11640,0.437,0.983,0.017,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.657,0.000
+STORM,13961,0.524,0.821,0.179,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.678,0.000
+STORM,16282,0.612,0.768,0.232,random forest,undersampling,no selection,sensitive learning,0.003,0.000,1.000,0.997,1.000,0.003,0.881,0.006
+STORM,18732,0.704,0.795,0.205,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.970,0.000
+STORM,21219,0.797,0.830,0.170,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.982,0.000
+STORM,23712,0.891,0.832,0.168,random forest,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.967,0.000
+STORM,878,0.033,0.000,0.000,naive bayes,undersampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.136,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,undersampling,no selection,sensitive learning,0.481,0.091,0.909,0.519,0.309,0.481,0.885,0.311
+STORM,4505,0.169,0.243,0.757,naive bayes,undersampling,no selection,sensitive learning,0.105,0.018,0.982,0.895,0.625,0.105,0.892,0.123
+STORM,5988,0.225,0.558,0.442,naive bayes,undersampling,no selection,sensitive learning,0.171,0.068,0.932,0.829,0.403,0.171,0.819,0.132
+STORM,7656,0.288,0.986,0.014,naive bayes,undersampling,no selection,sensitive learning,0.182,0.026,0.974,0.818,0.044,0.182,0.777,0.061
+STORM,9324,0.350,0.986,0.014,naive bayes,undersampling,no selection,sensitive learning,0.455,0.215,0.785,0.545,0.010,0.455,0.811,0.010
+STORM,11640,0.437,0.983,0.017,naive bayes,undersampling,no selection,sensitive learning,0.071,0.008,0.992,0.929,0.050,0.071,0.763,0.052
+STORM,13961,0.524,0.821,0.179,naive bayes,undersampling,no selection,sensitive learning,0.011,0.005,0.995,0.989,0.154,0.011,0.792,0.010
+STORM,16282,0.612,0.768,0.232,naive bayes,undersampling,no selection,sensitive learning,0.203,0.012,0.988,0.797,0.705,0.203,0.954,0.275
+STORM,18732,0.704,0.795,0.205,naive bayes,undersampling,no selection,sensitive learning,0.166,0.007,0.993,0.834,0.778,0.166,0.931,0.237
+STORM,21219,0.797,0.830,0.170,naive bayes,undersampling,no selection,sensitive learning,0.080,0.000,1.000,0.920,0.964,0.080,0.951,0.129
+STORM,23712,0.891,0.832,0.168,naive bayes,undersampling,no selection,sensitive learning,0.162,0.046,0.954,0.838,0.361,0.162,0.854,0.151
+STORM,878,0.033,0.000,0.000,ibk,undersampling,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,undersampling,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,undersampling,no selection,sensitive learning,0.346,0.055,0.945,0.654,0.346,0.346,0.646,0.291
+STORM,4505,0.169,0.243,0.757,ibk,undersampling,no selection,sensitive learning,0.784,0.103,0.897,0.216,0.689,0.784,0.841,0.650
+STORM,5988,0.225,0.558,0.442,ibk,undersampling,no selection,sensitive learning,0.931,0.151,0.849,0.069,0.621,0.931,0.890,0.659
+STORM,7656,0.288,0.986,0.014,ibk,undersampling,no selection,sensitive learning,0.909,0.274,0.726,0.091,0.022,0.909,0.815,0.030
+STORM,9324,0.350,0.986,0.014,ibk,undersampling,no selection,sensitive learning,1.000,0.360,0.640,0.000,0.013,1.000,0.820,0.017
+STORM,11640,0.437,0.983,0.017,ibk,undersampling,no selection,sensitive learning,0.500,0.281,0.719,0.500,0.011,0.500,0.567,0.009
+STORM,13961,0.524,0.821,0.179,ibk,undersampling,no selection,sensitive learning,0.333,0.186,0.814,0.667,0.131,0.333,0.591,0.086
+STORM,16282,0.612,0.768,0.232,ibk,undersampling,no selection,sensitive learning,0.859,0.280,0.720,0.141,0.304,0.859,0.798,0.324
+STORM,18732,0.704,0.795,0.205,ibk,undersampling,no selection,sensitive learning,0.953,0.230,0.770,0.047,0.395,0.953,0.864,0.453
+STORM,21219,0.797,0.830,0.170,ibk,undersampling,no selection,sensitive learning,0.994,0.197,0.803,0.006,0.442,0.994,0.897,0.522
+STORM,23712,0.891,0.832,0.168,ibk,undersampling,no selection,sensitive learning,0.918,0.186,0.814,0.082,0.441,0.918,0.862,0.504
+STORM,878,0.033,0.000,0.000,random forest,undersampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,5988,0.225,0.558,0.442,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,7656,0.288,0.986,0.014,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,9324,0.350,0.986,0.014,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,11640,0.437,0.983,0.017,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,13961,0.524,0.821,0.179,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,16282,0.612,0.768,0.232,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,18732,0.704,0.795,0.205,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,random forest,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,878,0.033,0.000,0.000,naive bayes,undersampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,undersampling,no selection,sensitive threshold,0.481,0.091,0.909,0.519,0.309,0.481,0.695,0.311
+STORM,4505,0.169,0.243,0.757,naive bayes,undersampling,no selection,sensitive threshold,0.093,0.018,0.982,0.907,0.596,0.093,0.537,0.106
+STORM,5988,0.225,0.558,0.442,naive bayes,undersampling,no selection,sensitive threshold,0.154,0.063,0.937,0.846,0.394,0.154,0.546,0.118
+STORM,7656,0.288,0.986,0.014,naive bayes,undersampling,no selection,sensitive threshold,0.182,0.025,0.975,0.818,0.047,0.182,0.579,0.064
+STORM,9324,0.350,0.986,0.014,naive bayes,undersampling,no selection,sensitive threshold,0.455,0.190,0.810,0.545,0.011,0.455,0.632,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,undersampling,no selection,sensitive threshold,0.071,0.007,0.993,0.929,0.056,0.071,0.532,0.056
+STORM,13961,0.524,0.821,0.179,naive bayes,undersampling,no selection,sensitive threshold,0.011,0.003,0.997,0.989,0.222,0.011,0.504,0.014
+STORM,16282,0.612,0.768,0.232,naive bayes,undersampling,no selection,sensitive threshold,0.164,0.011,0.989,0.836,0.685,0.164,0.577,0.227
+STORM,18732,0.704,0.795,0.205,naive bayes,undersampling,no selection,sensitive threshold,0.127,0.007,0.993,0.873,0.741,0.127,0.560,0.185
+STORM,21219,0.797,0.830,0.170,naive bayes,undersampling,no selection,sensitive threshold,0.065,0.000,1.000,0.935,0.957,0.065,0.532,0.106
+STORM,23712,0.891,0.832,0.168,naive bayes,undersampling,no selection,sensitive threshold,0.132,0.032,0.968,0.868,0.398,0.132,0.550,0.139
+STORM,878,0.033,0.000,0.000,ibk,undersampling,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,undersampling,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,ibk,undersampling,no selection,sensitive threshold,0.784,0.103,0.897,0.216,0.689,0.784,0.841,0.650
+STORM,5988,0.225,0.558,0.442,ibk,undersampling,no selection,sensitive threshold,0.931,0.151,0.849,0.069,0.621,0.931,0.890,0.659
+STORM,7656,0.288,0.986,0.014,ibk,undersampling,no selection,sensitive threshold,0.909,0.274,0.726,0.091,0.022,0.909,0.818,0.030
+STORM,9324,0.350,0.986,0.014,ibk,undersampling,no selection,sensitive threshold,1.000,0.360,0.640,0.000,0.013,1.000,0.820,0.017
+STORM,11640,0.437,0.983,0.017,ibk,undersampling,no selection,sensitive threshold,0.500,0.281,0.719,0.500,0.011,0.500,0.610,0.009
+STORM,13961,0.524,0.821,0.179,ibk,undersampling,no selection,sensitive threshold,0.333,0.186,0.814,0.667,0.131,0.333,0.573,0.086
+STORM,16282,0.612,0.768,0.232,ibk,undersampling,no selection,sensitive threshold,0.859,0.280,0.720,0.141,0.304,0.859,0.789,0.324
+STORM,18732,0.704,0.795,0.205,ibk,undersampling,no selection,sensitive threshold,0.953,0.230,0.770,0.047,0.395,0.953,0.861,0.453
+STORM,21219,0.797,0.830,0.170,ibk,undersampling,no selection,sensitive threshold,0.994,0.197,0.803,0.006,0.442,0.994,0.898,0.522
+STORM,23712,0.891,0.832,0.168,ibk,undersampling,no selection,sensitive threshold,0.918,0.186,0.814,0.082,0.441,0.918,0.866,0.504
+STORM,878,0.033,0.000,0.000,random forest,smote,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.784,0.000
+STORM,4505,0.169,0.243,0.757,random forest,smote,no selection,no cost sensitive,0.042,0.000,1.000,0.958,1.000,0.042,0.939,0.063
+STORM,5988,0.225,0.558,0.442,random forest,smote,no selection,no cost sensitive,0.283,0.000,1.000,0.717,1.000,0.283,0.993,0.384
+STORM,7656,0.288,0.986,0.014,random forest,smote,no selection,no cost sensitive,0.455,0.176,0.824,0.545,0.017,0.455,0.817,0.020
+STORM,9324,0.350,0.986,0.014,random forest,smote,no selection,no cost sensitive,0.727,0.069,0.931,0.273,0.048,0.727,0.942,0.082
+STORM,11640,0.437,0.983,0.017,random forest,smote,no selection,no cost sensitive,0.071,0.007,0.993,0.929,0.056,0.071,0.735,0.056
+STORM,13961,0.524,0.821,0.179,random forest,smote,no selection,no cost sensitive,0.006,0.000,1.000,0.994,0.500,0.006,0.742,0.009
+STORM,16282,0.612,0.768,0.232,random forest,smote,no selection,no cost sensitive,0.036,0.000,1.000,0.964,1.000,0.036,0.966,0.061
+STORM,18732,0.704,0.795,0.205,random forest,smote,no selection,no cost sensitive,0.311,0.000,1.000,0.689,1.000,0.311,0.999,0.438
+STORM,21219,0.797,0.830,0.170,random forest,smote,no selection,no cost sensitive,0.864,0.000,1.000,0.136,0.997,0.864,0.999,0.915
+STORM,23712,0.891,0.832,0.168,random forest,smote,no selection,no cost sensitive,0.580,0.000,1.000,0.420,1.000,0.580,0.990,0.704
+STORM,878,0.033,0.000,0.000,naive bayes,smote,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.144,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,smote,no selection,no cost sensitive,0.010,0.000,1.000,0.990,1.000,0.010,0.682,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,smote,no selection,no cost sensitive,0.069,0.015,0.985,0.931,0.575,0.069,0.897,0.079
+STORM,5988,0.225,0.558,0.442,naive bayes,smote,no selection,no cost sensitive,0.203,0.083,0.917,0.797,0.392,0.203,0.843,0.145
+STORM,7656,0.288,0.986,0.014,naive bayes,smote,no selection,no cost sensitive,0.091,0.014,0.986,0.909,0.040,0.091,0.765,0.047
+STORM,9324,0.350,0.986,0.014,naive bayes,smote,no selection,no cost sensitive,0.818,0.233,0.767,0.182,0.017,0.818,0.816,0.023
+STORM,11640,0.437,0.983,0.017,naive bayes,smote,no selection,no cost sensitive,0.071,0.004,0.996,0.929,0.091,0.071,0.733,0.075
+STORM,13961,0.524,0.821,0.179,naive bayes,smote,no selection,no cost sensitive,0.011,0.001,0.999,0.989,0.400,0.011,0.791,0.018
+STORM,16282,0.612,0.768,0.232,naive bayes,smote,no selection,no cost sensitive,0.462,0.002,0.998,0.538,0.972,0.462,0.991,0.594
+STORM,18732,0.704,0.795,0.205,naive bayes,smote,no selection,no cost sensitive,0.355,0.001,0.999,0.645,0.976,0.355,0.985,0.483
+STORM,21219,0.797,0.830,0.170,naive bayes,smote,no selection,no cost sensitive,0.130,0.000,1.000,0.870,0.978,0.130,0.988,0.204
+STORM,23712,0.891,0.832,0.168,naive bayes,smote,no selection,no cost sensitive,0.408,0.096,0.904,0.592,0.404,0.408,0.890,0.310
+STORM,878,0.033,0.000,0.000,ibk,smote,no selection,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.508,0.000
+STORM,3164,0.119,0.028,0.972,ibk,smote,no selection,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.496,0.000
+STORM,4505,0.169,0.243,0.757,ibk,smote,no selection,no cost sensitive,0.296,0.005,0.995,0.704,0.943,0.296,0.647,0.385
+STORM,5988,0.225,0.558,0.442,ibk,smote,no selection,no cost sensitive,0.786,0.052,0.948,0.214,0.802,0.786,0.867,0.740
+STORM,7656,0.288,0.986,0.014,ibk,smote,no selection,no cost sensitive,0.727,0.191,0.809,0.273,0.025,0.727,0.768,0.035
+STORM,9324,0.350,0.986,0.014,ibk,smote,no selection,no cost sensitive,0.727,0.189,0.811,0.273,0.018,0.727,0.804,0.026
+STORM,11640,0.437,0.983,0.017,ibk,smote,no selection,no cost sensitive,0.071,0.008,0.992,0.929,0.050,0.071,0.501,0.052
+STORM,13961,0.524,0.821,0.179,ibk,smote,no selection,no cost sensitive,0.072,0.000,1.000,0.928,0.929,0.072,0.536,0.124
+STORM,16282,0.612,0.768,0.232,ibk,smote,no selection,no cost sensitive,0.377,0.000,1.000,0.623,0.991,0.377,0.984,0.513
+STORM,18732,0.704,0.795,0.205,ibk,smote,no selection,no cost sensitive,0.781,0.000,1.000,0.219,0.996,0.781,0.954,0.859
+STORM,21219,0.797,0.830,0.170,ibk,smote,no selection,no cost sensitive,0.932,0.001,0.999,0.068,0.994,0.932,0.988,0.956
+STORM,23712,0.891,0.832,0.168,ibk,smote,no selection,no cost sensitive,0.801,0.051,0.949,0.199,0.716,0.801,0.880,0.714
+STORM,878,0.033,0.000,0.000,random forest,smote,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.774,0.000
+STORM,4505,0.169,0.243,0.757,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.933,0.000
+STORM,5988,0.225,0.558,0.442,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.989,0.000
+STORM,7656,0.288,0.986,0.014,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.816,0.000
+STORM,9324,0.350,0.986,0.014,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.953,0.000
+STORM,11640,0.437,0.983,0.017,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.731,0.000
+STORM,13961,0.524,0.821,0.179,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.731,0.000
+STORM,16282,0.612,0.768,0.232,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.950,0.000
+STORM,18732,0.704,0.795,0.205,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.995,0.000
+STORM,21219,0.797,0.830,0.170,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.999,0.000
+STORM,23712,0.891,0.832,0.168,random forest,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.989,0.000
+STORM,878,0.033,0.000,0.000,naive bayes,smote,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.144,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,smote,no selection,sensitive learning,0.010,0.000,1.000,0.990,1.000,0.010,0.682,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,smote,no selection,sensitive learning,0.066,0.015,0.985,0.934,0.564,0.066,0.890,0.074
+STORM,5988,0.225,0.558,0.442,naive bayes,smote,no selection,sensitive learning,0.191,0.083,0.917,0.809,0.379,0.191,0.825,0.132
+STORM,7656,0.288,0.986,0.014,naive bayes,smote,no selection,sensitive learning,0.091,0.013,0.987,0.909,0.045,0.091,0.729,0.052
+STORM,9324,0.350,0.986,0.014,naive bayes,smote,no selection,sensitive learning,0.636,0.239,0.761,0.364,0.013,0.636,0.799,0.015
+STORM,11640,0.437,0.983,0.017,naive bayes,smote,no selection,sensitive learning,0.071,0.004,0.996,0.929,0.091,0.071,0.770,0.075
+STORM,13961,0.524,0.821,0.179,naive bayes,smote,no selection,sensitive learning,0.011,0.001,0.999,0.989,0.400,0.011,0.829,0.018
+STORM,16282,0.612,0.768,0.232,naive bayes,smote,no selection,sensitive learning,0.489,0.002,0.998,0.511,0.974,0.489,0.988,0.619
+STORM,18732,0.704,0.795,0.205,naive bayes,smote,no selection,sensitive learning,0.340,0.001,0.999,0.660,0.975,0.340,0.974,0.467
+STORM,21219,0.797,0.830,0.170,naive bayes,smote,no selection,sensitive learning,0.124,0.001,0.999,0.876,0.955,0.124,0.974,0.195
+STORM,23712,0.891,0.832,0.168,naive bayes,smote,no selection,sensitive learning,0.381,0.106,0.894,0.619,0.365,0.381,0.867,0.270
+STORM,878,0.033,0.000,0.000,ibk,smote,no selection,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.508,0.000
+STORM,3164,0.119,0.028,0.972,ibk,smote,no selection,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.496,0.000
+STORM,4505,0.169,0.243,0.757,ibk,smote,no selection,sensitive learning,0.296,0.005,0.995,0.704,0.943,0.296,0.647,0.385
+STORM,5988,0.225,0.558,0.442,ibk,smote,no selection,sensitive learning,0.786,0.052,0.948,0.214,0.802,0.786,0.867,0.740
+STORM,7656,0.288,0.986,0.014,ibk,smote,no selection,sensitive learning,0.727,0.191,0.809,0.273,0.025,0.727,0.768,0.035
+STORM,9324,0.350,0.986,0.014,ibk,smote,no selection,sensitive learning,0.727,0.189,0.811,0.273,0.018,0.727,0.804,0.026
+STORM,11640,0.437,0.983,0.017,ibk,smote,no selection,sensitive learning,0.071,0.008,0.992,0.929,0.050,0.071,0.501,0.052
+STORM,13961,0.524,0.821,0.179,ibk,smote,no selection,sensitive learning,0.072,0.000,1.000,0.928,0.929,0.072,0.536,0.124
+STORM,16282,0.612,0.768,0.232,ibk,smote,no selection,sensitive learning,0.377,0.000,1.000,0.623,0.991,0.377,0.984,0.513
+STORM,18732,0.704,0.795,0.205,ibk,smote,no selection,sensitive learning,0.781,0.000,1.000,0.219,0.996,0.781,0.954,0.859
+STORM,21219,0.797,0.830,0.170,ibk,smote,no selection,sensitive learning,0.932,0.001,0.999,0.068,0.994,0.932,0.988,0.956
+STORM,23712,0.891,0.832,0.168,ibk,smote,no selection,sensitive learning,0.801,0.051,0.949,0.199,0.716,0.801,0.880,0.714
+STORM,878,0.033,0.000,0.000,random forest,smote,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,5988,0.225,0.558,0.442,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,7656,0.288,0.986,0.014,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,9324,0.350,0.986,0.014,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,11640,0.437,0.983,0.017,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,13961,0.524,0.821,0.179,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,16282,0.612,0.768,0.232,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,18732,0.704,0.795,0.205,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,random forest,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,878,0.033,0.000,0.000,naive bayes,smote,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,smote,no selection,sensitive threshold,0.010,0.000,1.000,0.990,1.000,0.010,0.505,0.018
+STORM,4505,0.169,0.243,0.757,naive bayes,smote,no selection,sensitive threshold,0.063,0.012,0.988,0.937,0.600,0.063,0.525,0.074
+STORM,5988,0.225,0.558,0.442,naive bayes,smote,no selection,sensitive threshold,0.151,0.055,0.945,0.849,0.424,0.151,0.548,0.127
+STORM,7656,0.288,0.986,0.014,naive bayes,smote,no selection,sensitive threshold,0.091,0.010,0.990,0.909,0.056,0.091,0.540,0.061
+STORM,9324,0.350,0.986,0.014,naive bayes,smote,no selection,sensitive threshold,0.455,0.192,0.808,0.545,0.011,0.455,0.631,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,smote,no selection,sensitive threshold,0.000,0.003,0.997,1.000,0.000,0.000,0.499,-0.004
+STORM,13961,0.524,0.821,0.179,naive bayes,smote,no selection,sensitive threshold,0.006,0.001,0.999,0.994,0.250,0.006,0.502,0.008
+STORM,16282,0.612,0.768,0.232,naive bayes,smote,no selection,sensitive threshold,0.170,0.001,0.999,0.830,0.963,0.170,0.585,0.262
+STORM,18732,0.704,0.795,0.205,naive bayes,smote,no selection,sensitive threshold,0.210,0.000,1.000,0.790,0.986,0.210,0.605,0.314
+STORM,21219,0.797,0.830,0.170,naive bayes,smote,no selection,sensitive threshold,0.065,0.000,1.000,0.935,0.957,0.065,0.532,0.106
+STORM,23712,0.891,0.832,0.168,naive bayes,smote,no selection,sensitive threshold,0.234,0.054,0.946,0.766,0.410,0.234,0.590,0.220
+STORM,878,0.033,0.000,0.000,ibk,smote,no selection,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,smote,no selection,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,ibk,smote,no selection,sensitive threshold,0.296,0.005,0.995,0.704,0.943,0.296,0.646,0.385
+STORM,5988,0.225,0.558,0.442,ibk,smote,no selection,sensitive threshold,0.786,0.052,0.948,0.214,0.802,0.786,0.867,0.740
+STORM,7656,0.288,0.986,0.014,ibk,smote,no selection,sensitive threshold,0.727,0.191,0.809,0.273,0.025,0.727,0.768,0.035
+STORM,9324,0.350,0.986,0.014,ibk,smote,no selection,sensitive threshold,0.727,0.189,0.811,0.273,0.018,0.727,0.769,0.026
+STORM,11640,0.437,0.983,0.017,ibk,smote,no selection,sensitive threshold,0.071,0.008,0.992,0.929,0.050,0.071,0.532,0.052
+STORM,13961,0.524,0.821,0.179,ibk,smote,no selection,sensitive threshold,0.072,0.000,1.000,0.928,0.929,0.072,0.536,0.124
+STORM,16282,0.612,0.768,0.232,ibk,smote,no selection,sensitive threshold,0.377,0.000,1.000,0.623,0.991,0.377,0.688,0.513
+STORM,18732,0.704,0.795,0.205,ibk,smote,no selection,sensitive threshold,0.781,0.000,1.000,0.219,0.996,0.781,0.890,0.859
+STORM,21219,0.797,0.830,0.170,ibk,smote,no selection,sensitive threshold,0.932,0.001,0.999,0.068,0.994,0.932,0.966,0.956
+STORM,23712,0.891,0.832,0.168,ibk,smote,no selection,sensitive threshold,0.801,0.051,0.949,0.199,0.716,0.801,0.875,0.714
+STORM,878,0.033,0.000,0.000,random forest,no sampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.552,0.000
+STORM,4505,0.169,0.243,0.757,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.886,0.000
+STORM,5988,0.225,0.558,0.442,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.808,0.000
+STORM,7656,0.288,0.986,0.014,random forest,no sampling,best first,no cost sensitive,0.000,0.136,0.864,1.000,0.000,0.000,0.735,-0.013
+STORM,9324,0.350,0.986,0.014,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.810,0.000
+STORM,11640,0.437,0.983,0.017,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.621,0.000
+STORM,13961,0.524,0.821,0.179,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.638,0.000
+STORM,16282,0.612,0.768,0.232,random forest,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.792,0.000
+STORM,18732,0.704,0.795,0.205,random forest,no sampling,best first,no cost sensitive,0.112,0.000,1.000,0.888,1.000,0.112,0.707,0.180
+STORM,21219,0.797,0.830,0.170,random forest,no sampling,best first,no cost sensitive,0.003,0.000,1.000,0.997,1.000,0.003,0.641,0.005
+STORM,23712,0.891,0.832,0.168,random forest,no sampling,best first,no cost sensitive,0.052,0.020,0.980,0.948,0.296,0.052,0.510,0.049
+STORM,878,0.033,0.000,0.000,naive bayes,no sampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,no sampling,best first,no cost sensitive,0.087,0.003,0.997,0.913,0.692,0.087,0.829,0.139
+STORM,4505,0.169,0.243,0.757,naive bayes,no sampling,best first,no cost sensitive,0.081,0.009,0.991,0.919,0.730,0.081,0.886,0.105
+STORM,5988,0.225,0.558,0.442,naive bayes,no sampling,best first,no cost sensitive,0.491,0.136,0.864,0.509,0.490,0.491,0.809,0.355
+STORM,7656,0.288,0.986,0.014,naive bayes,no sampling,best first,no cost sensitive,0.182,0.022,0.978,0.818,0.051,0.182,0.691,0.070
+STORM,9324,0.350,0.986,0.014,naive bayes,no sampling,best first,no cost sensitive,0.818,0.346,0.654,0.182,0.011,0.818,0.811,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,no sampling,best first,no cost sensitive,0.071,0.023,0.977,0.929,0.019,0.071,0.739,0.021
+STORM,13961,0.524,0.821,0.179,naive bayes,no sampling,best first,no cost sensitive,0.017,0.006,0.994,0.983,0.188,0.017,0.783,0.018
+STORM,16282,0.612,0.768,0.232,naive bayes,no sampling,best first,no cost sensitive,0.646,0.026,0.974,0.354,0.779,0.646,0.948,0.669
+STORM,18732,0.704,0.795,0.205,naive bayes,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.710,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.650,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,no sampling,best first,no cost sensitive,0.211,0.017,0.983,0.789,0.664,0.211,0.683,0.272
+STORM,878,0.033,0.000,0.000,ibk,no sampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,no sampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.821,0.000
+STORM,4505,0.169,0.243,0.757,ibk,no sampling,best first,no cost sensitive,0.171,0.010,0.990,0.829,0.838,0.171,0.585,0.224
+STORM,5988,0.225,0.558,0.442,ibk,no sampling,best first,no cost sensitive,0.129,0.032,0.968,0.871,0.517,0.129,0.579,0.134
+STORM,7656,0.288,0.986,0.014,ibk,no sampling,best first,no cost sensitive,0.091,0.139,0.861,0.909,0.004,0.091,0.511,-0.004
+STORM,9324,0.350,0.986,0.014,ibk,no sampling,best first,no cost sensitive,0.455,0.197,0.803,0.545,0.011,0.455,0.691,0.012
+STORM,11640,0.437,0.983,0.017,ibk,no sampling,best first,no cost sensitive,0.071,0.052,0.948,0.929,0.008,0.071,0.517,0.004
+STORM,13961,0.524,0.821,0.179,ibk,no sampling,best first,no cost sensitive,0.056,0.002,0.998,0.944,0.714,0.056,0.587,0.093
+STORM,16282,0.612,0.768,0.232,ibk,no sampling,best first,no cost sensitive,0.426,0.037,0.963,0.574,0.619,0.426,0.801,0.449
+STORM,18732,0.704,0.795,0.205,ibk,no sampling,best first,no cost sensitive,0.112,0.000,1.000,0.888,1.000,0.112,0.707,0.180
+STORM,21219,0.797,0.830,0.170,ibk,no sampling,best first,no cost sensitive,0.003,0.000,1.000,0.997,1.000,0.003,0.642,0.005
+STORM,23712,0.891,0.832,0.168,ibk,no sampling,best first,no cost sensitive,0.037,0.016,0.984,0.963,0.268,0.037,0.472,0.033
+STORM,878,0.033,0.000,0.000,random forest,no sampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.897,0.000
+STORM,5988,0.225,0.558,0.442,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.814,0.000
+STORM,7656,0.288,0.986,0.014,random forest,no sampling,best first,sensitive learning,0.000,0.002,0.998,1.000,0.000,0.000,0.701,-0.003
+STORM,9324,0.350,0.986,0.014,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.884,0.000
+STORM,11640,0.437,0.983,0.017,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.646,0.000
+STORM,13961,0.524,0.821,0.179,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.705,0.000
+STORM,16282,0.612,0.768,0.232,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.864,0.000
+STORM,18732,0.704,0.795,0.205,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.707,0.000
+STORM,21219,0.797,0.830,0.170,random forest,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.641,0.000
+STORM,23712,0.891,0.832,0.168,random forest,no sampling,best first,sensitive learning,0.005,0.000,1.000,0.995,1.000,0.005,0.503,0.009
+STORM,878,0.033,0.000,0.000,naive bayes,no sampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,no sampling,best first,sensitive learning,0.077,0.002,0.998,0.923,0.800,0.077,0.829,0.128
+STORM,4505,0.169,0.243,0.757,naive bayes,no sampling,best first,sensitive learning,0.078,0.008,0.992,0.922,0.743,0.078,0.886,0.103
+STORM,5988,0.225,0.558,0.442,naive bayes,no sampling,best first,sensitive learning,0.380,0.123,0.877,0.620,0.451,0.380,0.809,0.273
+STORM,7656,0.288,0.986,0.014,naive bayes,no sampling,best first,sensitive learning,0.182,0.014,0.986,0.818,0.077,0.182,0.691,0.100
+STORM,9324,0.350,0.986,0.014,naive bayes,no sampling,best first,sensitive learning,0.818,0.344,0.656,0.182,0.011,0.818,0.811,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,no sampling,best first,sensitive learning,0.071,0.019,0.981,0.929,0.023,0.071,0.739,0.026
+STORM,13961,0.524,0.821,0.179,naive bayes,no sampling,best first,sensitive learning,0.017,0.006,0.994,0.983,0.200,0.017,0.783,0.019
+STORM,16282,0.612,0.768,0.232,naive bayes,no sampling,best first,sensitive learning,0.607,0.017,0.983,0.393,0.833,0.607,0.948,0.667
+STORM,18732,0.704,0.795,0.205,naive bayes,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.710,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.650,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,no sampling,best first,sensitive learning,0.055,0.004,0.996,0.945,0.688,0.055,0.683,0.083
+STORM,878,0.033,0.000,0.000,ibk,no sampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.821,0.000
+STORM,4505,0.169,0.243,0.757,ibk,no sampling,best first,sensitive learning,0.171,0.010,0.990,0.829,0.838,0.171,0.585,0.224
+STORM,5988,0.225,0.558,0.442,ibk,no sampling,best first,sensitive learning,0.129,0.032,0.968,0.871,0.517,0.129,0.579,0.134
+STORM,7656,0.288,0.986,0.014,ibk,no sampling,best first,sensitive learning,0.091,0.138,0.862,0.909,0.004,0.091,0.511,-0.004
+STORM,9324,0.350,0.986,0.014,ibk,no sampling,best first,sensitive learning,0.455,0.197,0.803,0.545,0.011,0.455,0.691,0.012
+STORM,11640,0.437,0.983,0.017,ibk,no sampling,best first,sensitive learning,0.071,0.052,0.948,0.929,0.008,0.071,0.517,0.004
+STORM,13961,0.524,0.821,0.179,ibk,no sampling,best first,sensitive learning,0.056,0.002,0.998,0.944,0.714,0.056,0.587,0.093
+STORM,16282,0.612,0.768,0.232,ibk,no sampling,best first,sensitive learning,0.426,0.036,0.964,0.574,0.625,0.426,0.801,0.451
+STORM,18732,0.704,0.795,0.205,ibk,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.707,0.000
+STORM,21219,0.797,0.830,0.170,ibk,no sampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.642,0.000
+STORM,23712,0.891,0.832,0.168,ibk,no sampling,best first,sensitive learning,0.032,0.015,0.985,0.968,0.255,0.032,0.472,0.027
+STORM,878,0.033,0.000,0.000,random forest,no sampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,5988,0.225,0.558,0.442,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,7656,0.288,0.986,0.014,random forest,no sampling,best first,sensitive threshold,0.000,0.028,0.972,1.000,0.000,0.000,0.486,-0.011
+STORM,9324,0.350,0.986,0.014,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,11640,0.437,0.983,0.017,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,13961,0.524,0.821,0.179,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,16282,0.612,0.768,0.232,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,18732,0.704,0.795,0.205,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,random forest,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,random forest,no sampling,best first,sensitive threshold,0.010,0.002,0.998,0.990,0.500,0.010,0.504,0.014
+STORM,878,0.033,0.000,0.000,naive bayes,no sampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,no sampling,best first,sensitive threshold,0.058,0.001,0.999,0.942,0.857,0.058,0.528,0.099
+STORM,4505,0.169,0.243,0.757,naive bayes,no sampling,best first,sensitive threshold,0.048,0.006,0.994,0.952,0.696,0.048,0.521,0.062
+STORM,5988,0.225,0.558,0.442,naive bayes,no sampling,best first,sensitive threshold,0.111,0.024,0.976,0.889,0.557,0.111,0.544,0.124
+STORM,7656,0.288,0.986,0.014,naive bayes,no sampling,best first,sensitive threshold,0.182,0.014,0.986,0.818,0.077,0.182,0.584,0.100
+STORM,9324,0.350,0.986,0.014,naive bayes,no sampling,best first,sensitive threshold,0.727,0.221,0.779,0.273,0.015,0.727,0.753,0.021
+STORM,11640,0.437,0.983,0.017,naive bayes,no sampling,best first,sensitive threshold,0.071,0.004,0.996,0.929,0.100,0.071,0.534,0.079
+STORM,13961,0.524,0.821,0.179,naive bayes,no sampling,best first,sensitive threshold,0.011,0.001,0.999,0.989,0.400,0.011,0.505,0.018
+STORM,16282,0.612,0.768,0.232,naive bayes,no sampling,best first,sensitive threshold,0.023,0.001,0.999,0.977,0.700,0.023,0.511,0.037
+STORM,18732,0.704,0.795,0.205,naive bayes,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,no sampling,best first,sensitive threshold,0.055,0.004,0.996,0.945,0.688,0.055,0.525,0.083
+STORM,878,0.033,0.000,0.000,ibk,no sampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,ibk,no sampling,best first,sensitive threshold,0.171,0.010,0.990,0.829,0.838,0.171,0.581,0.224
+STORM,5988,0.225,0.558,0.442,ibk,no sampling,best first,sensitive threshold,0.129,0.032,0.968,0.871,0.517,0.129,0.548,0.134
+STORM,7656,0.288,0.986,0.014,ibk,no sampling,best first,sensitive threshold,0.091,0.138,0.862,0.909,0.004,0.091,0.477,-0.004
+STORM,9324,0.350,0.986,0.014,ibk,no sampling,best first,sensitive threshold,0.455,0.197,0.803,0.545,0.011,0.455,0.629,0.012
+STORM,11640,0.437,0.983,0.017,ibk,no sampling,best first,sensitive threshold,0.071,0.052,0.948,0.929,0.008,0.071,0.510,0.004
+STORM,13961,0.524,0.821,0.179,ibk,no sampling,best first,sensitive threshold,0.056,0.002,0.998,0.944,0.714,0.056,0.527,0.093
+STORM,16282,0.612,0.768,0.232,ibk,no sampling,best first,sensitive threshold,0.426,0.036,0.964,0.574,0.625,0.426,0.695,0.451
+STORM,18732,0.704,0.795,0.205,ibk,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,ibk,no sampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,ibk,no sampling,best first,sensitive threshold,0.032,0.015,0.985,0.968,0.255,0.032,0.509,0.027
+STORM,878,0.033,0.000,0.000,random forest,oversampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,oversampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,oversampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.548,0.000
+STORM,4505,0.169,0.243,0.757,random forest,oversampling,best first,no cost sensitive,0.737,0.185,0.815,0.263,0.537,0.737,0.884,0.488
+STORM,5988,0.225,0.558,0.442,random forest,oversampling,best first,no cost sensitive,0.889,0.382,0.618,0.111,0.382,0.889,0.792,0.340
+STORM,7656,0.288,0.986,0.014,random forest,oversampling,best first,no cost sensitive,0.273,0.169,0.831,0.727,0.011,0.273,0.701,0.008
+STORM,9324,0.350,0.986,0.014,random forest,oversampling,best first,no cost sensitive,0.909,0.523,0.477,0.091,0.008,0.909,0.786,0.007
+STORM,11640,0.437,0.983,0.017,random forest,oversampling,best first,no cost sensitive,0.643,0.489,0.511,0.357,0.008,0.643,0.600,0.004
+STORM,13961,0.524,0.821,0.179,random forest,oversampling,best first,no cost sensitive,0.672,0.394,0.606,0.328,0.125,0.672,0.639,0.093
+STORM,16282,0.612,0.768,0.232,random forest,oversampling,best first,no cost sensitive,0.997,0.604,0.396,0.003,0.190,0.997,0.828,0.139
+STORM,18732,0.704,0.795,0.205,random forest,oversampling,best first,no cost sensitive,0.420,0.002,0.998,0.580,0.966,0.420,0.706,0.548
+STORM,21219,0.797,0.830,0.170,random forest,oversampling,best first,no cost sensitive,0.296,0.004,0.996,0.704,0.926,0.296,0.641,0.410
+STORM,23712,0.891,0.832,0.168,random forest,oversampling,best first,no cost sensitive,0.211,0.066,0.934,0.789,0.340,0.211,0.474,0.173
+STORM,878,0.033,0.000,0.000,naive bayes,oversampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,oversampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,oversampling,best first,no cost sensitive,0.096,0.005,0.995,0.904,0.625,0.096,0.830,0.149
+STORM,4505,0.169,0.243,0.757,naive bayes,oversampling,best first,no cost sensitive,0.102,0.010,0.990,0.898,0.739,0.102,0.886,0.132
+STORM,5988,0.225,0.558,0.442,naive bayes,oversampling,best first,no cost sensitive,0.506,0.162,0.838,0.494,0.454,0.506,0.809,0.330
+STORM,7656,0.288,0.986,0.014,naive bayes,oversampling,best first,no cost sensitive,0.273,0.046,0.954,0.727,0.038,0.273,0.698,0.055
+STORM,9324,0.350,0.986,0.014,naive bayes,oversampling,best first,no cost sensitive,0.818,0.344,0.656,0.182,0.011,0.818,0.809,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,oversampling,best first,no cost sensitive,0.071,0.039,0.961,0.929,0.011,0.071,0.736,0.009
+STORM,13961,0.524,0.821,0.179,naive bayes,oversampling,best first,no cost sensitive,0.044,0.015,0.985,0.956,0.200,0.044,0.792,0.046
+STORM,16282,0.612,0.768,0.232,naive bayes,oversampling,best first,no cost sensitive,0.610,0.022,0.978,0.390,0.798,0.610,0.947,0.654
+STORM,18732,0.704,0.795,0.205,naive bayes,oversampling,best first,no cost sensitive,0.417,0.001,0.999,0.583,0.979,0.417,0.710,0.548
+STORM,21219,0.797,0.830,0.170,naive bayes,oversampling,best first,no cost sensitive,0.302,0.001,0.999,0.698,0.981,0.302,0.650,0.425
+STORM,23712,0.891,0.832,0.168,naive bayes,oversampling,best first,no cost sensitive,0.413,0.138,0.862,0.587,0.325,0.413,0.683,0.247
+STORM,878,0.033,0.000,0.000,ibk,oversampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,oversampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,oversampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.831,0.000
+STORM,4505,0.169,0.243,0.757,ibk,oversampling,best first,no cost sensitive,0.186,0.012,0.988,0.814,0.816,0.186,0.615,0.239
+STORM,5988,0.225,0.558,0.442,ibk,oversampling,best first,no cost sensitive,0.211,0.048,0.952,0.789,0.540,0.211,0.575,0.211
+STORM,7656,0.288,0.986,0.014,ibk,oversampling,best first,no cost sensitive,0.091,0.163,0.837,0.909,0.004,0.091,0.501,-0.006
+STORM,9324,0.350,0.986,0.014,ibk,oversampling,best first,no cost sensitive,0.455,0.231,0.769,0.545,0.009,0.455,0.712,0.009
+STORM,11640,0.437,0.983,0.017,ibk,oversampling,best first,no cost sensitive,0.143,0.079,0.921,0.857,0.011,0.143,0.557,0.009
+STORM,13961,0.524,0.821,0.179,ibk,oversampling,best first,no cost sensitive,0.083,0.012,0.988,0.917,0.366,0.083,0.588,0.110
+STORM,16282,0.612,0.768,0.232,ibk,oversampling,best first,no cost sensitive,0.452,0.068,0.932,0.548,0.486,0.452,0.760,0.396
+STORM,18732,0.704,0.795,0.205,ibk,oversampling,best first,no cost sensitive,0.420,0.002,0.998,0.580,0.966,0.420,0.706,0.548
+STORM,21219,0.797,0.830,0.170,ibk,oversampling,best first,no cost sensitive,0.296,0.004,0.996,0.704,0.926,0.296,0.642,0.410
+STORM,23712,0.891,0.832,0.168,ibk,oversampling,best first,no cost sensitive,0.211,0.066,0.934,0.789,0.340,0.211,0.479,0.173
+STORM,878,0.033,0.000,0.000,random forest,oversampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.547,0.000
+STORM,4505,0.169,0.243,0.757,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.887,0.000
+STORM,5988,0.225,0.558,0.442,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.813,0.000
+STORM,7656,0.288,0.986,0.014,random forest,oversampling,best first,sensitive learning,0.182,0.161,0.839,0.818,0.007,0.182,0.703,0.002
+STORM,9324,0.350,0.986,0.014,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.816,0.000
+STORM,11640,0.437,0.983,0.017,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.656,0.000
+STORM,13961,0.524,0.821,0.179,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.647,0.000
+STORM,16282,0.612,0.768,0.232,random forest,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.815,0.000
+STORM,18732,0.704,0.795,0.205,random forest,oversampling,best first,sensitive learning,0.112,0.000,1.000,0.888,1.000,0.112,0.706,0.180
+STORM,21219,0.797,0.830,0.170,random forest,oversampling,best first,sensitive learning,0.003,0.000,1.000,0.997,1.000,0.003,0.641,0.005
+STORM,23712,0.891,0.832,0.168,random forest,oversampling,best first,sensitive learning,0.057,0.027,0.973,0.943,0.256,0.057,0.474,0.045
+STORM,878,0.033,0.000,0.000,naive bayes,oversampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,oversampling,best first,sensitive learning,0.096,0.005,0.995,0.904,0.625,0.096,0.830,0.149
+STORM,4505,0.169,0.243,0.757,naive bayes,oversampling,best first,sensitive learning,0.102,0.010,0.990,0.898,0.739,0.102,0.886,0.132
+STORM,5988,0.225,0.558,0.442,naive bayes,oversampling,best first,sensitive learning,0.503,0.158,0.842,0.497,0.458,0.503,0.809,0.333
+STORM,7656,0.288,0.986,0.014,naive bayes,oversampling,best first,sensitive learning,0.182,0.032,0.968,0.818,0.036,0.182,0.698,0.050
+STORM,9324,0.350,0.986,0.014,naive bayes,oversampling,best first,sensitive learning,0.818,0.344,0.656,0.182,0.011,0.818,0.809,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,oversampling,best first,sensitive learning,0.071,0.039,0.961,0.929,0.011,0.071,0.736,0.009
+STORM,13961,0.524,0.821,0.179,naive bayes,oversampling,best first,sensitive learning,0.044,0.015,0.985,0.956,0.200,0.044,0.792,0.046
+STORM,16282,0.612,0.768,0.232,naive bayes,oversampling,best first,sensitive learning,0.610,0.022,0.978,0.390,0.798,0.610,0.947,0.654
+STORM,18732,0.704,0.795,0.205,naive bayes,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.710,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.650,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,oversampling,best first,sensitive learning,0.214,0.018,0.982,0.786,0.662,0.214,0.683,0.274
+STORM,878,0.033,0.000,0.000,ibk,oversampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,oversampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.831,0.000
+STORM,4505,0.169,0.243,0.757,ibk,oversampling,best first,sensitive learning,0.186,0.012,0.988,0.814,0.816,0.186,0.615,0.239
+STORM,5988,0.225,0.558,0.442,ibk,oversampling,best first,sensitive learning,0.211,0.048,0.952,0.789,0.540,0.211,0.575,0.211
+STORM,7656,0.288,0.986,0.014,ibk,oversampling,best first,sensitive learning,0.091,0.163,0.837,0.909,0.004,0.091,0.501,-0.006
+STORM,9324,0.350,0.986,0.014,ibk,oversampling,best first,sensitive learning,0.455,0.230,0.770,0.545,0.009,0.455,0.712,0.009
+STORM,11640,0.437,0.983,0.017,ibk,oversampling,best first,sensitive learning,0.143,0.077,0.923,0.857,0.011,0.143,0.557,0.010
+STORM,13961,0.524,0.821,0.179,ibk,oversampling,best first,sensitive learning,0.083,0.011,0.989,0.917,0.395,0.083,0.588,0.114
+STORM,16282,0.612,0.768,0.232,ibk,oversampling,best first,sensitive learning,0.452,0.062,0.938,0.548,0.507,0.452,0.760,0.409
+STORM,18732,0.704,0.795,0.205,ibk,oversampling,best first,sensitive learning,0.112,0.000,1.000,0.888,1.000,0.112,0.706,0.180
+STORM,21219,0.797,0.830,0.170,ibk,oversampling,best first,sensitive learning,0.003,0.000,1.000,0.997,1.000,0.003,0.642,0.005
+STORM,23712,0.891,0.832,0.168,ibk,oversampling,best first,sensitive learning,0.057,0.026,0.974,0.943,0.258,0.057,0.479,0.046
+STORM,878,0.033,0.000,0.000,random forest,oversampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,5988,0.225,0.558,0.442,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,7656,0.288,0.986,0.014,random forest,oversampling,best first,sensitive threshold,0.000,0.085,0.915,1.000,0.000,0.000,0.457,-0.012
+STORM,9324,0.350,0.986,0.014,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,11640,0.437,0.983,0.017,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,13961,0.524,0.821,0.179,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,16282,0.612,0.768,0.232,random forest,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,18732,0.704,0.795,0.205,random forest,oversampling,best first,sensitive threshold,0.112,0.000,1.000,0.888,1.000,0.112,0.556,0.180
+STORM,21219,0.797,0.830,0.170,random forest,oversampling,best first,sensitive threshold,0.003,0.000,1.000,0.997,1.000,0.003,0.501,0.005
+STORM,23712,0.891,0.832,0.168,random forest,oversampling,best first,sensitive threshold,0.057,0.027,0.973,0.943,0.256,0.057,0.515,0.045
+STORM,878,0.033,0.000,0.000,naive bayes,oversampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,oversampling,best first,sensitive threshold,0.077,0.002,0.998,0.923,0.800,0.077,0.538,0.128
+STORM,4505,0.169,0.243,0.757,naive bayes,oversampling,best first,sensitive threshold,0.069,0.006,0.994,0.931,0.767,0.069,0.531,0.093
+STORM,5988,0.225,0.558,0.442,naive bayes,oversampling,best first,sensitive threshold,0.131,0.038,0.962,0.869,0.479,0.131,0.547,0.127
+STORM,7656,0.288,0.986,0.014,naive bayes,oversampling,best first,sensitive threshold,0.182,0.032,0.968,0.818,0.036,0.182,0.575,0.050
+STORM,9324,0.350,0.986,0.014,naive bayes,oversampling,best first,sensitive threshold,0.727,0.211,0.789,0.273,0.016,0.727,0.758,0.023
+STORM,11640,0.437,0.983,0.017,naive bayes,oversampling,best first,sensitive threshold,0.071,0.018,0.982,0.929,0.024,0.071,0.527,0.027
+STORM,13961,0.524,0.821,0.179,naive bayes,oversampling,best first,sensitive threshold,0.017,0.008,0.992,0.983,0.143,0.017,0.504,0.014
+STORM,16282,0.612,0.768,0.232,naive bayes,oversampling,best first,sensitive threshold,0.023,0.001,0.999,0.977,0.700,0.023,0.511,0.037
+STORM,18732,0.704,0.795,0.205,naive bayes,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,oversampling,best first,sensitive threshold,0.214,0.018,0.982,0.786,0.662,0.214,0.598,0.274
+STORM,878,0.033,0.000,0.000,ibk,oversampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,oversampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,ibk,oversampling,best first,sensitive threshold,0.186,0.012,0.988,0.814,0.816,0.186,0.587,0.239
+STORM,5988,0.225,0.558,0.442,ibk,oversampling,best first,sensitive threshold,0.211,0.048,0.952,0.789,0.540,0.211,0.582,0.211
+STORM,7656,0.288,0.986,0.014,ibk,oversampling,best first,sensitive threshold,0.091,0.163,0.837,0.909,0.004,0.091,0.464,-0.006
+STORM,9324,0.350,0.986,0.014,ibk,oversampling,best first,sensitive threshold,0.455,0.230,0.770,0.545,0.009,0.455,0.612,0.009
+STORM,11640,0.437,0.983,0.017,ibk,oversampling,best first,sensitive threshold,0.143,0.077,0.923,0.857,0.011,0.143,0.533,0.010
+STORM,13961,0.524,0.821,0.179,ibk,oversampling,best first,sensitive threshold,0.083,0.011,0.989,0.917,0.395,0.083,0.536,0.114
+STORM,16282,0.612,0.768,0.232,ibk,oversampling,best first,sensitive threshold,0.452,0.062,0.938,0.548,0.507,0.452,0.695,0.409
+STORM,18732,0.704,0.795,0.205,ibk,oversampling,best first,sensitive threshold,0.112,0.000,1.000,0.888,1.000,0.112,0.556,0.180
+STORM,21219,0.797,0.830,0.170,ibk,oversampling,best first,sensitive threshold,0.003,0.000,1.000,0.997,1.000,0.003,0.501,0.005
+STORM,23712,0.891,0.832,0.168,ibk,oversampling,best first,sensitive threshold,0.057,0.026,0.974,0.943,0.258,0.057,0.515,0.046
+STORM,878,0.033,0.000,0.000,random forest,undersampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,undersampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,undersampling,best first,no cost sensitive,0.279,0.053,0.947,0.721,0.309,0.279,0.654,0.237
+STORM,4505,0.169,0.243,0.757,random forest,undersampling,best first,no cost sensitive,0.871,0.186,0.814,0.129,0.576,0.871,0.878,0.580
+STORM,5988,0.225,0.558,0.442,random forest,undersampling,best first,no cost sensitive,0.883,0.349,0.651,0.117,0.402,0.883,0.804,0.371
+STORM,7656,0.288,0.986,0.014,random forest,undersampling,best first,no cost sensitive,0.636,0.302,0.698,0.364,0.014,0.636,0.727,0.014
+STORM,9324,0.350,0.986,0.014,random forest,undersampling,best first,no cost sensitive,0.909,0.551,0.449,0.091,0.008,0.909,0.785,0.006
+STORM,11640,0.437,0.983,0.017,random forest,undersampling,best first,no cost sensitive,0.643,0.477,0.523,0.357,0.008,0.643,0.626,0.004
+STORM,13961,0.524,0.821,0.179,random forest,undersampling,best first,no cost sensitive,0.683,0.409,0.591,0.317,0.123,0.683,0.677,0.089
+STORM,16282,0.612,0.768,0.232,random forest,undersampling,best first,no cost sensitive,0.656,0.383,0.617,0.344,0.196,0.656,0.810,0.136
+STORM,18732,0.704,0.795,0.205,random forest,undersampling,best first,no cost sensitive,0.121,0.001,0.999,0.879,0.932,0.121,0.709,0.189
+STORM,21219,0.797,0.830,0.170,random forest,undersampling,best first,no cost sensitive,0.009,0.003,0.997,0.991,0.333,0.009,0.357,0.010
+STORM,23712,0.891,0.832,0.168,random forest,undersampling,best first,no cost sensitive,0.274,0.079,0.921,0.726,0.357,0.274,0.536,0.216
+STORM,878,0.033,0.000,0.000,naive bayes,undersampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,undersampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,undersampling,best first,no cost sensitive,0.471,0.111,0.889,0.529,0.263,0.471,0.801,0.265
+STORM,4505,0.169,0.243,0.757,naive bayes,undersampling,best first,no cost sensitive,0.159,0.016,0.984,0.841,0.746,0.159,0.888,0.198
+STORM,5988,0.225,0.558,0.442,naive bayes,undersampling,best first,no cost sensitive,0.466,0.137,0.863,0.534,0.475,0.466,0.814,0.332
+STORM,7656,0.288,0.986,0.014,naive bayes,undersampling,best first,no cost sensitive,0.273,0.069,0.931,0.727,0.025,0.273,0.724,0.035
+STORM,9324,0.350,0.986,0.014,naive bayes,undersampling,best first,no cost sensitive,0.818,0.347,0.653,0.182,0.011,0.818,0.823,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,undersampling,best first,no cost sensitive,0.071,0.045,0.955,0.929,0.010,0.071,0.746,0.006
+STORM,13961,0.524,0.821,0.179,naive bayes,undersampling,best first,no cost sensitive,0.050,0.017,0.983,0.950,0.200,0.050,0.807,0.051
+STORM,16282,0.612,0.768,0.232,naive bayes,undersampling,best first,no cost sensitive,0.580,0.049,0.951,0.420,0.625,0.580,0.911,0.548
+STORM,18732,0.704,0.795,0.205,naive bayes,undersampling,best first,no cost sensitive,0.417,0.001,0.999,0.583,0.979,0.417,0.710,0.548
+STORM,21219,0.797,0.830,0.170,naive bayes,undersampling,best first,no cost sensitive,0.302,0.001,0.999,0.698,0.981,0.302,0.650,0.425
+STORM,23712,0.891,0.832,0.168,naive bayes,undersampling,best first,no cost sensitive,0.413,0.137,0.863,0.587,0.325,0.413,0.683,0.248
+STORM,878,0.033,0.000,0.000,ibk,undersampling,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,undersampling,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,undersampling,best first,no cost sensitive,0.279,0.052,0.948,0.721,0.312,0.279,0.654,0.239
+STORM,4505,0.169,0.243,0.757,ibk,undersampling,best first,no cost sensitive,0.763,0.163,0.837,0.237,0.577,0.763,0.803,0.539
+STORM,5988,0.225,0.558,0.442,ibk,undersampling,best first,no cost sensitive,0.469,0.190,0.810,0.531,0.395,0.469,0.637,0.260
+STORM,7656,0.288,0.986,0.014,ibk,undersampling,best first,no cost sensitive,0.545,0.264,0.736,0.455,0.014,0.545,0.629,0.014
+STORM,9324,0.350,0.986,0.014,ibk,undersampling,best first,no cost sensitive,0.545,0.375,0.625,0.455,0.007,0.545,0.588,0.004
+STORM,11640,0.437,0.983,0.017,ibk,undersampling,best first,no cost sensitive,0.643,0.226,0.774,0.357,0.017,0.643,0.719,0.022
+STORM,13961,0.524,0.821,0.179,ibk,undersampling,best first,no cost sensitive,0.272,0.106,0.894,0.728,0.177,0.272,0.616,0.133
+STORM,16282,0.612,0.768,0.232,ibk,undersampling,best first,no cost sensitive,0.554,0.240,0.760,0.446,0.247,0.554,0.655,0.205
+STORM,18732,0.704,0.795,0.205,ibk,undersampling,best first,no cost sensitive,0.121,0.001,0.999,0.879,0.932,0.121,0.706,0.189
+STORM,21219,0.797,0.830,0.170,ibk,undersampling,best first,no cost sensitive,0.009,0.003,0.997,0.991,0.333,0.009,0.357,0.010
+STORM,23712,0.891,0.832,0.168,ibk,undersampling,best first,no cost sensitive,0.276,0.077,0.923,0.724,0.365,0.276,0.535,0.222
+STORM,878,0.033,0.000,0.000,random forest,undersampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.655,0.000
+STORM,4505,0.169,0.243,0.757,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.884,0.000
+STORM,5988,0.225,0.558,0.442,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.839,0.000
+STORM,7656,0.288,0.986,0.014,random forest,undersampling,best first,sensitive learning,0.182,0.135,0.865,0.818,0.009,0.182,0.705,0.004
+STORM,9324,0.350,0.986,0.014,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.828,0.000
+STORM,11640,0.437,0.983,0.017,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.665,0.000
+STORM,13961,0.524,0.821,0.179,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.700,0.000
+STORM,16282,0.612,0.768,0.232,random forest,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.792,0.000
+STORM,18732,0.704,0.795,0.205,random forest,undersampling,best first,sensitive learning,0.112,0.000,1.000,0.888,1.000,0.112,0.412,0.180
+STORM,21219,0.797,0.830,0.170,random forest,undersampling,best first,sensitive learning,0.003,0.000,1.000,0.997,1.000,0.003,0.357,0.005
+STORM,23712,0.891,0.832,0.168,random forest,undersampling,best first,sensitive learning,0.112,0.026,0.974,0.888,0.405,0.112,0.544,0.123
+STORM,878,0.033,0.000,0.000,naive bayes,undersampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,undersampling,best first,sensitive learning,0.471,0.111,0.889,0.529,0.263,0.471,0.801,0.265
+STORM,4505,0.169,0.243,0.757,naive bayes,undersampling,best first,sensitive learning,0.141,0.015,0.985,0.859,0.734,0.141,0.888,0.177
+STORM,5988,0.225,0.558,0.442,naive bayes,undersampling,best first,sensitive learning,0.420,0.127,0.873,0.580,0.468,0.420,0.814,0.305
+STORM,7656,0.288,0.986,0.014,naive bayes,undersampling,best first,sensitive learning,0.273,0.048,0.952,0.727,0.037,0.273,0.724,0.054
+STORM,9324,0.350,0.986,0.014,naive bayes,undersampling,best first,sensitive learning,0.818,0.347,0.653,0.182,0.011,0.818,0.823,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,undersampling,best first,sensitive learning,0.071,0.041,0.959,0.929,0.010,0.071,0.746,0.008
+STORM,13961,0.524,0.821,0.179,naive bayes,undersampling,best first,sensitive learning,0.044,0.015,0.985,0.956,0.195,0.044,0.807,0.045
+STORM,16282,0.612,0.768,0.232,naive bayes,undersampling,best first,sensitive learning,0.580,0.049,0.951,0.420,0.628,0.580,0.911,0.549
+STORM,18732,0.704,0.795,0.205,naive bayes,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.710,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.650,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,undersampling,best first,sensitive learning,0.122,0.016,0.984,0.878,0.557,0.122,0.683,0.158
+STORM,878,0.033,0.000,0.000,ibk,undersampling,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,undersampling,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,undersampling,best first,sensitive learning,0.279,0.052,0.948,0.721,0.312,0.279,0.654,0.239
+STORM,4505,0.169,0.243,0.757,ibk,undersampling,best first,sensitive learning,0.763,0.163,0.837,0.237,0.577,0.763,0.803,0.539
+STORM,5988,0.225,0.558,0.442,ibk,undersampling,best first,sensitive learning,0.469,0.190,0.810,0.531,0.395,0.469,0.637,0.260
+STORM,7656,0.288,0.986,0.014,ibk,undersampling,best first,sensitive learning,0.545,0.264,0.736,0.455,0.014,0.545,0.629,0.014
+STORM,9324,0.350,0.986,0.014,ibk,undersampling,best first,sensitive learning,0.545,0.375,0.625,0.455,0.007,0.545,0.588,0.004
+STORM,11640,0.437,0.983,0.017,ibk,undersampling,best first,sensitive learning,0.643,0.226,0.774,0.357,0.017,0.643,0.719,0.022
+STORM,13961,0.524,0.821,0.179,ibk,undersampling,best first,sensitive learning,0.272,0.106,0.894,0.728,0.177,0.272,0.616,0.133
+STORM,16282,0.612,0.768,0.232,ibk,undersampling,best first,sensitive learning,0.554,0.240,0.760,0.446,0.247,0.554,0.655,0.205
+STORM,18732,0.704,0.795,0.205,ibk,undersampling,best first,sensitive learning,0.118,0.000,1.000,0.882,0.976,0.118,0.706,0.187
+STORM,21219,0.797,0.830,0.170,ibk,undersampling,best first,sensitive learning,0.003,0.000,1.000,0.997,1.000,0.003,0.357,0.005
+STORM,23712,0.891,0.832,0.168,ibk,undersampling,best first,sensitive learning,0.259,0.072,0.928,0.741,0.365,0.259,0.535,0.213
+STORM,878,0.033,0.000,0.000,random forest,undersampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,5988,0.225,0.558,0.442,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,7656,0.288,0.986,0.014,random forest,undersampling,best first,sensitive threshold,0.182,0.106,0.894,0.818,0.011,0.182,0.538,0.009
+STORM,9324,0.350,0.986,0.014,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,11640,0.437,0.983,0.017,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,13961,0.524,0.821,0.179,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,16282,0.612,0.768,0.232,random forest,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,18732,0.704,0.795,0.205,random forest,undersampling,best first,sensitive threshold,0.118,0.000,1.000,0.882,0.976,0.118,0.559,0.187
+STORM,21219,0.797,0.830,0.170,random forest,undersampling,best first,sensitive threshold,0.003,0.000,1.000,0.997,1.000,0.003,0.501,0.005
+STORM,23712,0.891,0.832,0.168,random forest,undersampling,best first,sensitive threshold,0.231,0.069,0.931,0.769,0.350,0.231,0.581,0.189
+STORM,878,0.033,0.000,0.000,naive bayes,undersampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,undersampling,best first,sensitive threshold,0.163,0.014,0.986,0.837,0.500,0.163,0.575,0.216
+STORM,4505,0.169,0.243,0.757,naive bayes,undersampling,best first,sensitive threshold,0.120,0.015,0.985,0.880,0.702,0.120,0.552,0.149
+STORM,5988,0.225,0.558,0.442,naive bayes,undersampling,best first,sensitive threshold,0.160,0.049,0.951,0.840,0.463,0.160,0.555,0.146
+STORM,7656,0.288,0.986,0.014,naive bayes,undersampling,best first,sensitive threshold,0.273,0.048,0.952,0.727,0.037,0.273,0.613,0.054
+STORM,9324,0.350,0.986,0.014,naive bayes,undersampling,best first,sensitive threshold,0.727,0.237,0.763,0.273,0.014,0.727,0.745,0.019
+STORM,11640,0.437,0.983,0.017,naive bayes,undersampling,best first,sensitive threshold,0.071,0.023,0.977,0.929,0.019,0.071,0.524,0.021
+STORM,13961,0.524,0.821,0.179,naive bayes,undersampling,best first,sensitive threshold,0.017,0.009,0.991,0.983,0.136,0.017,0.504,0.013
+STORM,16282,0.612,0.768,0.232,naive bayes,undersampling,best first,sensitive threshold,0.059,0.029,0.971,0.941,0.222,0.059,0.515,0.043
+STORM,18732,0.704,0.795,0.205,naive bayes,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,undersampling,best first,sensitive threshold,0.122,0.016,0.984,0.878,0.557,0.122,0.553,0.158
+STORM,878,0.033,0.000,0.000,ibk,undersampling,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,undersampling,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,ibk,undersampling,best first,sensitive threshold,0.763,0.163,0.837,0.237,0.577,0.763,0.800,0.539
+STORM,5988,0.225,0.558,0.442,ibk,undersampling,best first,sensitive threshold,0.469,0.190,0.810,0.531,0.395,0.469,0.639,0.260
+STORM,7656,0.288,0.986,0.014,ibk,undersampling,best first,sensitive threshold,0.545,0.264,0.736,0.455,0.014,0.545,0.641,0.014
+STORM,9324,0.350,0.986,0.014,ibk,undersampling,best first,sensitive threshold,0.545,0.375,0.625,0.455,0.007,0.545,0.585,0.004
+STORM,11640,0.437,0.983,0.017,ibk,undersampling,best first,sensitive threshold,0.643,0.226,0.774,0.357,0.017,0.643,0.709,0.022
+STORM,13961,0.524,0.821,0.179,ibk,undersampling,best first,sensitive threshold,0.272,0.106,0.894,0.728,0.177,0.272,0.583,0.133
+STORM,16282,0.612,0.768,0.232,ibk,undersampling,best first,sensitive threshold,0.554,0.240,0.760,0.446,0.247,0.554,0.657,0.205
+STORM,18732,0.704,0.795,0.205,ibk,undersampling,best first,sensitive threshold,0.118,0.000,1.000,0.882,0.976,0.118,0.559,0.187
+STORM,21219,0.797,0.830,0.170,ibk,undersampling,best first,sensitive threshold,0.003,0.000,1.000,0.997,1.000,0.003,0.501,0.005
+STORM,23712,0.891,0.832,0.168,ibk,undersampling,best first,sensitive threshold,0.259,0.072,0.928,0.741,0.365,0.259,0.593,0.213
+STORM,878,0.033,0.000,0.000,random forest,smote,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.530,0.000
+STORM,4505,0.169,0.243,0.757,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.893,0.000
+STORM,5988,0.225,0.558,0.442,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.800,0.000
+STORM,7656,0.288,0.986,0.014,random forest,smote,best first,no cost sensitive,0.182,0.164,0.836,0.818,0.007,0.182,0.699,0.001
+STORM,9324,0.350,0.986,0.014,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.824,0.000
+STORM,11640,0.437,0.983,0.017,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.648,0.000
+STORM,13961,0.524,0.821,0.179,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.644,0.000
+STORM,16282,0.612,0.768,0.232,random forest,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.792,0.000
+STORM,18732,0.704,0.795,0.205,random forest,smote,best first,no cost sensitive,0.112,0.000,1.000,0.888,1.000,0.112,0.706,0.180
+STORM,21219,0.797,0.830,0.170,random forest,smote,best first,no cost sensitive,0.006,0.001,0.999,0.994,0.400,0.006,0.641,0.008
+STORM,23712,0.891,0.832,0.168,random forest,smote,best first,no cost sensitive,0.194,0.032,0.968,0.806,0.491,0.194,0.546,0.217
+STORM,878,0.033,0.000,0.000,naive bayes,smote,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,smote,best first,no cost sensitive,0.077,0.002,0.998,0.923,0.800,0.077,0.829,0.128
+STORM,4505,0.169,0.243,0.757,naive bayes,smote,best first,no cost sensitive,0.090,0.010,0.990,0.910,0.732,0.090,0.886,0.116
+STORM,5988,0.225,0.558,0.442,naive bayes,smote,best first,no cost sensitive,0.497,0.149,0.851,0.503,0.470,0.497,0.806,0.341
+STORM,7656,0.288,0.986,0.014,naive bayes,smote,best first,no cost sensitive,0.182,0.029,0.971,0.818,0.040,0.182,0.690,0.055
+STORM,9324,0.350,0.986,0.014,naive bayes,smote,best first,no cost sensitive,0.818,0.351,0.649,0.182,0.011,0.818,0.807,0.012
+STORM,11640,0.437,0.983,0.017,naive bayes,smote,best first,no cost sensitive,0.071,0.032,0.968,0.929,0.014,0.071,0.734,0.013
+STORM,13961,0.524,0.821,0.179,naive bayes,smote,best first,no cost sensitive,0.017,0.007,0.993,0.983,0.176,0.017,0.774,0.017
+STORM,16282,0.612,0.768,0.232,naive bayes,smote,best first,no cost sensitive,0.961,0.293,0.707,0.039,0.318,0.961,0.946,0.358
+STORM,18732,0.704,0.795,0.205,naive bayes,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.712,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.651,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,smote,best first,no cost sensitive,0.363,0.079,0.921,0.637,0.424,0.363,0.686,0.303
+STORM,878,0.033,0.000,0.000,ibk,smote,best first,no cost sensitive,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,smote,best first,no cost sensitive,0.000,0.000,1.000,1.000,NaN,0.000,0.821,0.000
+STORM,4505,0.169,0.243,0.757,ibk,smote,best first,no cost sensitive,0.237,0.016,0.984,0.763,0.814,0.237,0.618,0.295
+STORM,5988,0.225,0.558,0.442,ibk,smote,best first,no cost sensitive,0.349,0.068,0.932,0.651,0.578,0.349,0.662,0.329
+STORM,7656,0.288,0.986,0.014,ibk,smote,best first,no cost sensitive,0.182,0.165,0.835,0.818,0.007,0.182,0.540,0.001
+STORM,9324,0.350,0.986,0.014,ibk,smote,best first,no cost sensitive,0.545,0.333,0.667,0.455,0.008,0.545,0.657,0.006
+STORM,11640,0.437,0.983,0.017,ibk,smote,best first,no cost sensitive,0.214,0.109,0.891,0.786,0.012,0.214,0.579,0.011
+STORM,13961,0.524,0.821,0.179,ibk,smote,best first,no cost sensitive,0.056,0.002,0.998,0.944,0.667,0.056,0.586,0.092
+STORM,16282,0.612,0.768,0.232,ibk,smote,best first,no cost sensitive,0.538,0.075,0.925,0.462,0.505,0.538,0.810,0.450
+STORM,18732,0.704,0.795,0.205,ibk,smote,best first,no cost sensitive,0.112,0.000,1.000,0.888,1.000,0.112,0.706,0.180
+STORM,21219,0.797,0.830,0.170,ibk,smote,best first,no cost sensitive,0.006,0.001,0.999,0.994,0.400,0.006,0.642,0.008
+STORM,23712,0.891,0.832,0.168,ibk,smote,best first,no cost sensitive,0.095,0.029,0.971,0.905,0.345,0.095,0.503,0.095
+STORM,878,0.033,0.000,0.000,random forest,smote,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.878,0.000
+STORM,5988,0.225,0.558,0.442,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.826,0.000
+STORM,7656,0.288,0.986,0.014,random forest,smote,best first,sensitive learning,0.000,0.013,0.987,1.000,0.000,0.000,0.705,-0.009
+STORM,9324,0.350,0.986,0.014,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.825,0.000
+STORM,11640,0.437,0.983,0.017,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.657,0.000
+STORM,13961,0.524,0.821,0.179,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.666,0.000
+STORM,16282,0.612,0.768,0.232,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.807,0.000
+STORM,18732,0.704,0.795,0.205,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.706,0.000
+STORM,21219,0.797,0.830,0.170,random forest,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.641,0.000
+STORM,23712,0.891,0.832,0.168,random forest,smote,best first,sensitive learning,0.010,0.002,0.998,0.990,0.500,0.010,0.547,0.014
+STORM,878,0.033,0.000,0.000,naive bayes,smote,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,smote,best first,sensitive learning,0.067,0.001,0.999,0.933,0.875,0.067,0.829,0.115
+STORM,4505,0.169,0.243,0.757,naive bayes,smote,best first,sensitive learning,0.081,0.010,0.990,0.919,0.711,0.081,0.886,0.104
+STORM,5988,0.225,0.558,0.442,naive bayes,smote,best first,sensitive learning,0.489,0.137,0.863,0.511,0.487,0.489,0.806,0.352
+STORM,7656,0.288,0.986,0.014,naive bayes,smote,best first,sensitive learning,0.182,0.017,0.983,0.818,0.067,0.182,0.690,0.089
+STORM,9324,0.350,0.986,0.014,naive bayes,smote,best first,sensitive learning,0.818,0.349,0.651,0.182,0.011,0.818,0.807,0.013
+STORM,11640,0.437,0.983,0.017,naive bayes,smote,best first,sensitive learning,0.071,0.028,0.972,0.929,0.015,0.071,0.734,0.015
+STORM,13961,0.524,0.821,0.179,naive bayes,smote,best first,sensitive learning,0.017,0.006,0.994,0.983,0.188,0.017,0.774,0.018
+STORM,16282,0.612,0.768,0.232,naive bayes,smote,best first,sensitive learning,0.957,0.248,0.752,0.043,0.354,0.957,0.946,0.410
+STORM,18732,0.704,0.795,0.205,naive bayes,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.712,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.651,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,smote,best first,sensitive learning,0.060,0.010,0.990,0.940,0.500,0.060,0.686,0.080
+STORM,878,0.033,0.000,0.000,ibk,smote,best first,sensitive learning,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.821,0.000
+STORM,4505,0.169,0.243,0.757,ibk,smote,best first,sensitive learning,0.237,0.016,0.984,0.763,0.814,0.237,0.618,0.295
+STORM,5988,0.225,0.558,0.442,ibk,smote,best first,sensitive learning,0.349,0.068,0.932,0.651,0.578,0.349,0.662,0.329
+STORM,7656,0.288,0.986,0.014,ibk,smote,best first,sensitive learning,0.182,0.163,0.837,0.818,0.007,0.182,0.540,0.001
+STORM,9324,0.350,0.986,0.014,ibk,smote,best first,sensitive learning,0.545,0.333,0.667,0.455,0.008,0.545,0.657,0.006
+STORM,11640,0.437,0.983,0.017,ibk,smote,best first,sensitive learning,0.214,0.109,0.891,0.786,0.012,0.214,0.579,0.011
+STORM,13961,0.524,0.821,0.179,ibk,smote,best first,sensitive learning,0.056,0.002,0.998,0.944,0.667,0.056,0.586,0.092
+STORM,16282,0.612,0.768,0.232,ibk,smote,best first,sensitive learning,0.538,0.074,0.926,0.462,0.509,0.538,0.810,0.453
+STORM,18732,0.704,0.795,0.205,ibk,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.706,0.000
+STORM,21219,0.797,0.830,0.170,ibk,smote,best first,sensitive learning,0.000,0.000,1.000,1.000,NaN,0.000,0.642,0.000
+STORM,23712,0.891,0.832,0.168,ibk,smote,best first,sensitive learning,0.077,0.026,0.974,0.923,0.320,0.077,0.503,0.075
+STORM,878,0.033,0.000,0.000,random forest,smote,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,5988,0.225,0.558,0.442,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,7656,0.288,0.986,0.014,random forest,smote,best first,sensitive threshold,0.091,0.036,0.964,0.909,0.017,0.091,0.528,0.017
+STORM,9324,0.350,0.986,0.014,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,11640,0.437,0.983,0.017,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,13961,0.524,0.821,0.179,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,16282,0.612,0.768,0.232,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,18732,0.704,0.795,0.205,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,random forest,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,random forest,smote,best first,sensitive threshold,0.027,0.004,0.996,0.973,0.524,0.027,0.512,0.039
+STORM,878,0.033,0.000,0.000,naive bayes,smote,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,naive bayes,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,naive bayes,smote,best first,sensitive threshold,0.048,0.000,1.000,0.952,1.000,0.048,0.524,0.085
+STORM,4505,0.169,0.243,0.757,naive bayes,smote,best first,sensitive threshold,0.057,0.006,0.994,0.943,0.731,0.057,0.525,0.075
+STORM,5988,0.225,0.558,0.442,naive bayes,smote,best first,sensitive threshold,0.126,0.036,0.964,0.874,0.478,0.126,0.545,0.122
+STORM,7656,0.288,0.986,0.014,naive bayes,smote,best first,sensitive threshold,0.182,0.017,0.983,0.818,0.067,0.182,0.582,0.089
+STORM,9324,0.350,0.986,0.014,naive bayes,smote,best first,sensitive threshold,0.727,0.223,0.777,0.273,0.015,0.727,0.752,0.021
+STORM,11640,0.437,0.983,0.017,naive bayes,smote,best first,sensitive threshold,0.071,0.004,0.996,0.929,0.100,0.071,0.534,0.079
+STORM,13961,0.524,0.821,0.179,naive bayes,smote,best first,sensitive threshold,0.011,0.001,0.999,0.989,0.400,0.011,0.505,0.018
+STORM,16282,0.612,0.768,0.232,naive bayes,smote,best first,sensitive threshold,0.023,0.001,0.999,0.977,0.700,0.023,0.511,0.037
+STORM,18732,0.704,0.795,0.205,naive bayes,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,naive bayes,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,naive bayes,smote,best first,sensitive threshold,0.060,0.010,0.990,0.940,0.500,0.060,0.525,0.080
+STORM,878,0.033,0.000,0.000,ibk,smote,best first,sensitive threshold,NaN,0.000,1.000,NaN,NaN,NaN,NaN,1.000
+STORM,1965,0.074,0.000,1.000,ibk,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,3164,0.119,0.028,0.972,ibk,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,4505,0.169,0.243,0.757,ibk,smote,best first,sensitive threshold,0.237,0.016,0.984,0.763,0.814,0.237,0.610,0.295
+STORM,5988,0.225,0.558,0.442,ibk,smote,best first,sensitive threshold,0.349,0.068,0.932,0.651,0.578,0.349,0.641,0.329
+STORM,7656,0.288,0.986,0.014,ibk,smote,best first,sensitive threshold,0.182,0.163,0.837,0.818,0.007,0.182,0.509,0.001
+STORM,9324,0.350,0.986,0.014,ibk,smote,best first,sensitive threshold,0.545,0.333,0.667,0.455,0.008,0.545,0.606,0.006
+STORM,11640,0.437,0.983,0.017,ibk,smote,best first,sensitive threshold,0.214,0.109,0.891,0.786,0.012,0.214,0.553,0.011
+STORM,13961,0.524,0.821,0.179,ibk,smote,best first,sensitive threshold,0.056,0.002,0.998,0.944,0.667,0.056,0.527,0.092
+STORM,16282,0.612,0.768,0.232,ibk,smote,best first,sensitive threshold,0.538,0.074,0.926,0.462,0.509,0.538,0.732,0.453
+STORM,18732,0.704,0.795,0.205,ibk,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,21219,0.797,0.830,0.170,ibk,smote,best first,sensitive threshold,0.000,0.000,1.000,1.000,NaN,0.000,0.500,0.000
+STORM,23712,0.891,0.832,0.168,ibk,smote,best first,sensitive threshold,0.077,0.026,0.974,0.923,0.320,0.077,0.525,0.075

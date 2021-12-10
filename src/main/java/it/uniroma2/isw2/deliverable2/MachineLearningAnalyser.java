@@ -45,7 +45,7 @@ public class MachineLearningAnalyser {
 	private void walkForward(AnalysisProfile profile, FileWriter writer) throws Exception {
 		
 		for (int testingIdx = 1; testingIdx < this.versionNames.size(); ++testingIdx) {
-			AnalysisRun actualRun = new AnalysisRun(fullDataset, profile, projectName, testingIdx);
+			AnalysisRun actualRun = new AnalysisRun(fullDataset, profile, projectName);
 			
 			for (Instance row : fullDataset) {
 				if (versionNames.indexOf(row.stringValue(VERSION_IDX)) == testingIdx)

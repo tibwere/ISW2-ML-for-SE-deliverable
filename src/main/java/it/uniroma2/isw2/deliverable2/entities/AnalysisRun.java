@@ -27,7 +27,7 @@ public class AnalysisRun {
 	private Instances testingSet;
 	private EvaluationResults results;
 	
-	public AnalysisRun(Instances fullDataset, AnalysisProfile profile, String project, int testingIdx) {
+	public AnalysisRun(Instances fullDataset, AnalysisProfile profile, String project) {
 		this.trainingSet = new Instances(fullDataset, 0);
 		this.testingSet = new Instances(fullDataset, 0);
 		this.results = new EvaluationResults(project, profile);
