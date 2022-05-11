@@ -1,21 +1,19 @@
 package it.uniroma2.isw2.deliverable2;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import it.uniroma2.isw2.deliverable2.entities.Commit;
+import it.uniroma2.isw2.deliverable2.entities.Diff;
+import it.uniroma2.isw2.deliverable2.exceptions.MaximumRequestToGithubAPIException;
+import it.uniroma2.isw2.deliverable2.exceptions.MissingGithubTokenException;
+
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
-import it.uniroma2.isw2.deliverable2.entities.Commit;
-import it.uniroma2.isw2.deliverable2.entities.Diff;
-import it.uniroma2.isw2.deliverable2.exceptions.MaximumRequestToGithubAPIException;
-import it.uniroma2.isw2.deliverable2.exceptions.MissingGithubTokenException;
 
 public class GitHelper {
 	private static final String TOKEN_PATH = "token.key";
