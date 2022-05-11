@@ -23,9 +23,21 @@ public class GitHelper {
 	private static final String CACHE_COMMIT_INFO = ".cache/commit-info/%s/%s.json";
 	private static final String REMOTE_COMMIT_LIST = "https://api.github.com/repos/apache/%s/commits?per_page=100&page=%d";
 	private static final String REMOTE_COMMIT_INFO = "https://api.github.com/repos/apache/%s/commits/%s";
-
 	private static final String RATE_LIMIT_EXCEEDED_PREFIX = "API rate limit exceeded for user ID";
-	
+
+	/* To avoid Sonar Smells */
+	private static final String MESSAGE_STR = "message";
+	private static final String SHA_STR = "sha";
+	private static final String COMMIT_STR = "commit";
+	private static final String AUTHOR_STR = "author";
+	private static final String NAME_STR = "name";
+	private static final String DATE_STR = "date";
+	private static final String FILES_STR = "files";
+	private static final String FILENAME_STR = "filename";
+	private static final String JAVA_EXT_STR = ".java";
+	private static final String ADDITIONS_STR = "additions";
+	private static final String DELETIONS_STR = "deletions";
+
 	private String token;
 	private String projectName;
 	
@@ -34,8 +46,6 @@ public class GitHelper {
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(TOKEN_PATH))) {
 			this.token = reader.readLine();
-		} catch (FileNotFoundException e) {
-			throw new MissingGithubTokenException();
 		} catch (IOException e) {
 			throw new MissingGithubTokenException();
 		}
@@ -55,7 +65,7 @@ public class GitHelper {
 			
 			jsonCommits.forEach(element -> {
 				JsonObject jsonCommit = element.getAsJsonObject();
-				String sha = jsonCommit.get("sha").getAsString();			
+				String sha = jsonCommit.get(SHA_STR).getAsString();
 				commits.add(0, sha);
 			});
 			index++;
@@ -88,27 +98,27 @@ public class GitHelper {
 		Commit c = new Commit();
 		JsonObject jsonResponse = RestHelper.getJSONObject(remote, this.token, cache);
 
-		if (jsonResponse.get("message") != null && jsonResponse.get("message").getAsString().startsWith(RATE_LIMIT_EXCEEDED_PREFIX))
+		if (jsonResponse.get(MESSAGE_STR) != null && jsonResponse.get(MESSAGE_STR).getAsString().startsWith(RATE_LIMIT_EXCEEDED_PREFIX))
 			throw new MaximumRequestToGithubAPIException();
 
-		JsonObject jsonCommit = jsonResponse.get("commit").getAsJsonObject();
-		JsonObject jsonAuthor = jsonCommit.get("author").getAsJsonObject();
+		JsonObject jsonCommit = jsonResponse.get(COMMIT_STR).getAsJsonObject();
+		JsonObject jsonAuthor = jsonCommit.get(AUTHOR_STR).getAsJsonObject();
 		
 		c.setSha(sha);
-		c.setAuthor(jsonAuthor.getAsJsonObject().get("name").getAsString());
-		c.setDate(jsonAuthor.get("date").getAsString());
-		c.setMessage(jsonCommit.get("message").getAsString());
+		c.setAuthor(jsonAuthor.getAsJsonObject().get(NAME_STR).getAsString());
+		c.setDate(jsonAuthor.get(DATE_STR).getAsString());
+		c.setMessage(jsonCommit.get(MESSAGE_STR).getAsString());
 		
-		JsonArray jsonDiffs = jsonResponse.get("files").getAsJsonArray();
+		JsonArray jsonDiffs = jsonResponse.get(FILES_STR).getAsJsonArray();
 		jsonDiffs.forEach(element -> {
 			JsonObject jsonDiff = element.getAsJsonObject();
 			Diff d = new Diff();
-			String filename = jsonDiff.get("filename").getAsString();
+			String filename = jsonDiff.get(FILENAME_STR).getAsString();
 			
-			if (filename.endsWith(".java")) {
+			if (filename.endsWith(JAVA_EXT_STR)) {
 				d.setFilename(filename);
-				d.setAdditions(jsonDiff.get("additions").getAsInt());
-				d.setDeletions(jsonDiff.get("deletions").getAsInt());
+				d.setAdditions(jsonDiff.get(ADDITIONS_STR).getAsInt());
+				d.setDeletions(jsonDiff.get(DELETIONS_STR).getAsInt());
 				c.addDiff(d);	
 			}
 		});

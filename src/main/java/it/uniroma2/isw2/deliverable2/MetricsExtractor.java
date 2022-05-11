@@ -1,22 +1,16 @@
 package it.uniroma2.isw2.deliverable2;
 
+import it.uniroma2.isw2.deliverable2.entities.*;
+import it.uniroma2.isw2.deliverable2.exceptions.MaximumRequestToGithubAPIException;
+import it.uniroma2.isw2.deliverable2.exceptions.MissingGithubTokenException;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.google.gson.JsonSyntaxException;
-
-import it.uniroma2.isw2.deliverable2.entities.*;
-import it.uniroma2.isw2.deliverable2.exceptions.MaximumRequestToGithubAPIException;
-import it.uniroma2.isw2.deliverable2.exceptions.MissingGithubTokenException;
 
 public class MetricsExtractor {
 	

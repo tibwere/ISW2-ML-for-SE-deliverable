@@ -30,9 +30,7 @@ public class Launcher {
 			new MachineLearningAnalyser(PROJECT_NAME, RESULTS_FOLDER).finalizeAnalysis();
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"setupResultsFolder", e.getMessage()});
-		} catch (MissingGithubTokenException e) {
-			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"MetricsExtractor#extract", e.getMessage()});
-		} catch (MaximumRequestToGithubAPIException e) {
+		} catch (MissingGithubTokenException | MaximumRequestToGithubAPIException e) {
 			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"MetricsExtractor#extract", e.getMessage()});
 		} catch (Exception e) {
 			e.printStackTrace();
