@@ -1,6 +1,7 @@
 package it.uniroma2.isw2.deliverable2;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -13,6 +14,8 @@ import com.google.gson.JsonObject;
 
 import it.uniroma2.isw2.deliverable2.entities.Commit;
 import it.uniroma2.isw2.deliverable2.entities.Diff;
+import it.uniroma2.isw2.deliverable2.exceptions.MaximumRequestToGithubAPIException;
+import it.uniroma2.isw2.deliverable2.exceptions.MissingGithubTokenException;
 
 public class GitHelper {
 	private static final String TOKEN_PATH = "token.key";
@@ -20,15 +23,21 @@ public class GitHelper {
 	private static final String CACHE_COMMIT_INFO = ".cache/commit-info/%s/%s.json";
 	private static final String REMOTE_COMMIT_LIST = "https://api.github.com/repos/apache/%s/commits?per_page=100&page=%d";
 	private static final String REMOTE_COMMIT_INFO = "https://api.github.com/repos/apache/%s/commits/%s";
+
+	private static final String RATE_LIMIT_EXCEEDED_PREFIX = "API rate limit exceeded for user ID";
 	
 	private String token;
 	private String projectName;
 	
-	public GitHelper(String projectname) throws IOException {
-		this.projectName = projectname.toLowerCase();
+	public GitHelper(String projectName) throws MissingGithubTokenException {
+		this.projectName = projectName.toLowerCase();
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(TOKEN_PATH))) {
 			this.token = reader.readLine();
+		} catch (FileNotFoundException e) {
+			throw new MissingGithubTokenException();
+		} catch (IOException e) {
+			throw new MissingGithubTokenException();
 		}
 	}
 	
@@ -56,11 +65,11 @@ public class GitHelper {
 		return commits;
 	}
 	
-	public List<Commit> getCommits(LocalDateTime targetDate) throws IOException {
+	public List<Commit> getCommits(LocalDateTime targetDate) throws IOException, MaximumRequestToGithubAPIException {
 		List<Commit> commits = new ArrayList<>();
 		Iterator<String> shas = getCommitsSHA().iterator();
 		boolean targetDateReached = false;
-		
+
 		while(shas.hasNext() && !targetDateReached) {
 			Commit c = getCommit(shas.next());
 			if (c.getDate().isAfter(targetDate))
@@ -68,16 +77,20 @@ public class GitHelper {
 			else
 				commits.add(c);
 		}
-				
+
 		return commits;
 	}
 	
-	private Commit getCommit(String sha) throws IOException {
+	private Commit getCommit(String sha) throws IOException, MaximumRequestToGithubAPIException {
 		String cache = String.format(CACHE_COMMIT_INFO, this.projectName, sha);
 		String remote = String.format(REMOTE_COMMIT_INFO, this.projectName, sha);
 		
 		Commit c = new Commit();
 		JsonObject jsonResponse = RestHelper.getJSONObject(remote, this.token, cache);
+
+		if (jsonResponse.get("message") != null && jsonResponse.get("message").getAsString().startsWith(RATE_LIMIT_EXCEEDED_PREFIX))
+			throw new MaximumRequestToGithubAPIException();
+
 		JsonObject jsonCommit = jsonResponse.get("commit").getAsJsonObject();
 		JsonObject jsonAuthor = jsonCommit.get("author").getAsJsonObject();
 		

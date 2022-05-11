@@ -1,24 +1,43 @@
 package it.uniroma2.isw2.deliverable2;
 
+import it.uniroma2.isw2.deliverable2.exceptions.MaximumRequestToGithubAPIException;
+import it.uniroma2.isw2.deliverable2.exceptions.MissingGithubTokenException;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Launcher {
 	
 	private static final String PROJECT_NAME = "STORM";
 	private static final String RESULTS_FOLDER = "results/";
-	
-	public static void main(String[] args) throws Exception {
-		
+	private static final Logger LOGGER = Logger.getLogger("ISW2-DELIVERABLE-2(MAIN)");
+
+
+	public static void main(String[] args) {
+
+		final String errorMsgFmt = "An error occurred invoking {0} function: {1}";
+
 		/* Needed for SMOTE in presence of NaN */
 		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
-		
-		setupResultsFolder();
-		
-		new MetricsExtractor(PROJECT_NAME, RESULTS_FOLDER).extract();		
-		new MachineLearningAnalyser(PROJECT_NAME, RESULTS_FOLDER).finalizeAnalysis();
+
+		try {
+			setupResultsFolder();
+			new MetricsExtractor(PROJECT_NAME, RESULTS_FOLDER).extract();
+			new MachineLearningAnalyser(PROJECT_NAME, RESULTS_FOLDER).finalizeAnalysis();
+		} catch (IOException e) {
+			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"setupResultsFolder", e.getMessage()});
+		} catch (MissingGithubTokenException e) {
+			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"MetricsExtractor#extract", e.getMessage()});
+		} catch (MaximumRequestToGithubAPIException e) {
+			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"MetricsExtractor#extract", e.getMessage()});
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"MachineLearningAnalyser#finalizeAnalysis", e.getMessage()});
+		}
 	}
 	
 	private static void setupResultsFolder() throws IOException {

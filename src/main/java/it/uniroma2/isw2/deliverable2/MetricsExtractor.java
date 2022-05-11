@@ -14,12 +14,9 @@ import java.util.logging.Logger;
 
 import com.google.gson.JsonSyntaxException;
 
-import it.uniroma2.isw2.deliverable2.entities.Bug;
-import it.uniroma2.isw2.deliverable2.entities.Commit;
-import it.uniroma2.isw2.deliverable2.entities.Diff;
-import it.uniroma2.isw2.deliverable2.entities.Metrics;
-import it.uniroma2.isw2.deliverable2.entities.Version;
-import it.uniroma2.isw2.deliverable2.entities.VersionedFile;
+import it.uniroma2.isw2.deliverable2.entities.*;
+import it.uniroma2.isw2.deliverable2.exceptions.MaximumRequestToGithubAPIException;
+import it.uniroma2.isw2.deliverable2.exceptions.MissingGithubTokenException;
 
 public class MetricsExtractor {
 	
@@ -36,16 +33,16 @@ public class MetricsExtractor {
 	private Map<String, VersionedFile> files;
 	private String resultsFolder;
 		
-	public MetricsExtractor(String project, String resultsFolder) throws IOException {
+	public MetricsExtractor(String project, String resultsFolder) throws MissingGithubTokenException {
 		this.project = project;
 		this.gitHelper = new GitHelper(this.project);
 		this.jiraHelper = new JIRAHelper(this.project);
 		this.resultsFolder = resultsFolder;
 	}
 	
-	public void extract() throws IOException {
+	public void extract() throws IOException, MaximumRequestToGithubAPIException {
 		/* Init attributes */
-		int targetVersionIdx = this.retrieveInformations();
+		int targetVersionIdx = this.retrieveInformation();
 		
 		/* Fill IV of bugs using proportion */
 		this.fillIVs();
@@ -60,7 +57,7 @@ public class MetricsExtractor {
 		this.dumpStatisticsOnCSVFile();
 	}
 	
-	private int retrieveInformations() throws JsonSyntaxException, IOException {
+	private int retrieveInformation() throws IOException, MaximumRequestToGithubAPIException {
 		LOGGER.log(Level.INFO, "*** Retrieve tickets from JIRA ***");
 		this.versions = jiraHelper.getVersions();
 		LOGGER.log(Level.INFO, "Found {0} versions", this.versions.size());
