@@ -1,6 +1,7 @@
-target/
-.settings/
+target
+.settings
 .classpath
 .project
-.cache/
+.idea
+.cache
 token.key
