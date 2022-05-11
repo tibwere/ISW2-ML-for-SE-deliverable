@@ -69,7 +69,7 @@ public class EvaluationResults {
 	}
 	
 	public String toString() {
-		return String.format("%s,%d,%.3f,%.3f,%.3f,%s,%s,%s,%s,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f", this.dataset,
+		return String.format("%s,%d,%.7f,%.7f,%.7f,%s,%s,%s,%s,%.7f,%.7f,%.7f,%.7f,%.7f,%.7f,%.7f,%.7f", this.dataset,
 				this.numberOfTrainingReleases, this.percentageOfTrainingReleases, this.percentageOfDefectiveInTraining,
 				this.percentageOfDefectiveInTesting, this.classifier, this.balancing, this.featureSelection,
 				this.sensitivity, this.truePositive, this.falsePositive, this.trueNegative, this.falseNegative,

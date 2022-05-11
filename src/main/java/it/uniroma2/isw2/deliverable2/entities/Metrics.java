@@ -21,7 +21,7 @@ public class Metrics {
 		
 	@Override
 	public String toString() {
-		return String.format("%s,%s,%d,%d,%d,%d,%d,%.3f,%d,%d,%.3f,%d,%d,%s", 
+		return String.format("%s,%s,%d,%d,%d,%d,%d,%.7f,%d,%d,%.7f,%d,%d,%s",
 				this.version.getName(), this.name, this.size, this.numberOfRevisions,
 				this.numberOfAuthors, this.locAdded, this.maxLOCAdded,this.averageLOCAdded,
 				this.churn, this.maxChurn, this.averageChurn, this.changeSetSize, this.age, this.buggyness
