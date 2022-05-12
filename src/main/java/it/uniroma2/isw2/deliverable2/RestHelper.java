@@ -10,12 +10,15 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import it.uniroma2.isw2.deliverable2.exceptions.MaximumRequestToGithubAPIException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 public class RestHelper {
-	
+
+	private static final String RATE_LIMIT_EXCEEDED_PREFIX = "API rate limit exceeded for user ID";
+
 	private RestHelper() {
 		throw new IllegalStateException("This class should not be instantiated");
 	}
@@ -28,9 +31,13 @@ public class RestHelper {
 		return JsonParser.parseString(res.body().string()).getAsJsonObject();
 	}
 
-	public static JsonObject getJSONObject(String url, String token, String cache) throws IOException {
+	public static JsonObject getJSONObject(String url, String token, String cache) throws IOException, MaximumRequestToGithubAPIException {
 		String body = getJSON(url, token, cache);
 		JsonObject obj = JsonParser.parseString(body).getAsJsonObject();
+
+		if (obj.get("message") != null && obj.get("message").getAsString().startsWith(RATE_LIMIT_EXCEEDED_PREFIX)) {
+			throw new MaximumRequestToGithubAPIException();
+		}
 
 		if (!Files.exists(Paths.get(cache)) && obj.size() > 0)
 			cacheResponse(cache, body);

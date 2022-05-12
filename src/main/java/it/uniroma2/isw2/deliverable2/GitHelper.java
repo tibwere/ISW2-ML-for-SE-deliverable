@@ -21,7 +21,6 @@ public class GitHelper {
 	private static final String CACHE_COMMIT_INFO = ".cache/commit-info/%s/%s.json";
 	private static final String REMOTE_COMMIT_LIST = "https://api.github.com/repos/apache/%s/commits?per_page=100&page=%d";
 	private static final String REMOTE_COMMIT_INFO = "https://api.github.com/repos/apache/%s/commits/%s";
-	private static final String RATE_LIMIT_EXCEEDED_PREFIX = "API rate limit exceeded for user ID";
 
 	/* To avoid Sonar Smells */
 	private static final String MESSAGE_STR = "message";
@@ -95,9 +94,6 @@ public class GitHelper {
 		
 		Commit c = new Commit();
 		JsonObject jsonResponse = RestHelper.getJSONObject(remote, this.token, cache);
-
-		if (jsonResponse.get(MESSAGE_STR) != null && jsonResponse.get(MESSAGE_STR).getAsString().startsWith(RATE_LIMIT_EXCEEDED_PREFIX))
-			throw new MaximumRequestToGithubAPIException();
 
 		JsonObject jsonCommit = jsonResponse.get(COMMIT_STR).getAsJsonObject();
 		JsonObject jsonAuthor = jsonCommit.get(AUTHOR_STR).getAsJsonObject();
