@@ -33,7 +33,6 @@ public class Launcher {
 		} catch (MissingGithubTokenException | MaximumRequestToGithubAPIException e) {
 			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"MetricsExtractor#extract", e.getMessage()});
 		} catch (Exception e) {
-			e.printStackTrace();
 			LOGGER.log(Level.SEVERE, errorMsgFmt, new Object [] {"MachineLearningAnalyser#finalizeAnalysis", e.getMessage()});
 		}
 	}
