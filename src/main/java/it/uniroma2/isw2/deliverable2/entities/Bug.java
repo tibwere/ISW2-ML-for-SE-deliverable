@@ -67,7 +67,7 @@ public class Bug {
 		if (this.iv == null) {
 			return false;
 		} else {
-			return this.iv.getReleaseDate().isBefore(version.getReleaseDate())
+			return !this.iv.getReleaseDate().isAfter(version.getReleaseDate())
 					&& this.fv.getReleaseDate().isAfter(version.getReleaseDate());
 		}
 		
