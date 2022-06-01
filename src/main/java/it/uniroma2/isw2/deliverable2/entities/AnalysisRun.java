@@ -1,5 +1,6 @@
 package it.uniroma2.isw2.deliverable2.entities;
 
+import it.uniroma2.isw2.deliverable2.MachineLearningAnalyser;
 import weka.attributeSelection.AttributeSelection;
 import weka.attributeSelection.BestFirst;
 import weka.attributeSelection.CfsSubsetEval;
@@ -202,5 +203,22 @@ public class AnalysisRun {
 		filter.SelectAttributes(this.trainingSet);
 		
 		return filter.selectedAttributes();
+	}
+
+	public void removeUnwantedAttributes() throws Exception {
+		int []indices = new int[]{
+				MachineLearningAnalyser.VERSION_IDX,
+				MachineLearningAnalyser.NAME_IDX
+		};
+
+		Remove removeFilter = new Remove();
+		removeFilter.setAttributeIndicesArray(indices);
+		removeFilter.setInvertSelection(false);
+
+		/* the structure of training and testing set is the same */
+		removeFilter.setInputFormat(this.trainingSet);
+
+		this.trainingSet = Filter.useFilter(this.trainingSet, removeFilter);
+		this.testingSet = Filter.useFilter(this.testingSet, removeFilter);
 	}
 }
