@@ -41,7 +41,7 @@ public class MetricsExtractor {
 		/* Fill IV of bugs using proportion */
 		this.fillIVs();
 		
-		/* Fill the set of touched files for each bug */
+		/* Prepare the set of touched files for each bug */
 		this.fillTouchedFiles();
 				
 		/* Create dataset */
@@ -78,34 +78,10 @@ public class MetricsExtractor {
 	}
 	
 	private void fillIVs() {
-		
-		final int DEFAULT_P = 1;
-		
-		int versionIdx = 0;
-		
 		for (Bug b : this.bugs) {
-			versionIdx = this.versions.indexOf(b.getOv());
-			
-			if (b.getIv() == null) {
-				if (versionIdx == 0)
-					b.setIv(DEFAULT_P, this.versions);
-				else
-					b.setIv(meanProportionOfVersions(versionIdx), this.versions);				
-			}
-			
-			double p = b.getProportion(this.versions);
-			this.versions.get(versionIdx).updateProportion(p);
+			if (b.getIv() == null)
+				b.setIv(this.bugs, this.versions);
 		}
-	}
-	
-	private int meanProportionOfVersions(int currentVersionIdx) {
-		double sum = 0.0;
-		
-		for (int i=0; i<currentVersionIdx; ++i)
-			sum += this.versions.get(i).getProportion();
-		
-		
-		return (int)Math.ceil(sum/currentVersionIdx);
 	}
 	
 	private void fillTouchedFiles() {

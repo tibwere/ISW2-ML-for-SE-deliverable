@@ -15,7 +15,6 @@ public class Bug {
 	private Version fv;
 	private Version ov;
 	private Version iv;
-	
 	private Set<String> touchedFile;
 	
 	/* Factorized fields of json in order to avoid smells */
@@ -55,12 +54,23 @@ public class Bug {
 		return iv;
 	}
 	
-	public void setIv(int proportion, List<Version> versions) {
+	public void setIv(List<Bug> bugs, List<Version> versions) {
+		double sumP = 0.0;
+		int counter = 0;
+
+		for (Bug b : bugs) {
+			if (b.getFv().getReleaseDate().isBefore(this.ov.getReleaseDate())) {
+				sumP += b.getProportion(versions);
+				counter++;
+			}
+		}
+
+		int p = (counter == 0) ? 1 : (int)Math.ceil(sumP/counter);
 		int fvIndex = versions.indexOf(this.fv);
 		int ovIndex = versions.indexOf(this.ov);
-		int ivIndex = fvIndex - (fvIndex - ovIndex)*proportion;
-		
-		this.iv = versions.get((ivIndex > 0) ? ivIndex : 0);
+		int ivIndex = fvIndex - (fvIndex - ovIndex)*p;
+
+		this.iv = versions.get(Math.max(ivIndex, 0));
 	}
 	
 	public boolean belongsTo(Version version) {
