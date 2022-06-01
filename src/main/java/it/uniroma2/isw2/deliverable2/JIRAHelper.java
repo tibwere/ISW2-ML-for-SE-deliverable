@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import com.google.gson.JsonArray;
@@ -24,7 +25,7 @@ public class JIRAHelper {
 	
 	public List<Version> getVersions() throws JsonSyntaxException, IOException {
 		List<Version> versions = new ArrayList<>();
-		
+
 		final String URL = "https://issues.apache.org/jira/rest/api/2/project/" + this.projectName;
 		JsonArray jsonVersions = RestHelper.getJSONObject(URL).get("versions").getAsJsonArray();
 		for (JsonElement element : jsonVersions) {
@@ -39,7 +40,7 @@ public class JIRAHelper {
 			versions.add(version);
 		}
 		
-		versions.sort((v1, v2) -> v1.getReleaseDate().compareTo(v2.getReleaseDate()));
+		versions.sort(Comparator.comparing(Version::getReleaseDate));
 		
 		return versions;
 	}
