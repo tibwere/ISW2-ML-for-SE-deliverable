@@ -19,6 +19,10 @@ import weka.filters.supervised.instance.SMOTE;
 import weka.filters.supervised.instance.SpreadSubsample;
 import weka.filters.unsupervised.attribute.Remove;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class AnalysisRun {
 	
 	private static final double CFP = 1.0;
@@ -70,53 +74,71 @@ public class AnalysisRun {
 		if (selectionType.equals(AnalysisProfile.FEATURE_SELECTION_BEST_FIRST)) {
 			Remove removeFilter = this.getRemoveFilter(getSelectedIndexes());	
 			this.trainingSet = Filter.useFilter(this.trainingSet, removeFilter);
-			this.testingSet = Filter.useFilter(this.testingSet, removeFilter);			
+			this.testingSet = Filter.useFilter(this.testingSet, removeFilter);
+
+			setupClassIndexes();
 		}
 	}
 	
-	private String getYValueForOversampling() {
+	private void applySampling(String samplingType) throws Exception {
+
+		List<Integer> countYN = getNumberOfYN();
+		int majoritySize = Collections.max(countYN);
+		int minoritySize = Collections.min(countYN);
+
+		if (samplingType.equals(AnalysisProfile.SAMPLING_UNDERSAMPLING)) {
+			SpreadSubsample spreadSubsample = new SpreadSubsample();
+
+			// Choose uniform distribution for spread
+			// (see: https://weka.sourceforge.io/doc.dev/weka/filters/supervised/instance/SpreadSubsample.html)
+			String[] opts = new String[]{ "-M", "1.0"};
+
+			spreadSubsample.setOptions(opts);
+			spreadSubsample.setInputFormat(this.trainingSet);
+			this.trainingSet = Filter.useFilter(this.trainingSet, spreadSubsample);
+
+		} else if (samplingType.equals(AnalysisProfile.SAMPLING_OVERSAMPLING)) {	
+			Resample resample = new Resample();
+
+			// -B -> Choose uniform distribution
+			// (see: https://weka.sourceforge.io/doc.dev/weka/filters/supervised/instance/Resample.html)
+			// -Z -> From https://waikato.github.io/weka-blog/posts/2019-01-30-sampling/
+			// "where Y/2 is (approximately) the percentage of data that belongs to the majority class"
+			String z = Double.toString(2 * ((double)majoritySize/this.trainingSet.size()) * 100);
+			String[] opts = new String[]{ "-B", "1.0", "-Z", z};
+
+			resample.setOptions(opts);
+			resample.setInputFormat(this.trainingSet);
+			this.trainingSet = Filter.useFilter(this.trainingSet, resample);
+
+		} else if (samplingType.equals(AnalysisProfile.SAMPLING_SMOTE)) {
+			SMOTE smote = new SMOTE();
+
+			// Percentage of SMOTE instances to create
+			// (see: https://weka.sourceforge.io/doc.packages/SMOTE/weka/filters/supervised/instance/SMOTE.html)
+			String p = Double.toString(100.0*(majoritySize - minoritySize) / minoritySize);
+			String[] opts = new String[]{ "-P", p};
+
+			smote.setOptions(opts);
+			smote.setInputFormat(this.trainingSet);
+			this.trainingSet = Filter.useFilter(this.trainingSet, smote);
+		}
+	}
+
+	private List<Integer> getNumberOfYN() {
 		int countYes = 0;
 		int countNo = 0;
-		
+
 		for (Instance row : this.trainingSet) {
 			if (row.stringValue(row.classIndex()).equals("Y"))
 				countYes++;
 			else
 				countNo++;
 		}
-		
-		double y;
-		if (countYes > countNo)
-			y = 2 * ((double)countYes/this.trainingSet.size()) * 100;
-		else
-			y = 2 * ((double)countNo/this.trainingSet.size()) * 100;
-		
-		return String.valueOf(y);
+
+		return Arrays.asList(countNo, countYes);
 	}
-	
-	private void applySampling(String samplingType) throws Exception {
-		
-		if (samplingType.equals(AnalysisProfile.SAMPLING_UNDERSAMPLING)) {
-			SpreadSubsample  spreadSubsample = new SpreadSubsample();
-			String[] opts = new String[]{ "-M", "1.0"};
-			spreadSubsample.setOptions(opts);
-			spreadSubsample.setInputFormat(this.trainingSet);
-			
-			this.trainingSet = Filter.useFilter(this.trainingSet, spreadSubsample);
-		} else if (samplingType.equals(AnalysisProfile.SAMPLING_OVERSAMPLING)) {	
-			Resample resample = new Resample();
-			String[] opts = new String[]{ "-B", "1.0", "-Z", this.getYValueForOversampling()};
-			resample.setOptions(opts);
-			resample.setInputFormat(this.trainingSet);
-			
-			this.trainingSet = Filter.useFilter(this.trainingSet, resample);
-		} else if (samplingType.equals(AnalysisProfile.SAMPLING_SMOTE)) {
-			SMOTE smote = new SMOTE();
-			smote.setInputFormat(this.trainingSet);
-			this.trainingSet = Filter.useFilter(this.trainingSet, smote);
-		}
-	}
-	
+
 	private CostMatrix createCostMatrix(double weightFalsePositive, double weightFalseNegative) {
 		CostMatrix costMatrix = new CostMatrix(2);
 		costMatrix.setCell(0, 0, 0.0);
