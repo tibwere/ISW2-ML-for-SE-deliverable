@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class Launcher {
 	
-	private static final String PROJECT_NAME = "STORM";
+	private static final String PROJECT_NAME = "BOOKKEEPER";
 	private static final String RESULTS_FOLDER = "results/";
 	private static final Logger LOGGER = Logger.getLogger("ISW2-DELIVERABLE-2(MAIN)");
 
@@ -44,6 +44,7 @@ public class Launcher {
 		
 		Path []datasets = {
 				Paths.get(String.format("%s%s_all_metrics.csv", RESULTS_FOLDER, PROJECT_NAME)),
+				Paths.get(String.format("%s%s_all_metrics.arff", RESULTS_FOLDER, PROJECT_NAME)),
 				Paths.get(String.format("%s%s_final_results.csv", RESULTS_FOLDER, PROJECT_NAME))
 		};
 		

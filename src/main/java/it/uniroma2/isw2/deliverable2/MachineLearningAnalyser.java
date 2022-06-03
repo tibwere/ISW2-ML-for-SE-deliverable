@@ -6,6 +6,7 @@ import it.uniroma2.isw2.deliverable2.entities.EvaluationResults;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.CSVLoader;
+import weka.core.converters.ConverterUtils.DataSource;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -26,10 +27,11 @@ public class MachineLearningAnalyser {
 	private Instances fullDataset;
 	private List<String> versionNames;
 
-	public MachineLearningAnalyser(String projectName, String resultsFolder) throws IOException {
+	public MachineLearningAnalyser(String projectName, String resultsFolder) throws Exception {
 		this.projectName = projectName;
 		this.resultsFolder = resultsFolder;
-		this.fullDataset = this.loadCSV(new File(String.format("%s%s_all_metrics.csv", this.resultsFolder, this.projectName)));
+		this.fullDataset = new DataSource(String.format("%s%s_all_metrics.arff", this.resultsFolder, this.projectName))
+				.getDataSet();
 		this.versionNames = getVersionNames(this.fullDataset);
 	}
 
@@ -65,12 +67,6 @@ public class MachineLearningAnalyser {
 			LOGGER.log(Level.INFO, "New result added: {0}", actualRun.getResults());
 			writer.append(String.format("%s%n", actualRun.getResults()));
 		}
-	}
-
-	private Instances loadCSV(File csvFile) throws IOException {
-		CSVLoader loader = new CSVLoader();
-		loader.setSource(csvFile);
-		return loader.getDataSet();
 	}
 
 	private List<String> getVersionNames(Instances fullDataset) {

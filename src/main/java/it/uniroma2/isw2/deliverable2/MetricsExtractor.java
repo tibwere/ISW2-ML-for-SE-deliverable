@@ -13,7 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MetricsExtractor {
-	
+	private static final String OUTPUT_FILE_NAME_FMT = "%s%s_all_metrics.%s";
+
 	private static final Logger LOGGER = Logger.getLogger("ISW2-DELIVERABLE-2(EX)");
 	
 	private String project;
@@ -48,7 +49,7 @@ public class MetricsExtractor {
 		this.createDataset(targetVersionIdx);	
 		
 		/* Create csv file */
-		this.dumpStatisticsOnCSVFile();
+		this.dumpStatisticsOnFiles();
 	}
 	
 	private int retrieveInformation() throws IOException, MaximumRequestToGithubAPIException {
@@ -114,7 +115,7 @@ public class MetricsExtractor {
 	}
 	
 	
-	private void dumpStatisticsOnCSVFile() throws IOException {
+	private void dumpStatisticsOnFiles() throws IOException {
 		List<Metrics> metrics = new ArrayList<>();
 		for (VersionedFile f : this.files.values())
 			metrics.addAll(f.getComputedMetrics());
@@ -122,18 +123,25 @@ public class MetricsExtractor {
 		/* First, order by release date of version ...*/
 		Comparator<Metrics> comparator = Comparator.comparing(m -> m.getVersion().getReleaseDate());
 		/* ... then order by name */
-		comparator = comparator.thenComparing(Comparator.comparing(Metrics::getName));
+		comparator = comparator.thenComparing(Metrics::getName);
 		
 		metrics.sort(comparator);
 		
-		File csvDataset = new File(String.format("%s%s_all_metrics.csv", this.resultsFolder, this.project));
+		File csvDataset = new File(String.format(OUTPUT_FILE_NAME_FMT, this.resultsFolder, this.project, "csv"));
+		File arffDataset = new File(String.format(OUTPUT_FILE_NAME_FMT, this.resultsFolder, this.project, "arff"));
 
-		try (FileWriter writer = new FileWriter(csvDataset, false)) {
-			writer.append(Metrics.CSV_HEADER);
-			for (Metrics m : metrics)
-				writer.append(String.format("%s%n", m));
+		try (FileWriter csvWriter = new FileWriter(csvDataset, false);
+			 FileWriter arffWriter = new FileWriter(arffDataset, false)) {
+
+			csvWriter.append(Metrics.CSV_HEADER);
+			arffWriter.append(String.format(Metrics.ARFF_HEADER_FMT, this.project));
+
+			for (Metrics m : metrics) {
+				csvWriter.append(String.format("%s%n", m));
+				arffWriter.append(String.format("%s%n", m));
+			}
 		}
-		LOGGER.log(Level.INFO, "Dumped dataset on CSV file");
+		LOGGER.log(Level.INFO, "Dumped dataset on CSV and ARFF file");
 	}
 	
 	private LocalDateTime getMaxDate(LocalDateTime d1, LocalDateTime d2) {

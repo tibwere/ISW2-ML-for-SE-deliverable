@@ -1,6 +1,26 @@
 package it.uniroma2.isw2.deliverable2.entities;
 
 public class Metrics {
+
+	public static final String ARFF_HEADER_FMT = "@relation %s\n" +
+			"\n" +
+			"@attribute Version string\n" +
+			"@attribute Name string\n" +
+			"@attribute Size numeric\n" +
+			"@attribute NR numeric\n" +
+			"@attribute NAuth numeric\n" +
+			"@attribute 'LOC added' numeric\n" +
+			"@attribute 'MAX LOC added' numeric\n" +
+			"@attribute 'AVG LOC added' numeric\n" +
+			"@attribute Churn numeric\n" +
+			"@attribute 'MAX Churn' numeric\n" +
+			"@attribute 'AVG Churn' numeric\n" +
+			"@attribute ChgSetSize numeric\n" +
+			"@attribute Age numeric\n" +
+			"@attribute Buggyness {N,Y}\n" +
+			"\n" +
+			"@data" +
+			"\n";
 	
 	public static final String CSV_HEADER = "Version,Name,Size,NR,NAuth,LOC added,MAX LOC added,AVG LOC added,Churn,MAX Churn,AVG Churn,ChgSetSize,Age,Buggyness\n";
 	
