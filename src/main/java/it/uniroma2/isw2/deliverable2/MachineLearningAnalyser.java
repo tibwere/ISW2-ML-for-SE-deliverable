@@ -5,12 +5,10 @@ import it.uniroma2.isw2.deliverable2.entities.AnalysisRun;
 import it.uniroma2.isw2.deliverable2.entities.EvaluationResults;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.core.converters.CSVLoader;
 import weka.core.converters.ConverterUtils.DataSource;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
