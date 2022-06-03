@@ -61,7 +61,7 @@ public class MetricsExtractor {
 		LOGGER.log(Level.INFO, "*** Found {0} bugs", this.bugs.size());
 		
 		/* Sort bugs for OV */
-		this.bugs.sort((b1, b2) -> b1.getOv().getReleaseDate().compareTo(b2.getOv().getReleaseDate()));
+		this.bugs.sort(Comparator.comparing(b -> b.getOv().getReleaseDate()));
 		
 		int targetIdx = (int)Math.ceil(this.versions.size()/2.0);
 		LocalDateTime lastBugFixVersionReleaseDate = this.bugs.get(this.bugs.size()-1).getFv().getReleaseDate();
@@ -144,7 +144,7 @@ public class MetricsExtractor {
 		for (Diff d : this.commits.get(commitsIdx).getDiffs()) {
 			String key = d.getFilename();
 			
-			VersionedFile entry = null;
+			VersionedFile entry;
 			if (this.files.containsKey(key))
 				entry = this.files.get(key);
 			else

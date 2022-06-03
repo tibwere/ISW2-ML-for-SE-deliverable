@@ -86,42 +86,49 @@ public class AnalysisRun {
 		int majoritySize = Collections.max(countYN);
 		int minoritySize = Collections.min(countYN);
 
-		if (samplingType.equals(AnalysisProfile.SAMPLING_UNDERSAMPLING)) {
-			SpreadSubsample spreadSubsample = new SpreadSubsample();
+		switch (samplingType) {
+			case AnalysisProfile.SAMPLING_UNDERSAMPLING: {
+				SpreadSubsample spreadSubsample = new SpreadSubsample();
 
-			// Choose uniform distribution for spread
-			// (see: https://weka.sourceforge.io/doc.dev/weka/filters/supervised/instance/SpreadSubsample.html)
-			String[] opts = new String[]{ "-M", "1.0"};
+				// Choose uniform distribution for spread
+				// (see: https://weka.sourceforge.io/doc.dev/weka/filters/supervised/instance/SpreadSubsample.html)
+				String[] opts = new String[]{"-M", "1.0"};
 
-			spreadSubsample.setOptions(opts);
-			spreadSubsample.setInputFormat(this.trainingSet);
-			this.trainingSet = Filter.useFilter(this.trainingSet, spreadSubsample);
+				spreadSubsample.setOptions(opts);
+				spreadSubsample.setInputFormat(this.trainingSet);
+				this.trainingSet = Filter.useFilter(this.trainingSet, spreadSubsample);
 
-		} else if (samplingType.equals(AnalysisProfile.SAMPLING_OVERSAMPLING)) {	
-			Resample resample = new Resample();
+				break;
+			}
+			case AnalysisProfile.SAMPLING_OVERSAMPLING: {
+				Resample resample = new Resample();
 
-			// -B -> Choose uniform distribution
-			// (see: https://weka.sourceforge.io/doc.dev/weka/filters/supervised/instance/Resample.html)
-			// -Z -> From https://waikato.github.io/weka-blog/posts/2019-01-30-sampling/
-			// "where Y/2 is (approximately) the percentage of data that belongs to the majority class"
-			String z = Double.toString(2 * ((double)majoritySize/this.trainingSet.size()) * 100);
-			String[] opts = new String[]{ "-B", "1.0", "-Z", z};
+				// -B -> Choose uniform distribution
+				// (see: https://weka.sourceforge.io/doc.dev/weka/filters/supervised/instance/Resample.html)
+				// -Z -> From https://waikato.github.io/weka-blog/posts/2019-01-30-sampling/
+				// "where Y/2 is (approximately) the percentage of data that belongs to the majority class"
+				String z = Double.toString(2 * ((double) majoritySize / this.trainingSet.size()) * 100);
+				String[] opts = new String[]{"-B", "1.0", "-Z", z};
 
-			resample.setOptions(opts);
-			resample.setInputFormat(this.trainingSet);
-			this.trainingSet = Filter.useFilter(this.trainingSet, resample);
+				resample.setOptions(opts);
+				resample.setInputFormat(this.trainingSet);
+				this.trainingSet = Filter.useFilter(this.trainingSet, resample);
 
-		} else if (samplingType.equals(AnalysisProfile.SAMPLING_SMOTE)) {
-			SMOTE smote = new SMOTE();
+				break;
+			}
+			case AnalysisProfile.SAMPLING_SMOTE: {
+				SMOTE smote = new SMOTE();
 
-			// Percentage of SMOTE instances to create
-			// (see: https://weka.sourceforge.io/doc.packages/SMOTE/weka/filters/supervised/instance/SMOTE.html)
-			String p = Double.toString(100.0*(majoritySize - minoritySize) / minoritySize);
-			String[] opts = new String[]{ "-P", p};
+				// Percentage of SMOTE instances to create
+				// (see: https://weka.sourceforge.io/doc.packages/SMOTE/weka/filters/supervised/instance/SMOTE.html)
+				String p = Double.toString(100.0 * (majoritySize - minoritySize) / minoritySize);
+				String[] opts = new String[]{"-P", p};
 
-			smote.setOptions(opts);
-			smote.setInputFormat(this.trainingSet);
-			this.trainingSet = Filter.useFilter(this.trainingSet, smote);
+				smote.setOptions(opts);
+				smote.setInputFormat(this.trainingSet);
+				this.trainingSet = Filter.useFilter(this.trainingSet, smote);
+				break;
+			}
 		}
 	}
 
@@ -139,18 +146,18 @@ public class AnalysisRun {
 		return Arrays.asList(countNo, countYes);
 	}
 
-	private CostMatrix createCostMatrix(double weightFalsePositive, double weightFalseNegative) {
+	private CostMatrix getCostMatrix() {
 		CostMatrix costMatrix = new CostMatrix(2);
 		costMatrix.setCell(0, 0, 0.0);
-		costMatrix.setCell(1, 0, weightFalsePositive);
-		costMatrix.setCell(0, 1, weightFalseNegative);
+		costMatrix.setCell(1, 0, AnalysisRun.CFP);
+		costMatrix.setCell(0, 1, AnalysisRun.CFN);
 		costMatrix.setCell(1, 1, 0.0);
 		return costMatrix;
 	}
 	
 	public void evaluate(AnalysisProfile profile) throws Exception {
 		
-		AbstractClassifier basicClassifier = null;
+		AbstractClassifier basicClassifier;
 		if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_RANDOM_FOREST))
 			basicClassifier = new RandomForest();
 		else if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_NAIVE_BAYES))
@@ -161,10 +168,10 @@ public class AnalysisRun {
 		this.applyFeatureSelection(profile.getFeatureSelectionTechnique());
 		this.applySampling(profile.getSamplingTechnique());
 		
-		Evaluation eval = null;	
+		Evaluation eval;
 		CostSensitiveClassifier costSensitiveClassifier = new CostSensitiveClassifier();
 		costSensitiveClassifier.setClassifier(basicClassifier);
-		costSensitiveClassifier.setCostMatrix(createCostMatrix(CFP, CFN));
+		costSensitiveClassifier.setCostMatrix(getCostMatrix());
 		
 		if (profile.getCostSensitiveTechnique().equals(AnalysisProfile.COST_SENSITIVE_CLASSIFIER_NO)) {
 			basicClassifier.buildClassifier(trainingSet);
