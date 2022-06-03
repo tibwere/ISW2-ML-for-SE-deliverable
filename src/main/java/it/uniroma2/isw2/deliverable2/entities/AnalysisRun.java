@@ -31,6 +31,8 @@ public class AnalysisRun {
  	private Instances trainingSet;
 	private Instances testingSet;
 	private EvaluationResults results;
+
+	private static final String UNSUPPORTED_ERR_MSG = "Unsupported %s type (%s)";
 	
 	public AnalysisRun(Instances fullDataset, AnalysisProfile profile, String project) {
 		this.trainingSet = new Instances(fullDataset, 0);
@@ -71,12 +73,20 @@ public class AnalysisRun {
 	}
 	
 	private void applyFeatureSelection(String selectionType) throws Exception {
-		if (selectionType.equals(AnalysisProfile.FEATURE_SELECTION_BEST_FIRST)) {
-			Remove removeFilter = this.getRemoveFilter(getSelectedIndexes());	
-			this.trainingSet = Filter.useFilter(this.trainingSet, removeFilter);
-			this.testingSet = Filter.useFilter(this.testingSet, removeFilter);
 
-			setupClassIndexes();
+		switch (selectionType) {
+			case AnalysisProfile.FEATURE_SELECTION_NO:
+				break;
+			case AnalysisProfile.FEATURE_SELECTION_BEST_FIRST:
+				Remove removeFilter = this.getRemoveFilter(getSelectedIndexes());
+				this.trainingSet = Filter.useFilter(this.trainingSet, removeFilter);
+				this.testingSet = Filter.useFilter(this.testingSet, removeFilter);
+
+				setupClassIndexes();
+				break;
+			default:
+				throw new IllegalArgumentException(String.format(UNSUPPORTED_ERR_MSG, "feature selection",
+						selectionType));
 		}
 	}
 	
@@ -85,22 +95,24 @@ public class AnalysisRun {
 		List<Integer> countYN = getNumberOfYN();
 		int majoritySize = Collections.max(countYN);
 		int minoritySize = Collections.min(countYN);
+		String []opts;
 
 		switch (samplingType) {
-			case AnalysisProfile.SAMPLING_UNDERSAMPLING: {
+			case AnalysisProfile.SAMPLING_NO:
+				break;
+			case AnalysisProfile.SAMPLING_UNDERSAMPLING:
 				SpreadSubsample spreadSubsample = new SpreadSubsample();
 
 				// Choose uniform distribution for spread
 				// (see: https://weka.sourceforge.io/doc.dev/weka/filters/supervised/instance/SpreadSubsample.html)
-				String[] opts = new String[]{"-M", "1.0"};
+				opts = new String[]{"-M", "1.0"};
 
 				spreadSubsample.setOptions(opts);
 				spreadSubsample.setInputFormat(this.trainingSet);
 				this.trainingSet = Filter.useFilter(this.trainingSet, spreadSubsample);
 
 				break;
-			}
-			case AnalysisProfile.SAMPLING_OVERSAMPLING: {
+			case AnalysisProfile.SAMPLING_OVERSAMPLING:
 				Resample resample = new Resample();
 
 				// -B -> Choose uniform distribution
@@ -108,27 +120,28 @@ public class AnalysisRun {
 				// -Z -> From https://waikato.github.io/weka-blog/posts/2019-01-30-sampling/
 				// "where Y/2 is (approximately) the percentage of data that belongs to the majority class"
 				String z = Double.toString(2 * ((double) majoritySize / this.trainingSet.size()) * 100);
-				String[] opts = new String[]{"-B", "1.0", "-Z", z};
+				opts = new String[]{"-B", "1.0", "-Z", z};
 
 				resample.setOptions(opts);
 				resample.setInputFormat(this.trainingSet);
 				this.trainingSet = Filter.useFilter(this.trainingSet, resample);
 
 				break;
-			}
-			case AnalysisProfile.SAMPLING_SMOTE: {
+			case AnalysisProfile.SAMPLING_SMOTE:
 				SMOTE smote = new SMOTE();
 
 				// Percentage of SMOTE instances to create
 				// (see: https://weka.sourceforge.io/doc.packages/SMOTE/weka/filters/supervised/instance/SMOTE.html)
 				String p = Double.toString(100.0 * (majoritySize - minoritySize) / minoritySize);
-				String[] opts = new String[]{"-P", p};
+				opts = new String[]{"-P", p};
 
 				smote.setOptions(opts);
 				smote.setInputFormat(this.trainingSet);
 				this.trainingSet = Filter.useFilter(this.trainingSet, smote);
 				break;
-			}
+
+			default:
+				throw new IllegalArgumentException(String.format(UNSUPPORTED_ERR_MSG, "sampling", samplingType));
 		}
 	}
 
@@ -154,17 +167,33 @@ public class AnalysisRun {
 		costMatrix.setCell(1, 1, 0.0);
 		return costMatrix;
 	}
+
+	private AbstractClassifier getBasicClassifier(String type) {
+		AbstractClassifier basicClassifier;
+		switch (type) {
+			case AnalysisProfile.CLASSIFIER_RANDOM_FOREST:
+				basicClassifier = new RandomForest();
+				break;
+
+			case AnalysisProfile.CLASSIFIER_NAIVE_BAYES:
+				basicClassifier = new NaiveBayes();
+				break;
+
+			case AnalysisProfile.CLASSIFIER_IBK:
+				basicClassifier = new IBk();
+				break;
+
+			default:
+				throw new IllegalArgumentException(String.format(UNSUPPORTED_ERR_MSG, "classifier", type));
+		}
+
+		return basicClassifier;
+	}
 	
 	public void evaluate(AnalysisProfile profile) throws Exception {
 		
-		AbstractClassifier basicClassifier;
-		if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_RANDOM_FOREST))
-			basicClassifier = new RandomForest();
-		else if (profile.getClassifier().equals(AnalysisProfile.CLASSIFIER_NAIVE_BAYES))
-			basicClassifier = new NaiveBayes();
-		else
-			basicClassifier = new IBk();
-		
+		AbstractClassifier basicClassifier = getBasicClassifier(profile.getClassifier());
+
 		this.applyFeatureSelection(profile.getFeatureSelectionTechnique());
 		this.applySampling(profile.getSamplingTechnique());
 		
@@ -172,17 +201,25 @@ public class AnalysisRun {
 		CostSensitiveClassifier costSensitiveClassifier = new CostSensitiveClassifier();
 		costSensitiveClassifier.setClassifier(basicClassifier);
 		costSensitiveClassifier.setCostMatrix(getCostMatrix());
-		
-		if (profile.getCostSensitiveTechnique().equals(AnalysisProfile.COST_SENSITIVE_CLASSIFIER_NO)) {
-			basicClassifier.buildClassifier(trainingSet);
-			eval = new Evaluation(this.testingSet);
-			eval.evaluateModel(basicClassifier, testingSet);
-		} else {
-			costSensitiveClassifier.setMinimizeExpectedCost(profile.getCostSensitiveTechnique().equals(AnalysisProfile.COST_SENSITIVE_CLASSIFIER_SENSITIVE_THRESHOLD));
-			costSensitiveClassifier.buildClassifier(trainingSet);
-			eval = new Evaluation(testingSet, costSensitiveClassifier.getCostMatrix());
-			eval.evaluateModel(costSensitiveClassifier, testingSet);
-		}	
+
+		switch (profile.getCostSensitiveTechnique()) {
+			case AnalysisProfile.COST_SENSITIVE_CLASSIFIER_NO:
+				basicClassifier.buildClassifier(trainingSet);
+				eval = new Evaluation(this.testingSet);
+				eval.evaluateModel(basicClassifier, testingSet);
+				break;
+			case AnalysisProfile.COST_SENSITIVE_CLASSIFIER_SENSITIVE_THRESHOLD:
+			case AnalysisProfile.COST_SENSITIVE_CLASSIFIER_SENSITIVE_LEARNING:
+				costSensitiveClassifier.setMinimizeExpectedCost(profile.getCostSensitiveTechnique().equals(
+						AnalysisProfile.COST_SENSITIVE_CLASSIFIER_SENSITIVE_THRESHOLD));
+				costSensitiveClassifier.buildClassifier(trainingSet);
+				eval = new Evaluation(testingSet, costSensitiveClassifier.getCostMatrix());
+				eval.evaluateModel(costSensitiveClassifier, testingSet);
+				break;
+			default:
+				throw new IllegalArgumentException(String.format(UNSUPPORTED_ERR_MSG, "cost-sensitive classifier",
+						profile.getCostSensitiveTechnique()));
+		}
 		
 		results.setStatistics(eval);	
 		
