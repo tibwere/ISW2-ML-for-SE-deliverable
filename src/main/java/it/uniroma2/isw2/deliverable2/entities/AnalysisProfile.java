@@ -40,7 +40,7 @@ public class AnalysisProfile {
 		if(Arrays.asList(techniques).contains(featureSelectionTechnique))
 			this.featureSelectionTechnique = featureSelectionTechnique;
 		else
-			throw new WrongProfileException("Invalid feature selection techinque chosen");
+			throw new WrongProfileException("Invalid feature selection technique chosen");
 	}
 
 	private void setSamplingTechnique(String samplingTechnique) throws WrongProfileException {
@@ -51,7 +51,7 @@ public class AnalysisProfile {
 		if(Arrays.asList(techniques).contains(samplingTechnique))
 			this.samplingTechnique = samplingTechnique;
 		else
-			throw new WrongProfileException("Invalid sampling techinque chosen");	
+			throw new WrongProfileException("Invalid sampling technique chosen");
 	}
 
 	private void setCostSensitiveTechnique(String costSensitiveTechnique) throws WrongProfileException {
@@ -62,7 +62,7 @@ public class AnalysisProfile {
 		if(Arrays.asList(techniques).contains(costSensitiveTechnique))
 			this.costSensitiveTechnique = costSensitiveTechnique;
 		else
-			throw new WrongProfileException("Invalid cost sensitive techinque chosen");		
+			throw new WrongProfileException("Invalid cost sensitive technique chosen");
 	}
 
 	private void setClassifier(String classifier) throws WrongProfileException {
@@ -73,7 +73,7 @@ public class AnalysisProfile {
 		if(Arrays.asList(techniques).contains(classifier))
 			this.classifier = classifier;
 		else
-			throw new WrongProfileException("Invalid feature selection techinque chosen");		
+			throw new WrongProfileException("Invalid feature selection technique chosen");
 	}
 	
 	public String getFeatureSelectionTechnique() {
