@@ -132,7 +132,8 @@ public class AnalysisRun {
 
 				// Percentage of SMOTE instances to create
 				// (see: https://weka.sourceforge.io/doc.packages/SMOTE/weka/filters/supervised/instance/SMOTE.html)
-				String p = Double.toString(100.0 * (majoritySize - minoritySize) / minoritySize);
+				String p = (minoritySize > 0) ?
+						Double.toString(100.0 * (majoritySize - minoritySize) / minoritySize) : "100.0";
 				opts = new String[]{"-P", p};
 
 				smote.setOptions(opts);
