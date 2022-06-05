@@ -163,8 +163,8 @@ public class AnalysisRun {
 	private CostMatrix getCostMatrix() {
 		CostMatrix costMatrix = new CostMatrix(2);
 		costMatrix.setCell(0, 0, 0.0);
-		costMatrix.setCell(1, 0, AnalysisRun.CFP);
-		costMatrix.setCell(0, 1, AnalysisRun.CFN);
+		costMatrix.setCell(0, 1, AnalysisRun.CFP);
+		costMatrix.setCell(1, 0, AnalysisRun.CFN);
 		costMatrix.setCell(1, 1, 0.0);
 		return costMatrix;
 	}
