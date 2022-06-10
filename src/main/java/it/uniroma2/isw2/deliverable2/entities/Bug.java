@@ -87,11 +87,8 @@ public class Bug {
 		int fvIndex = versions.indexOf(this.fv);
 		int ovIndex = versions.indexOf(this.ov);
 		int ivIndex = versions.indexOf(this.iv);
-		
-		if (fvIndex == ovIndex)
-			return ((double)fvIndex - ivIndex);
-		else
-			return ((double)(fvIndex - ivIndex)/(fvIndex - ovIndex));
+
+		return ((double)(fvIndex-ivIndex)/Math.max(fvIndex - ovIndex, 1));
 	}
 	
 	public void addTouchedFile(String filename) {
