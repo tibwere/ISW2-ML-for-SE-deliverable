@@ -9,8 +9,8 @@
 	<artifactId>deliverable2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>ISW2 deliverable 2</name>
-	<url>https://github.com/tibwere/ISW2-deliverable-2</url>
+	<name>ISW2 deliverable, ML for SE module</name>
+	<url>https://github.com/tibwere/ISW2-ML-for-SE-deliverable</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
